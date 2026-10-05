@@ -48,6 +48,19 @@ UCI_INCIDENT_LOG_URL = (
     "https://archive.ics.uci.edu/static/public/498/incident+management+process+enriched+event+log.zip"
 )
 
+# --- Retrieval (v2) ----------------------------------------------------------
+# Small, widely used open models so everything runs on a free Colab GPU.
+DENSE_MODEL = "BAAI/bge-small-en-v1.5"
+DENSE_QUERY_PREFIX = "Represent this sentence for searching relevant passages: "  # recommended by BGE for queries
+RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+CHUNK_WORDS = 200        # long documents are split into overlapping passages (models read ~512 tokens)
+CHUNK_OVERLAP = 50
+CANDIDATES = 100         # documents each retriever returns before fusion
+RRF_K = 60               # reciprocal rank fusion constant (the value from the original RRF paper)
+RERANK_DEPTH = 30        # hybrid candidates the reranker re-scores
+RERANK_CHUNKS_PER_DOC = 3  # best passages per document (by embedding similarity) shown to the reranker
+RUN_DEPTH = 20           # results kept per query for the resolve-or-escalate model
+
 # --- Demo ------------------------------------------------------------------
 # Below this confidence the demo flags the ticket for a human to check.
 REVIEW_THRESHOLD = 0.60
