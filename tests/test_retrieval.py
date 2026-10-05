@@ -194,3 +194,56 @@ def test_paired_comparison(tmp_path, monkeypatch):
 
     r = paired_bootstrap(np.array([0.0, 0.0, 1.0, -1.0]))
     assert r["questions_better"] == 1 and r["questions_worse"] == 1 and r["ci95"][0] < 0 < r["ci95"][1]
+
+
+def test_report_writes_table_between_markers(tmp_path, monkeypatch):
+    from src.retrieval import report
+
+    monkeypatch.setattr(config, "ROOT", tmp_path)
+    monkeypatch.setattr(config, "RESULTS_DIR", tmp_path / "results")
+    (tmp_path / "results").mkdir()
+    split = {"hit@5": 0.5, "mrr@10": 0.4, "hit@5_ci95": [0.4, 0.6], "n_queries": 10}
+    results = {"techqa": {"info": {"documents": 100, "passages": 150, "dense_model": "m", "rerankers": ["r"],
+                                   "device": "Tesla T4", "fp16": True},
+                          "methods": {"bm25": {"label": "BM25 (keywords)", "ms_per_query": 1.2,
+                                               "splits": {"dev": split, "test": split}},
+                                      "dense": {"label": "Dense (embeddings)", "ms_per_query": 4.0,
+                                                "splits": {"dev": {**split, "mrr@10": 0.45}, "test": split}}}}}
+    (tmp_path / "results" / "retrieval_metrics.json").write_text(json.dumps(results))
+    (tmp_path / "README.md").write_text(f"top\n{report.START}\nold\n{report.END}\nbottom\n")
+    report.main()
+    text = (tmp_path / "README.md").read_text()
+    assert "old" not in text and text.startswith("top\n") and text.endswith("bottom\n")
+    assert "| **Dense (embeddings)** | 0.50 | 0.45 |" in text  # best dev MRR is bold
+    assert "| BM25 (keywords) | 0.50 | 0.40 | 0.50 | 0.40 | 0.40–0.60 | 1 |" in text
+    assert "half precision" in text
+
+
+def test_diagnose_describe(tmp_path, monkeypatch):
+    from src.retrieval.diagnose import describe
+    from src.sources import common
+
+    monkeypatch.setattr(config, "DATA_DIR", tmp_path / "processed")
+    docs = pd.DataFrame({"doc_id": ["a", "b", "c"], "source": "kb", "title": "",
+                         "text": ["long answer " * 20, "short", "medium answer text"], "url": ""})
+    n = 8
+    queries = pd.DataFrame({"query_id": [f"q{i}" for i in range(n)], "source": "kb",
+                            "text": ["word " * (5 + 10 * i) for i in range(n)], "answerable": True,
+                            "gold_doc_ids": [["a"]] * n, "gold_answer": "", "split": "train"})
+    common.save_tables("techqa", docs, queries)
+    method_docs = {"hybrid": [["a", "b", "c"]] * n,
+                   "hybrid+rerank:x": [["b", "c", "a"]] * (n // 2) + [["a", "b", "c"]] * (n // 2)}
+    runs = pd.concat([pd.DataFrame({"query_id": queries["query_id"], "split": "train", "answerable": True,
+                                    "method": m, "doc_ids": d, "scores": [[3.0, 2.0, 1.0]] * n})
+                      for m, d in method_docs.items()])
+    (tmp_path / "processed" / "retrieval").mkdir(parents=True)
+    runs.to_parquet(tmp_path / "processed" / "retrieval" / "techqa_runs.parquet", index=False)
+
+    out = describe("techqa")
+    mv = out["movement_vs_hybrid"]["hybrid+rerank:x"]
+    assert mv == {"found_by_hybrid": 8, "moved_up": 0, "same": 4, "moved_down": 4,
+                  "was_first_now_below_5": 0, "hybrid_first": 8}
+    by_len = out["mrr_by_question_length"]
+    assert by_len["Q1 (shortest)"]["hybrid+rerank:x"] == pytest.approx(1 / 3, abs=1e-3)  # first queries demoted
+    assert by_len["Q4 (longest)"]["hybrid+rerank:x"] == 1.0
+    assert out["top_document_words_median"]["correct document"] == 40
