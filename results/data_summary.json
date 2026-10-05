@@ -1,0 +1,33 @@
+{
+  "rows": {
+    "train": 18998,
+    "val": 2375,
+    "test": 2375
+  },
+  "median_text_words": 60,
+  "label_counts": {
+    "queue": {
+      "Technical Support": 6858,
+      "Product Support": 4430,
+      "Customer Service": 3570,
+      "IT Support": 2833,
+      "Billing and Payments": 2420,
+      "Returns and Exchanges": 1173,
+      "Service Outages and Maintenance": 937,
+      "Sales and Pre-Sales": 724,
+      "Human Resources": 461,
+      "General Inquiry": 342
+    },
+    "priority": {
+      "medium": 9754,
+      "high": 9149,
+      "low": 4845
+    },
+    "type": {
+      "Incident": 9433,
+      "Request": 6880,
+      "Problem": 4932,
+      "Change": 2503
+    }
+  }
+}

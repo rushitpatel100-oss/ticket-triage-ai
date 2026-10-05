@@ -1,0 +1,141 @@
+text,actual,predicted,confidence
+"Service Disruptions
+
+Encountered service interruptions across various products, specifically the Smart-Thermostat Polk Audio Signa S2, following the latest software update.",Technical Support,Service Outages and Maintenance,0.966
+"Regular Service Interruptions During Busy Hours
+
+Regular service interruptions occur during peak times.",Technical Support,Service Outages and Maintenance,0.927
+"Customer Support for Data Breach
+
+A healthcare organization identified unauthorized access attempts. Password resets have been carried out, and monitoring has been intensified.",Technical Support,Product Support,0.872
+"Support for Data Analytics in Investment Strategies
+
+Inquiring about data analytics solutions to optimize investment strategies. Could you provide details on the services that can assist in making informed investment decisions? Specifically, I am keen to learn about your approach to data analysis and the use of machine learning algorithms to identify trends and patterns in the market. Additionally, I would like to know about your team's experience and expertise in the field of data analytics investment strategy. Please provide case studies or examples of successful implementations.",Technical Support,Sales and Pre-Sales,0.846
+"Problem with Audio Input
+
+I am encountering an audio input issue with my Rode NT-USB Mini microphone using OBS Studio version 27 on Ubuntu. I have restarted the devices, checked the connections, and adjusted the audio settings.",Product Support,Technical Support,0.844
+"Inquiry for In-Depth Service Offerings Details
+
+Dear Customer Support Team,\n\nI hope this message reaches you well. I am reaching out to request detailed information about your service offerings. As a potential client, it is crucial to understand the scope of services provided, including any specialized solutions that may be available.\n\nCould you please share an overview of your main services, along with descriptions of each, their key features, and the industries they serve? Additionally, information on recent updates or new additions to your portfolio would be highly valuable.\n\nThank you in advance for your assistance.",Product Support,Customer Service,0.844
+"Experienced Service Outage Impacting Project Management Tools Integration
+
+We are facing service outages that are affecting the integration of project management tools such as ActiveCampaign, Xero, and MongoDB 4.4. Recent updates to the configurations may be causing these issues. Our attempts to roll back the updates and restart the services have not resolved the problem. We need your assistance to resolve this issue.",Product Support,Service Outages and Maintenance,0.834
+"Overview of Digital Marketing Strategies for Brand Growth
+
+Can you share details on how digital marketing strategies can enhance brand growth? I am keen to learn about the tactics that can be used to boost brand awareness and customer engagement. Specifically, I would like to know more about social media and content marketing approaches. I look forward to your response and appreciate your assistance.",Technical Support,Customer Service,0.832
+"Enhance Investment Analytics System Performance and Reliability
+
+Our current investment analytics system is experiencing performance issues and unreliability. It is slow and frequently encounters errors. We aim to upgrade our infrastructure to achieve quicker and more precise outcomes.",Sales and Pre-Sales,IT Support,0.83
+"Support for Traffic Issues
+
+We have noticed a sudden drop in website traffic and engagement metrics. This may be due to recent changes in our digital ad campaigns. After attempting to revert the changes and optimize our keywords, the issue still persists. We need your help to resolve this issue.",IT Support,Technical Support,0.809
+"Concern Over Data Breach
+
+To customer support, I am contacting you to report a recently discovered medical data breach that might be linked to a vulnerability in an outdated Git version. I've updated the firewall to mitigate further breaches. However, I require your support to fully address this issue and secure our medical information. Kindly inform me of the necessary actions. I value your swift response to this situation. Thank you for your assistance and cooperation.",Technical Support,Product Support,0.807
+"Support for Traffic Decline
+
+There has been a sudden decrease in website traffic and engagement metrics. This may be due to recent changes in digital ad campaigns. After reverting those changes and optimizing keywords, the issue still persists. Assistance is needed to resolve this.",IT Support,Technical Support,0.801
+"Assist with Marketing Campaign Optimization
+
+The digital campaigns managed by the marketing agency did not meet performance expectations, potentially due to targeting inaccuracies. Updating the audience segments and creatives has led to better results. The agency is requesting support to address these issues and boost the overall effectiveness of their digital marketing efforts. They are seeking guidance on refining their targeting approach to improve campaign outcomes.",Returns and Exchanges,Product Support,0.782
+"Software Connectivity Issue
+
+Experienced connectivity problems with multiple devices while using SaaS project management software. The issue might be due to compatibility conflicts with an Epson scanner or sound card. Steps like resetting devices and reinstalling drivers have been tried but the problem continues.",Customer Service,IT Support,0.781
+"Assistance Required for SaaS Tool Malfunction
+
+Facing service interruptions on multiple platforms, tried initiating a restart and rollback process.",Technical Support,Service Outages and Maintenance,0.768
+"The team faced significant connectivity issues during a critical investment meeting on Google Meet, which disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",IT Support,Technical Support,0.767
+"Support Needed for Digital Marketing Strategy Optimization
+
+I need assistance in optimizing our digital marketing strategies to enhance brand growth. The affected products and tools require immediate attention to ensure the maximum return on investment (ROI). I would appreciate guidance on best practices and techniques to improve brand visibility and customer engagement. Please provide a detailed plan of action to achieve our goals. I look forward to hearing from you soon.",Customer Service,Returns and Exchanges,0.753
+"Technical Glitch in Website Analytics
+
+Greetings, I am correspondencing to inform you about a technical glitch with our website analytics. It ceased to function unexpectedly, and we are uncertain about the reasons behind this. We have attempted to confirm the setup, check for any updates, and restart the services, but to no avail. We suspect that the issue may stem from a potential code integration problem or an update anomaly. Kindly review this situation and supply us with a solution at your earliest convenience. Your assistance in resolving this matter would be greatly appreciated as our website analytics are vital for our business operation, and they must function correctly. Many thanks for your understanding and support.",Service Outages and Maintenance,Technical Support,0.741
+"Assistance Required for Data Analytics
+
+The data analytics tool is generating inaccurate investment forecasts, which is causing suboptimal decision-making. This might be due to outdated algorithms or corrupt data inputs. After attempts to recalibrate the models and clean the data, the issue was resolved. I would appreciate assistance in identifying the root cause and implementing a solution to ensure accurate forecasts.",IT Support,Customer Service,0.738
+"Information on Integration with Zapier for Project Management
+
+I am inquiring about the integration options for our project management SaaS through Zapier. Could you please provide detailed information and a set of step-by-step instructions for the integration process? Additionally, it would be very helpful if you could send relevant documentation to assist me in better understanding the capabilities and limitations of the integration. I greatly appreciate your assistance and look forward to hearing back soon.",Technical Support,Customer Service,0.73
+"Problem with the project dashboard
+
+I am reaching out to inform you about an issue I encountered with the project dashboard. The dashboard has unexpectedly frozen, and I suspect it could be due to conflicting integrations causing system overload. I have already attempted to restart the system, clear the cache, and check for updates, but the issue remains unresolved. I would greatly appreciate your assistance in looking into this matter and providing a solution at the earliest convenience. Please inform me if there is any additional information you require from me to address this problem.",Product Support,Technical Support,0.725
+"Strategies for Brand Growth in the Digital Realm
+
+Hello customer support, I am contacting you to ask about the digital strategies available for boosting my brand's growth and development. Can you give me more information on the services you provide? I am eager to find out how your company can assist my brand's expansion in the digital domain. Could you specify which services you offer and how they could be advantageous for my business? I am looking forward to your response and further details on your offerings.",Technical Support,Customer Service,0.724
+"Improving Investment Efficiency Through Advanced Data Analytics
+
+Customer Support, could you share specifics on how data analytics improves investment optimization services? I would greatly appreciate detailed information on the tools and techniques used to analyze data and make well-informed investment decisions. Moreover, I am interested in understanding how data analytics aids in identifying trends and patterns in the market, and how it contributes to the overall investment strategy. Thank you for your time and assistance. I look forward to your reply.",General Inquiry,Customer Service,0.718
+"Slow Loading Dashboard
+
+I am encountering slow loading times for the dashboard following the last update. Restarting my browser and clearing the cache have not resolved the problem. I believe it could be related to inadequate system resources. Could you assist in resolving this?",Product Support,IT Support,0.714
+"The team has faced significant connectivity problems during a critical investment meeting on Google Meet, which has disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",IT Support,Technical Support,0.714
+"Boosting Brand Growth through Digital Strategies
+
+Seeking to understand how digital strategies can enhance brand growth for multifunction printer products. Could you provide details on the services you offer and how they would benefit our company?",Product Support,Returns and Exchanges,0.714
+"Support Required for System Outage
+
+A critical incident has resulted in system outages for users, affecting project updates. This may be due to high server loads that impacted Redis performance. We have restarted services and optimized database queries, which were successful. Assistance is required to resolve the issue and prevent future occurrences.",Product Support,Technical Support,0.713
+"Support for Investment Through Data Analytics
+
+Is there a possibility of obtaining information on data analytics services that could optimize investment strategies? Thank you.",Billing and Payments,Customer Service,0.709
+"Several Problems with Multiple Devices
+
+Customer Support,\n\nI am writing to report various problems with my devices related to connectivity and hardware issues. Recently, I have experienced challenges in connecting multiple devices at once, which has severely affected my productivity. Moreover, some hardware parts seem to malfunction sporadically, leading to unexpected shutdowns and reduced performance.\n\nI have already attempted troubleshooting by restarting the devices, checking for software updates, and verifying network connections, but the problems continue. These issues remain unresolved.",Technical Support,IT Support,0.699
+"Reported Problem with Access to Digital Marketing Platforms
+
+Customer Support, submitting this report regarding a sudden inability to access digital marketing platforms, which has interrupted ongoing campaign activities. The problem appears to be caused by a server outage or technical malfunction. Attempts to resolve the issue by restarting the system and checking for updates have been made, but the problem persists. This may result in delays to marketing initiatives and could negatively affect overall performance. We would appreciate it if you could prioritize this issue and provide a prompt solution. Please inform us if any additional information is required.",Service Outages and Maintenance,Technical Support,0.697
+"Request for Data Analytics Tool Enhancements
+
+Hello Customer Support, I am writing to request enhancements for the data analytics tool to improve our investment optimization processes and reporting capabilities. The current limitations of the tool are hindering our ability to make informed decisions. We would like to request features such as real-time data updates, advanced filtering options, and customizable reporting templates. These enhancements would greatly improve our investment optimization processes and enable us to make accurate predictions. We would appreciate it if we could set up a call at <tel_num> to discuss this matter in detail.",Product Support,IT Support,0.696
+"Issue with Software Crashes
+
+Encountering software crashes in various applications. Possible compatibility issues due to recent updates. After restarting devices and reinstalling software, the problem persisted. Need help to resolve the issue.",Technical Support,IT Support,0.694
+"Data Processing Disruption
+
+Our organization faced delays in data processing that impacted the analytics functionalities of MySQL 8.0, likely due to elevated query volumes. We attempted to resolve this by restarting servers and optimizing queries, but the issue remains unresolved. We are concerned about the potential effects on our operations and would appreciate your urgent attention to this matter. Kindly let us know if additional information is required to assist with the investigation.",IT Support,Technical Support,0.686
+"Trouble with Network Connectivity on Various Devices
+
+Facing connectivity problems across several devices and applications, which is impacting project management tasks. It might be due to recent software updates or configuration changes. Despite restarting the devices and checking network settings, the issue still exists.",Product Support,Technical Support,0.685
+"Concerns Regarding Digital Marketing Campaign Performance
+
+Customer Support, <br>We are encountering difficulties with our marketing campaigns, which are underperforming due to inconsistencies in our digital strategies. Recent algorithm changes might be impacting our visibility. We have reviewed and adjusted ad placements and targeting, but the results have not been satisfactory. We would greatly appreciate any guidance on how to optimize our campaigns to better reach our target audience. Could you provide us with some recommendations or suggestions to improve our digital marketing efforts?",Technical Support,Product Support,0.684
+"Enhancement Request for Customer Support
+
+Submitting a request to update integrations to improve compatibility across various products within our scalable SaaS project management platform, aiming to enhance user experience and operational efficiency.",Product Support,Sales and Pre-Sales,0.677
+"Problem with Software and PostgreSQL Integration
+
+The software keeps crashing when integrating with PostgreSQL, possibly due to high memory usage or compatibility issues. Despite optimizing database queries and increasing system resources, the crashes continue. Assistance is needed to resolve this issue.",Product Support,Technical Support,0.676
+Kindly improve security protocols for medical data in hospital IT systems,Product Support,Customer Service,0.669
+"Investment Data Analytics Support
+
+Dear Customer Support, I am seeking guidance on integrating IBM SPSS Statistics 28 for optimizing investment data analytics. Could you please provide detailed documentation on the steps to get started? I would also appreciate information on system requirements, installation procedures, and configuration. Furthermore, I am interested in any available resources such as tutorials or webinars that can assist with the integration process. Thank you in advance for your assistance. I look forward to your prompt response.",Product Support,Customer Service,0.667
+"Technical Support Inquiry About System Interruptions
+
+Our marketing firm has encountered system disruptions impacting essential digital campaigns because of server overload and a surge in traffic. We have already rebooted the servers and cleared the caches, but the issues still persist. We require urgent support to address this matter.",Technical Support,IT Support,0.666
+"Problem with Digital Strategy Implementation
+
+The marketing firm encountered connectivity challenges impacting digital strategy execution following software updates. After restarting devices and reinstalling applications, the issue still persists.",Technical Support,IT Support,0.665
+"The team faced significant connectivity issues during a crucial investment meeting on Google Meet, which disrupted data analysis discussions. Steps taken include restarting the laptop, verifying the network connection, and checking software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Urgent assistance is needed to resolve this issue to avoid further disruptions.",IT Support,Technical Support,0.665
+"Enhancing Investment Data Management
+
+I am keen on learning how to optimize investments through data analytics software. Could you provide information on tools and techniques that could assist me in this? I would greatly appreciate any guidance on how to get started with making data-driven investment decisions.",Technical Support,Customer Service,0.658
+"Revise Digital Marketing Resources
+
+Enhancing tools to boost brand development",Product Support,IT Support,0.649
+"Request for Data Analytics Tools Support
+
+Hello Customer Support, I am reaching out to inquire about data analytics tools that can optimize investment strategies. Could you provide insight into the tools that could help me make more informed investment decisions? I am particularly interested in learning about the data visualization capabilities that can be used to identify trends and patterns in the market. Additionally, I would like to know more about the predictive analytics features that can be used to forecast future market movements. I would appreciate it if you could provide me with more information on this matter, including any case studies or whitepapers. Please let me know how I can obtain this information.",Technical Support,Sales and Pre-Sales,0.648
+"Problem with Website Analytics Tool
+
+Dear Customer Support,\n\nI am reporting an issue with the website analytics tool. The tracking codes have ceased to record data, and I suspect this could be because of a recent software update.\n\nHere is a brief summary of the issue:\n\n* Problem: Website analytics tool is malfunctioning.\n* What happened: Tracking codes suddenly stopped recording data.\n* Why: It might be due to a software update conflict.\n* Steps taken: Restarted the system and checked the code snippets.\n\nDespite my efforts, the issue remains unresolved. I would truly appreciate it if you could look into this and provide a solution at your earliest convenience.\n\nPlease provide me with more details about the recent software update and the specific date when this problem began. This information will be very helpful in resolving the issue.\n\nThank you for your time and assistance. I look forward to your prompt response.\n\nBest regards,\n[Your Name]",IT Support,Technical Support,0.645
+"Respected Customer Support Team, I am contacting you to bring to your notice a data breach that has taken place. This may be due to the system's Elasticsearch being out of date. After attempting to restart Elasticsearch, the problem still continues and hasn't been resolved. I kindly request you to address this issue promptly and offer a solution to prevent further breaches. Kindly inform me if further information from my end is needed to conduct the investigation. I am worried about the possible repercussions of this breach and wish to resolve it swiftly. Thanks for attending to this matter. I eagerly await your response soon.",Returns and Exchanges,Product Support,0.645
+"Query Regarding Inaccurate Campaign Metrics
+
+Hello customer support, I am encountering problems with campaign metrics that are not tracking correctly. I believe it could be due to the wrong implementation of tags. I have confirmed that the code is in the right place and checked the data sources, but the issue still exists. Could you assist me in resolving this problem?",Customer Service,Product Support,0.643
+"Application Crashes in Project Management Software
+
+Customer Support, users have reported frequent crashes while using the project management software. The issue might be linked to compatibility concerns with Node.js version 14.17. Attempts such as clearing caches and reinstalling dependencies have not resolved the problem. We would appreciate your assistance in addressing this issue. Please inform us if additional information or troubleshooting steps are required. Thank you for your support.",Product Support,Technical Support,0.641
+"Support for Docker
+
+Looking to integrate Docker 20.10 into our project management SaaS solution. Could you provide details on the integration process, necessary configurations, and compatibility requirements? I would greatly appreciate any guidance or resources to help us get started.",Technical Support,Customer Service,0.64

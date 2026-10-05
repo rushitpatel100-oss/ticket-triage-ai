@@ -34,7 +34,27 @@ flowchart LR
 ## Results
 
 <!-- RESULTS:START -->
-_Results appear here after training. See [Quick start](#quick-start)._
+| Task | Model | Accuracy | Macro F1 | Weighted F1 |
+|---|---|---|---|---|
+| queue | Majority class | 0.289 | 0.045 | 0.130 |
+| queue | TF-IDF + LogReg | 0.636 | **0.649** | 0.637 |
+| queue | DistilBERT (fine-tuned) | 0.506 | 0.414 | 0.490 |
+| priority | Majority class | 0.417 | 0.196 | 0.245 |
+| priority | TF-IDF + LogReg | 0.683 | **0.675** | 0.683 |
+| priority | DistilBERT (fine-tuned) | 0.609 | 0.578 | 0.602 |
+| type | Majority class | 0.404 | 0.144 | 0.233 |
+| type | TF-IDF + LogReg | 0.870 | **0.879** | 0.871 |
+| type | DistilBERT (fine-tuned) | 0.859 | 0.866 | 0.857 |
+
+*Scores on 2,375 held-out test tickets. Best macro F1 per task in bold.*
+
+![model comparison](results/model_comparison.png)
+
+![confusion queue transformer](results/confusion_queue_transformer.png)
+
+![confusion priority transformer](results/confusion_priority_transformer.png)
+
+![confusion type transformer](results/confusion_type_transformer.png)
 <!-- RESULTS:END -->
 
 **Why macro F1?** Some teams receive far fewer tickets than others. Accuracy can look good while a model
@@ -42,10 +62,11 @@ ignores the small teams completely; macro F1 gives every class equal weight, so 
 
 ## How it works
 
-1. **Data** (`src/data.py`): about 60,000 synthetic support tickets from the
+1. **Data** (`src/data.py`): the
    [Tobi-Bueck/customer-support-tickets](https://huggingface.co/datasets/Tobi-Bueck/customer-support-tickets)
-   dataset. I keep the English tickets, join subject and body into one text, remove exact duplicates (so the
-   same ticket can't appear in both training and test data), and make a stratified 80/10/10 train/validation/test split.
+   dataset has 61,765 synthetic tickets in English and German. I keep the English ones, join subject and body
+   into one text and remove exact duplicate texts (so the same ticket can't appear in both training and test
+   data). That leaves **23,748 tickets**, split 80/10/10 into train/validation/test (stratified by team).
 2. **Baselines** (`src/baseline.py`): a majority-class model (the "do nothing" floor) and TF-IDF with
    logistic regression, with its regularisation strength tuned on the validation set.
 3. **Fine-tuning** (`src/train.py`): `distilbert-base-uncased` fine-tuned separately for each task with the
@@ -137,19 +158,31 @@ ticket-triage-ai/
 
 ## Next steps
 
+- Re-train DistilBERT with class-weighted loss and more epochs, to make the comparison with the baseline fair
 - Train a single multi-task model with three output heads
 - Calibrate the confidence scores and pick the review threshold from the validation data
 - Add German with a multilingual model such as `distilbert-base-multilingual-cased`
 - Connect to a ticketing tool's API (e.g. Jira) to suggest a queue when a ticket is created
 
-<!--
 ## What I found
-After training, read results/errors_*_transformer.csv and the confusion matrices, then replace this
-comment with 3-4 bullet points, for example:
-- Which teams get confused with each other, and why that makes sense (or doesn't)
-- Whether DistilBERT beat the TF-IDF baseline, and by how much on each task
-- Whether some "mistakes" are actually wrong or ambiguous labels in the data
--->
+
+These are results of the first run (3 epochs, see [Next steps](#next-steps) for what changed afterwards).
+
+- **The simple model won.** TF-IDF + logistic regression beat DistilBERT on all three tasks, by a wide margin on
+  team (0.65 vs 0.41 macro F1) and priority (0.68 vs 0.58), and only narrowly on ITIL type (0.88 vs 0.87).
+- **Part of that gap was my own setup.** The baseline used balanced class weights; the transformer did not. DistilBERT
+  scored 0.00 F1 on the rare *General Inquiry* team (34 test tickets) and 0.25 on *Human Resources*, while TF-IDF scored
+  0.54 and 0.76. Training was also still improving at epoch 3, so the transformer was under-trained. An unfair
+  comparison is easy to run by accident, which is why the baseline is worth building first.
+- **Team confusions make sense.** The confusion matrix shows most mistakes between neighbouring teams: *Technical Support*,
+  *Product Support*, *IT Support* and *Customer Service* are the teams most often mixed up with each other,
+  and their descriptions overlap, so some of these tickets are genuinely ambiguous.
+- **ITIL type is the easy task, except for *Problem*.** *Request* and *Change* tickets are near-perfect (F1 0.98 to 1.00),
+  but *Problem* (F1 0.64 to 0.70) is mixed up with *Incident* (the baseline sends 28% of Problems to Incident and 17% of
+  Incidents to Problem), a distinction that is easy to blur in practice too.
+- **Confident mistakes are label noise.** The most confident errors (`results/errors_queue_*.csv`) are often tickets labelled
+  *Technical Support* that the model sends to *Service Outages and Maintenance*, which suggests ambiguous labels in the
+  synthetic data rather than a model failure.
 
 ## Dataset and licence
 

@@ -1,0 +1,149 @@
+text,actual,predicted,confidence
+"Project Information Vanished Unexpectedly Without Notice
+
+Briefly describing the issue: The project information vanished unexpectedly. Potential reasons: Could be due to incompatibility in software integration. Steps already taken: System was restarted, backups were reviewed, and user manual was referenced.",Problem,Incident,0.989
+"Technical Support Connectivity Issues
+
+Have encountered connectivity issues that have impacted productivity. Rebooting and updating the firmware resolved the issue.",Problem,Incident,0.981
+"Assistance Required for Medical Data Storage System
+
+In need help with writing a report on a critical issue related to the medical data storage system. The healthcare provider's medical data has become inaccessible, possibly due to database corruption from an unexpected server crash. Unfortunately, attempts to restore data from backups have been unsuccessful. It seems that regular maintenance schedules were followed, but this may have contributed to the issue. Urgently need assistance from a dedicated team to resolve the matter and restore access to the medical data. Could please provide",Problem,Incident,0.98
+"Support Needed for System-Wide Integration Issues
+
+A system-wide integration failure has occurred across several tools, causing disruptions in project management workflows. This might be due to a recent software update that is conflicting with existing applications. Attempts to resolve the issue included restarting the affected applications.",Problem,Incident,0.971
+"Problem with Billing System
+
+The company encountered unforeseen billing mistakes impacting several products. It is suspected that a system malfunction or data synchronization problem was the cause. Efforts to resolve the issue included restarting accounts and verifying payment information.",Problem,Incident,0.956
+"Problem with Marketing Engagement
+
+The marketing agency observed a notable decrease in online engagement metrics. Possible reasons might be recent strategy modifications. We have analyzed the current campaigns and adjusted the targeting settings.",Problem,Incident,0.956
+"Problem with Project Management Tools
+
+After the recent software update, the project management tools are loading slowly and frequently crashing, which may be due to compatibility issues with various products. I have already tried restarting the affected applications and checking for updates. I would appreciate your assistance in resolving this issue.",Problem,Incident,0.945
+"Problem with Security System
+
+Data breach found in the healthcare system. It might have happened due to weak firewall settings. We are planning to enhance security measures.",Incident,Problem,0.943
+"Problem with Project Data Vanishing Today
+
+Project data has vanished. Might be related to a database synchronization issue.",Problem,Incident,0.943
+"Assessment Required for Digital Campaign's Low Performance
+
+The digital marketing campaign managed by the agency did not achieve expected results.",Problem,Incident,0.939
+"Query Regarding Product Malfunctions
+
+Multiple essential products including AutoCAD, Mailchimp, PostgreSQL, Git, Monitor, and LG Projector are experiencing malfunctions. Possible causes might be server overload or configuration issues. Steps taken so far include restarting and reviewing logs, but the problem continues. Support was contacted, but no response has been received yet. Urgent assistance is needed to address this matter.",Problem,Incident,0.935
+"Concern Regarding Campaign Metrics
+
+There has been a decline in marketing campaign metrics following recent algorithm updates. Despite reviewing and modifying the targeting settings and message content, there has been no improvement. Assistance is required to address this issue and enhance the campaign's performance.",Incident,Problem,0.934
+"Problem with Billing Payments
+
+Hello Customer Support, I am encountering unexpected discrepancies in my billing payment transactions. The issue might be due to problems with data integration in the software. After reviewing the recent software updates and cross-referencing the transaction logs, the problem still persists. I need your help to resolve this matter as soon as possible to avoid further discrepancies. Please assist in identifying the root cause and providing a solution to rectify the issue.",Incident,Problem,0.933
+"Incident of Security Breach in Hospital System
+
+A security breach has been identified in the hospital system, which could expose sensitive medical information. This might have happened due to outdated software or a phishing attack. Immediate system scans have been carried out, and updated security protocols are in place to prevent further breaches. The cause is currently under investigation.",Problem,Incident,0.928
+"Problem with StreamCam During Video Conference
+
+My StreamCam malfunctioned during a video conference. It seems the issue might be related to outdated drivers. Though I have restarted the device and updated the software, the problem still exists. I would be grateful for any support to fix this and ensure the StreamCam operates smoothly in future meetings. Please advise if there are any further actions required from my side or if a new device is necessary.",Incident,Problem,0.92
+"Problem with Project Data Suddenly Vanishing Today
+
+Project data has vanished. Might be a database synchronization issue.",Problem,Incident,0.918
+"Disruptions in Digital Strategy Encountered
+
+Customer Support has reported an issue in the report writing process related to the marketing agency's digital strategy. The disruptions are leading to delays in the brand's growth. Initial troubleshooting efforts, including updating critical applications and rebooting systems, have not resolved the problem. There is concern that this may be impacting the online presence and reputation. Could you please help us in resolving this issue?",Problem,Incident,0.917
+"Technical Problem with StreamCam
+
+I am reporting an issue with my StreamCam video feed that freezes intermittently. This might be caused by incompatible drivers or software conflicts. After rebooting and updating the drivers, the problem still occurs. I would appreciate your help in fixing this. Please guide me on any actions I should take or further details you need from me.",Problem,Incident,0.909
+"Concern Regarding SaaS Platform
+
+Users encounter sporadic connectivity problems with the SaaS platform on MacBook Pro systems, particularly when using WeChat and Discord. Even after optimizing performance, restricting background applications, and adjusting network settings, the issues continue due to network bandwidth limitations.",Incident,Problem,0.907
+"Multiple Integrations Experienced Unexpected Failures Today
+
+Hello Customer Support, I have encountered problems with multiple integrations that have failed at the same time. This situation might be related to the recent Docker updates. Although I have restarted LINE and the VPN-Router, and verified the access permissions, the problem still exists. I would be highly grateful if you could help me address this urgency. Please inform me if there are any further actions I should take or if you need further information. Thank you for your assistance and time.",Problem,Incident,0.906
+"Secure Data Transfer Experienced Issues Recently
+
+Respected Customer Support Team, I am encountering a problem with secure data transmission. The transfer encountered an unexpected failure, and I believe it could be because of the outdated security patches on my Ubuntu 22.04 LTS system. I have already restarted my modem and reviewed my Adobe Creative Cloud configurations, yet the issue remains unresolved. Kindly assist me in addressing this situation. If required, please instruct me on any additional actions to undertake or seek further details from me. Thank you for your time and support.",Problem,Incident,0.897
+"Website Crash during Campaign Launch
+
+The website encountered an issue during the campaign launch. It could be because of high traffic. We have already restarted the servers and reviewed the code for errors, but the problem still exists. Kindly assist us in resolving this promptly.",Incident,Problem,0.896
+"Project Timelines Not Syncing
+
+There is an integration problem with SAP ERP causing project timelines to not sync across devices. You have already tried restarting, reconfiguring, and updating the software.",Incident,Problem,0.894
+"Issues with VPN Router Connections
+
+Frequent random disconnections have been happening recently due to an overloaded network.",Incident,Problem,0.893
+"Problem with vanishing project timelines
+
+Hello Customer Support, I am contacting you to address an issue where my project timelines have disappeared without cause. I believe it might be a software problem or an integration issue. Despite attempting to restart the application, checking for updates, and confirming my settings, the issue remains unresolved. I would be very grateful if you could examine this and furnish a solution at your earliest convenience. If you require any further details from me to address this, please do inform me. I am eagerly awaiting your response and assistance. Thanks for your attention and help.",Problem,Incident,0.884
+"Problem retrieving medical information
+
+Customer Support, reporting difficulty in accessing protected medical data following recent updates causing conflicts. Possibly due to incompatibility with software patches, healthcare providers are unable to retrieve essential information. Attempts to reboot the system and clear the cache have not resolved the issue. The problem continues, raising concerns about patient care. We would appreciate it if you could urgently investigate this matter and provide a solution at your earliest convenience. Please keep us informed.",Problem,Incident,0.879
+"Problem with SAP
+
+The SAP ERP system is experiencing frequent crashes, which is disrupting our investment analysis processes.",Incident,Problem,0.874
+"Assistance Required for Digital Strategy Assistance
+
+Problems with Airtable, IBM Cloud, and Google Keep are interfering with our digital strategy processes. The issues may be due to recent updates or integration complications. Attempts to fix the problems have been made but were unsuccessful. We require help to troubleshoot and restore our workflows to normal.",Problem,Incident,0.871
+"Problem with Project Timelines Not Syncing Across Devices
+
+Hello Customer Support, I am contacting you to address an issue I encountered with project timelines failing to sync across different devices. This issue arose after linking Monday.com with Google Nest Wifi. Despite attempting to restart the devices, reviewing firewall settings, and updating CCleaner, the problem continues to persist. I kindly request your assistance in investigating this and offering a resolution. If you need any further information from me, please do let me know. Thank you for your time and support. I eagerly await your response.",Incident,Problem,0.871
+"Facing a billing discrepancy with software licenses impacting several products. The issue might stem from an outdated payment method. After verifying payment details and reissuing payments, the problem continues. I would greatly appreciate prompt assistance in resolving this matter.",Problem,Incident,0.867
+"Data Analytics System Performance Issues at Financial Firm
+
+A financial company focused on investment optimization is facing system performance problems during data analytics processes, particularly with KNIME and Azure data workflows. The suspected causes include resource overuse and software conflicts. Despite attempts to resolve the issue by restarting systems, updating applications, and verifying network connections, the problem remains unresolved. Logs have been examined and errors identified, but further assistance is needed to address the issue. Could you please provide guidance on troubleshooting and resolving this problem?",Problem,Incident,0.867
+"Problem with Medical Data Access
+
+Facing difficulties in accessing protected medical data owing to incompatible software integrations.",Incident,Problem,0.864
+"Data Encryption Unexpectedly Encountered Issues
+
+The encryption process encountered unexpected difficulties. It might be related to a software update. A system restart and configuration checks have already been performed.",Problem,Incident,0.862
+"Unexpected Failure in Data Encryption Process Today
+
+I am contacting you to report an issue with our data encryption service. The encryption process failed unexpectedly. Despite restarting the servers and reviewing the settings, the problem continues. I suspect a software glitch or a configuration error might be causing this. Could you please look into this issue and provide a solution at your earliest convenience? Please inform me if you require additional details.",Problem,Incident,0.857
+"Healthcare Provider's Data Breach Due to Outdated Software and Inadequate Security Measures
+
+A healthcare provider has faced a data breach owing to outdated software and insufficient security measures. Despite updating the software and conducting a security audit, vulnerabilities persist. We need your assistance in identifying and addressing these weaknesses to ensure that security systems effectively protect sensitive patient information.",Incident,Problem,0.855
+"Trouble Logging into QuickBooks Online
+
+Dear Customer Support,\n\nI'm encountering difficulties accessing QuickBooks Online on my macOS and iOS devices. It appears to be related to synchronization errors that started after recent OS updates. Despite rebooting my devices and clearing my browser cache, the problem remains, preventing me from entering my account.\n\nThis issue significantly disrupts my workflow, as I depend heavily on QuickBooks for financial management. I would be grateful for your help in diagnosing and resolving this matter.",Incident,Problem,0.853
+"Required digital marketing strategies for brand growth
+
+We require digital marketing strategies to boost our brand growth as a company.",Request,Change,0.852
+"Reported System Performance Degradation
+
+The project management SaaS encountered an abrupt decline in system performance, impacting multiple integrations, potentially due to database overload or software bugs. Cache was cleared and services were restarted; however, the problem persists, disrupting workflows. The team is actively working to identify and resolve the issue, but the root cause remains uncertain. Kindly assist in diagnosing and fixing the problem promptly to reduce operational disruptions.",Problem,Incident,0.841
+"Crash Problem
+
+Customer Support, I am submitting a report regarding frequent crashes experienced on the investment optimization data analytics platform, which handles large volumes of data. The issue appears to be related to software integration conflicts. Despite restarting the systems and updating the relevant software, the problem persists. I have attempted various troubleshooting methods, but the issue remains unresolved. I would appreciate it if you could investigate this matter and provide a solution as soon as possible. Please let me know if you require any additional information to assist with the investigation.",Problem,Incident,0.84
+"Assistance Required for Data Breach Event
+
+We require support for a data breach incident. Please provide details of the incident so we can assist with the next steps to secure your account. <acc_num>. We may need to contact you at <tel_num> for further discussion. Please let us know a convenient time for a call.",Problem,Incident,0.838
+"Sync Problem Reporting
+
+Hello Customer Support, I am contacting you to address a problem I am encountering with project task synchronization. It's likely that the issue stems from an API connection problem. Despite restarting the application and verifying my internet connection, the problem remains unresolved. I would be grateful if you could examine this situation and offer a solution promptly. If you require any further details from me to address this, please inform me. Thank you for your attention and assistance; I eagerly await your response.",Incident,Problem,0.837
+"Investment Data Inaccuracy
+
+I am contacting you to report an issue with my investment data being displayed inaccurately on my analytics dashboard. I believe this might stem from a software incompatibility problem. I have already tried restarting my MacBook Air and updating Malwarebytes, but the issue still exists. I would appreciate any assistance you can provide to resolve this. Kindly inform me if you need additional details to address the matter. Thank you for your prompt attention to this concern.",Incident,Problem,0.835
+"Problem with Website Analytics Tool
+
+Dear Customer Support,\n\nI am reporting an issue with the website analytics tool. The tracking codes have ceased to record data, and I suspect this could be because of a recent software update.\n\nHere is a brief summary of the issue:\n\n* Problem: Website analytics tool is malfunctioning.\n* What happened: Tracking codes suddenly stopped recording data.\n* Why: It might be due to a software update conflict.\n* Steps taken: Restarted the system and checked the code snippets.\n\nDespite my efforts, the issue remains unresolved. I would truly appreciate it if you could look into this and provide a solution at your earliest convenience.\n\nPlease provide me with more details about the recent software update and the specific date when this problem began. This information will be very helpful in resolving the issue.\n\nThank you for your time and assistance. I look forward to your prompt response.\n\nBest regards,\n[Your Name]",Problem,Incident,0.832
+"Security Concern Raised Regarding Data Breach
+
+Assistance Required",Incident,Problem,0.831
+"Concern Regarding Data Analytics Tools Performance
+
+We are encountering frequent outages with the data analytics tools, which are essential for investment optimization. Rebooting the servers and checking the network settings resolved the issue.",Incident,Problem,0.828
+"Improving Data Analytics Performance
+
+I am reaching out to seek advice on enhancing the performance of my data analytics in an Express.js 4.17 environment by upgrading the RAM and memory card reader. Kindly guide me on the optimal strategy and share any suggestions or steps you can provide. Your assistance would be greatly appreciated. Thank you for your support.",Change,Request,0.826
+"Support for Marketing Firm Concern
+
+The marketing agency observed a decrease in client engagement metrics because of ineffective digital strategies.",Problem,Incident,0.824
+"Required Assistance with Security Incident
+
+There has been unauthorized access to medical data, which is likely due to insufficient security measures.",Problem,Incident,0.822
+"Request for Assistance in Identifying Root Cause and Implementing New Strategy for Brand Growth
+
+The digital strategies implemented by the marketing agency did not effectively increase brand growth. It is suspected that the cause of this failure lies in ineffective campaign targeting. Despite efforts to optimize campaigns and analyze analytics, these measures have not been successful. I am requesting your assistance in identifying the root cause and implementing a new strategy to improve the brand's online presence. Please inform me of the next steps to resolve this issue.",Incident,Problem,0.818
+"Urgent Notification
+
+Customer Support, drafting a report to inform about a serious incident at a healthcare facility. An unauthorized attempt to access medical records was detected, possibly due to outdated security measures. Our initial response involved updating the firewall, which unfortunately did not fully resolve the problem. We are concerned about the potential compromise of patient confidentiality and data integrity. We request immediate assistance to investigate this issue and to develop solutions to prevent similar incidents in the future. Please advise on the necessary steps.",Problem,Incident,0.817

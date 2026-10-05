@@ -1,0 +1,145 @@
+text,actual,predicted,confidence
+"Inquiry Regarding Integrations for Zoho Books with Data Analytics Tools
+
+I am contacting you to learn about the integrations available between Zoho Books and data analytics tools. Could you provide me with a list of all the integrations and specify which can assist with understanding my business's financial performance? Please also inform me about the setup procedures and any extra charges related to these connections. Furthermore, if any instructional materials or manuals are available to assist me in setting them up, could you share that information? I look forward to your response and appreciate your support. I am eager to explore the benefits of integrating Zoho Books with data analytics tools.",Technical Support,Billing and Payments,0.984
+"Ongoing Service Disruptions Reported Today
+
+Customer Support, our organization is experiencing repeated service disruptions impacting Docker, MySQL, and Zapier integrations. These outages are probably due to recent software updates that were applied. The team has attempted to restart the services and reviewed the logs for errors, but unfortunately, the issue remains unresolved. We are seeking assistance to troubleshoot and resolve this problem as soon as possible. Kindly inform us of any additional steps we should take or if you need further information from us. We appreciate your prompt response.",IT Support,Service Outages and Maintenance,0.964
+"Service Disruptions
+
+Encountered service interruptions across various products, specifically the Smart-Thermostat Polk Audio Signa S2, following the latest software update.",Technical Support,Service Outages and Maintenance,0.956
+"Regular Service Interruptions During Busy Hours
+
+Regular service interruptions occur during peak times.",Technical Support,Service Outages and Maintenance,0.947
+"Data Access System Problem
+
+A healthcare organization encountered difficulties accessing data, impacting multiple systems. The outages may have been triggered by an incorrect configuration following a security update. Initial diagnostic efforts have been carried out, but the issues remain unresolved.",Returns and Exchanges,Service Outages and Maintenance,0.912
+"Experienced Service Outage Impacting Project Management Tools Integration
+
+We are facing service outages that are affecting the integration of project management tools such as ActiveCampaign, Xero, and MongoDB 4.4. Recent updates to the configurations may be causing these issues. Our attempts to roll back the updates and restart the services have not resolved the problem. We need your assistance to resolve this issue.",Product Support,Service Outages and Maintenance,0.904
+"Problem with Project Data Suddenly Vanishing Today
+
+Project data has vanished. Might be a database synchronization issue.",Product Support,Technical Support,0.873
+"Problem with Project Data Vanishing Today
+
+Project data has vanished. Might be related to a database synchronization issue.",Product Support,Technical Support,0.858
+"Problem with Software Crashes in Steinberg Cubase 11 and Adobe Premiere Pro 2021
+
+Facing issues with software crashes in Steinberg Cubase 11 and Adobe Premiere Pro 2021 during project rendering. These crashes might be due to compatibility issues with recent PHP 8.0 updates. Reinstalling the software and updating drivers could potentially resolve the issue.",IT Support,Technical Support,0.85
+"Problem with Website Analytics Tool
+
+Dear Customer Support,\n\nI am reporting an issue with the website analytics tool. The tracking codes have ceased to record data, and I suspect this could be because of a recent software update.\n\nHere is a brief summary of the issue:\n\n* Problem: Website analytics tool is malfunctioning.\n* What happened: Tracking codes suddenly stopped recording data.\n* Why: It might be due to a software update conflict.\n* Steps taken: Restarted the system and checked the code snippets.\n\nDespite my efforts, the issue remains unresolved. I would truly appreciate it if you could look into this and provide a solution at your earliest convenience.\n\nPlease provide me with more details about the recent software update and the specific date when this problem began. This information will be very helpful in resolving the issue.\n\nThank you for your time and assistance. I look forward to your prompt response.\n\nBest regards,\n[Your Name]",IT Support,Technical Support,0.845
+"Support for Traffic Issues
+
+We have noticed a sudden drop in website traffic and engagement metrics. This may be due to recent changes in our digital ad campaigns. After attempting to revert the changes and optimize our keywords, the issue still persists. We need your help to resolve this issue.",IT Support,Technical Support,0.845
+"Reported Problem with IntelliJ IDEA Termination
+
+IntelliJ IDEA experienced a crash, which interrupted the workflow. It could be due to outdated plugins or conflicting software versions. The IDE was restarted and updates were checked.",IT Support,Technical Support,0.831
+"Support for Traffic Decline
+
+Noted a sudden drop in website traffic and engagement metrics. This might be related to recent changes in digital ad campaigns. Steps taken to revert changes and optimize keywords have not resolved the issue. Assistance is needed to resolve this problem.",IT Support,Technical Support,0.83
+"Support for Traffic Decline
+
+There has been a sudden decrease in website traffic and engagement metrics. This may be due to recent changes in digital ad campaigns. After reverting those changes and optimizing keywords, the issue still persists. Assistance is needed to resolve this.",IT Support,Technical Support,0.829
+"Sudden Absence of Digital Campaign Metrics
+
+Hello Customer Support, I am contacting you to report an unexpected issue with our digital campaign metrics. These metrics have vanished without a trace, and we are uncertain about the reasons behind this. We believe it might be due to recent server updates. We have attempted to restart the system and verify our data sources, but the problem still exists. This sudden absence of metrics is severely affecting our business operations, and we urgently need your help to resolve this. Could you please look into this issue and offer a solution or guidance on how to restore our campaign metrics? We greatly appreciate your prompt response and look forward to your assistance. Thank you for your support.",Product Support,Technical Support,0.828
+"Software Crashes Reported on Various Devices
+
+Users have reported recurring software crashes on several device platforms. Recent updates might be causing compatibility issues. Initial attempts to resolve the problem through rollback procedures and system reboots have not been successful. These issues are affecting the consistency of productivity workflows. Assistance is required to resolve the problem and prevent further disruptions.",IT Support,Technical Support,0.823
+"Reported Crash Issue in Digital Campaign Platform
+
+Customer Support reports an unexpected crash in the digital campaign platform. The crash happened suddenly without prior warning, possibly caused by software conflicts or overload. The team has tried to fix the problem by restarting systems and updating the affected software, but these attempts have been unsuccessful so far. We are concerned about the potential impact on marketing operations and urgently request assistance to resolve this issue. Could you please investigate the problem and provide a solution?",Customer Service,Technical Support,0.822
+"Software Connectivity Issue
+
+Experienced connectivity problems with multiple devices while using SaaS project management software. The issue might be due to compatibility conflicts with an Epson scanner or sound card. Steps like resetting devices and reinstalling drivers have been tried but the problem continues.",Customer Service,Technical Support,0.822
+"Data Disruption
+
+The company's data analytics system experienced a crash, potentially due to an overload on the MySQL server. We attempted to restart the server and reviewed the logs, but the issue persists. Our team is actively investigating the root cause and working on a resolution. We apologize for the inconvenience and thank you for your patience. If you have any questions or concerns, please don't hesitate to reach out.",IT Support,Technical Support,0.812
+"Digital Marketing Campaign No Longer Functional
+
+The agency's digital marketing campaign has unexpectedly stopped working, which might be due to a technical glitch or server issue. Initial troubleshooting steps, such as restarting platforms, clearing caches, and verifying connection setups, were taken but were not successful in resolving the issue. We require your assistance to identify the root cause of the problem and provide guidance on the next steps to take. We appreciate your prompt attention to this matter, as the continued disruption of the campaign could impact business operations.",IT Support,Technical Support,0.805
+"Problem Encountered with Investments Analyzer Leading to Crash
+
+The Investments Analyzer experienced a crash, resulting in the loss of important data due to an incompatibility between the outdated PHP version and MATLAB.",IT Support,Technical Support,0.803
+"Problem with the Initiation of Digital Marketing Campaigns
+
+To Customer Support, I am addressing this email to bring to your attention an issue we are encountering with our digital marketing campaigns that did not commence as planned. We believe a technical glitch in the integrations could be the reason. Despite our efforts to resolve the issue by rebooting the systems and ensuring all connections are intact, the problem continues. We kindly ask for your assistance in investigating this and offering a solution promptly. Please inform us if you require any more details from us. We eagerly await your response. Yours sincerely, [Your Name]",Product Support,Technical Support,0.801
+"Hello, I encountered a problem with my investment analytics dashboard as it has crashed. I believe it might be due to a recent database update that is not compatible. After attempting to restart the system and reviewing the database logs, the issue still hasn't been resolved. Could you provide assistance?",Product Support,Technical Support,0.793
+"Project synchronization encountered issues
+
+The project synchronization unexpectedly halted. It seems the versions of Express.js and MySQL could be incompatible. Despite my efforts to solve it, including restarting the server, reviewing logs, and verifying database connections, the problem continues. Your help in addressing this is greatly appreciated.",Product Support,Technical Support,0.793
+"Project Data Disappeared Without Reason Today
+
+To Customer Support: I am contacting you to report a problem with my project data. During the synchronization process, all of my data disappeared unexpectedly. I think this could be related to network connectivity issues or software compatibility problems. I have already attempted to restart my device, check my Wi-Fi, and review my account settings, but the issue continues. I would greatly appreciate your assistance in resolving this. Please provide me with any additional information you may require to address this situation promptly.",Customer Service,Technical Support,0.79
+"Problem with Data Access
+
+A healthcare provider encountered data access problems that affected medical data security. This issue is suspected to be due to recent system updates. After restarting the affected servers and reviewing firewall settings, the problem still exists.",Product Support,Technical Support,0.784
+"Problem with System Performance
+
+Noted the system lag which has impacted the performance of digital marketing tools, leading to delays in campaign execution. This may be due to compatibility issues arising from recent software updates across various platforms. So far, steps taken include restarting the systems, checking for updates, and reconfiguring the settings of the affected tools. Would greatly appreciate your assistance in resolving this issue to prevent future occurrences.",Product Support,Technical Support,0.781
+"Integration Problem Report
+
+Dear Support Team, We are experiencing an integration issue that has impacted our system's functionality. Specifically, several tools are failing to synchronize data, which is essential for our daily operations. We believe this problem may stem from API authentication difficulties, as we've faced similar issues before. Despite attempting to restart our services and verifying our credentials, the issue still persists. We kindly request you to address this matter promptly and provide us with a solution. Please inform us if you require any additional information from us. Thank you for your assistance.",Customer Service,Technical Support,0.778
+"Technical Issues Halted Digital Marketing Campaign Launch
+
+Our digital marketing campaigns have been unable to launch because of technical difficulties.",IT Support,Technical Support,0.777
+"Technical Problem Encountered
+
+To Customer Support Team,\n\nI am contacting you to report a technical issue that occurred while I was using your software-as-a-service platform. When attempting to upload a large file, the platform experienced a freeze and became unresponsive. I suspect this may be due to insufficient server resources allocated to the upload process.\n\nI have attempted to restart the application and reviewed the system logs for error messages, but was unable to find any relevant information.\n\nI kindly request your assistance in investigating this issue and providing a solution at your earliest convenience. If you need any further information from me, please let me know.\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n[Your Name]",Product Support,Technical Support,0.775
+"Recent Performance Issues with JIRA Software Tools
+
+Updates to the tools have been slower recently.",Technical Support,IT Support,0.772
+"Problem with Data Supply Disrupted
+
+The data supply has been interrupted, leading to a halt in analytics. This might be due to a software compatibility issue.",IT Support,Technical Support,0.77
+"Assistance Required for Medical Data Storage System
+
+In need help with writing a report on a critical issue related to the medical data storage system. The healthcare provider's medical data has become inaccessible, possibly due to database corruption from an unexpected server crash. Unfortunately, attempts to restore data from backups have been unsuccessful. It seems that regular maintenance schedules were followed, but this may have contributed to the issue. Urgently need assistance from a dedicated team to resolve the matter and restore access to the medical data. Could please provide",Customer Service,Service Outages and Maintenance,0.761
+"Issue with Visual Studio Code Editor
+
+Facing error notifications in Visual Studio Code, resulting in work being slowed down. Recent updates to Kubernetes and integration checks have been performed.",IT Support,Technical Support,0.761
+"Issue with Smart Tracker
+
+Dear Customer Support, I am contacting you to report an issue I am experiencing with my Smart Tracker. The problem lies in the data not updating consistently across all platforms, which I suspect is due to an API mismatch. Despite restarting the services and reviewing the logs, the issue still persists. I would be grateful if you could look into this and provide a resolution as soon as possible. Please contact me if you need more details or further assistance to address this issue. Thank you for your time and support. I look forward to your prompt response. Best regards, [Your Name]",IT Support,Technical Support,0.759
+"Report on Incidents
+
+We have experienced multiple application crashes and connectivity problems. Overloaded network and software compatibility issues are suspected. Restarting devices and updating drivers did not resolve the problems.",IT Support,Technical Support,0.755
+"Problem with Data Analytics Dashboard Freezing Unexpectedly Today
+
+The data analytics dashboard has frozen, with visualizations ceasing to update abruptly. This could be related to a recent MATLAB update. Despite restarting MongoDB and reviewing firewall settings, the issue still exists.",Product Support,Technical Support,0.753
+"Problem with JIRA Integration API
+
+Facing occasional disruptions in JIRA and Bitbucket integration because of API problems.",Product Support,Technical Support,0.747
+"Assistance Required for API Integration
+
+Could you provide details on the API integration capabilities and project management services?",Product Support,Technical Support,0.742
+"Elasticsearch Security Practices for Medical Data
+
+I'm writing to seek guidance on the recommended security practices for storing medical data in Elasticsearch version 7.13. Can you share the best practices for securing sensitive medical information within Elasticsearch?",Technical Support,Billing and Payments,0.738
+"Sudden Crash of Eclipse IDE
+
+Eclipse IDE unexpectedly halted, interrupting the data analytics process. Attempted to restart the IDE, removed cache, and updated plugins.",IT Support,Technical Support,0.738
+"Seeking Aid for Platform Failure
+
+Our SaaS platform has encountered a failure that led to the loss of project data. This could be a consequence of the Magento 2.4 integration. We have already attempted to restart the servers and reviewed the SQL Server logs, yet the problem continues. Kindly help us in addressing this issue.",Service Outages and Maintenance,Technical Support,0.735
+"Revise Digital Marketing Platforms
+
+Enhancing tools to promote brand expansion",Product Support,IT Support,0.735
+"The report details an incident where data analytics tools failed unexpectedly, which has disrupted the investment optimization process. Potential causes include software inconsistencies or hardware failure. Multiple troubleshooting steps, such as system restarts and software reinstallation, have been attempted, but the issue remains unresolved. An urgent review and resolution of this matter would be greatly appreciated to address the problem promptly.",Product Support,Technical Support,0.731
+"Support Inquiry for Adobe Premiere Pro 2021
+
+Facing challenges with Adobe Premiere Pro 2021 frequently crashing on MacBook Pro during video edits, suspecting compatibility problems. Consider reinstallation of the software and updating the operating system to fix the issue.",Returns and Exchanges,Technical Support,0.731
+"Reported Slow Website Performance
+
+A marketing agency is facing slow website performance, which has led to decreased engagement rates. This could be due to recent software updates or increased online traffic. After analyzing traffic patterns and adjusting digital marketing strategies, there has been no significant improvement. Assistance is needed to resolve the issue and enhance website performance.",Product Support,Technical Support,0.728
+"Assistance Required for Digital Strategy Assistance
+
+Problems with Airtable, IBM Cloud, and Google Keep are interfering with our digital strategy processes. The issues may be due to recent updates or integration complications. Attempts to fix the problems have been made but were unsuccessful. We require help to troubleshoot and restore our workflows to normal.",IT Support,Technical Support,0.728
+"Request for Assistance with Slow Performance
+
+The problem continues intermittently even after rebooting servers and clearing the cache.",Product Support,IT Support,0.728
+Project information has vanished. There's a suspicion of an integration problem between ClickUp and PDFfiller. Attempted to restart IntelliJ IDEA and reviewed Norton Antivirus records.,Customer Service,Technical Support,0.728
+"Report on Data Breach Due to Possible Misconfiguration
+
+A data breach is suspected to have occurred due to misconfiguration. Systems were restarted but the issue continues. Urgent investigation and resolution are needed to avoid further harm.",Product Support,Technical Support,0.727

@@ -1,0 +1,143 @@
+text,actual,predicted,confidence
+"Revise My Account Details
+
+I require assistance to update my payment details for my subscription. Could you please direct me on how to proceed?",Request,Change,0.997
+"Support Needed for System-Wide Integration Issues
+
+A system-wide integration failure has occurred across several tools, causing disruptions in project management workflows. This might be due to a recent software update that is conflicting with existing applications. Attempts to resolve the issue included restarting the affected applications.",Problem,Incident,0.99
+"Urgent Notification
+
+Customer Support, drafting a report to inform about a serious incident at a healthcare facility. An unauthorized attempt to access medical records was detected, possibly due to outdated security measures. Our initial response involved updating the firewall, which unfortunately did not fully resolve the problem. We are concerned about the potential compromise of patient confidentiality and data integrity. We request immediate assistance to investigate this issue and to develop solutions to prevent similar incidents in the future. Please advise on the necessary steps.",Problem,Incident,0.99
+"The team has faced significant connectivity problems during a critical investment meeting on Google Meet, which has disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",Problem,Incident,0.986
+"The team faced significant connectivity issues during a critical investment meeting on Google Meet, which disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",Problem,Incident,0.986
+"Challenge with Data Analytics System
+
+A financial institution faced significant outages in its data analytics system impacting Outlook 2021, Visual Studio Code, and SAP ERP. The probable cause might be server failures. We have already initiated measures to address the problem by restarting the affected applications and checking network connections. Furthermore, we have restored system backups to ensure data integrity. We are currently monitoring the situation to prevent any further disruptions. If the issue continues, we will investigate to determine the root cause and take the necessary actions to resolve it.",Problem,Incident,0.986
+"Assistance Required for Data Breach Event
+
+We require support for a data breach incident. Please provide details of the incident so we can assist with the next steps to secure your account. <acc_num>. We may need to contact you at <tel_num> for further discussion. Please let us know a convenient time for a call.",Problem,Incident,0.986
+"Support for Marketing Firm Concern
+
+The marketing agency observed a decrease in client engagement metrics because of ineffective digital strategies.",Problem,Incident,0.984
+"Security Breach Concern
+
+Customer support is documenting an incident involving a healthcare provider that faced security breaches, risking exposure of sensitive medical information and causing hospital disruptions. The problem might be linked to outdated antivirus software. Efforts such as firmware updates, antivirus scans, and device restarts have been attempted, but the issue remains unresolved. We require assistance to address and resolve this matter. Kindly help us identify a solution to prevent future breaches and safeguard medical data.",Problem,Incident,0.982
+"Technical Problem with StreamCam
+
+I am reporting an issue with my StreamCam video feed that freezes intermittently. This might be caused by incompatible drivers or software conflicts. After rebooting and updating the drivers, the problem still occurs. I would appreciate your help in fixing this. Please guide me on any actions I should take or further details you need from me.",Problem,Incident,0.98
+"Project Information Vanished Unexpectedly Without Notice
+
+Briefly describing the issue: The project information vanished unexpectedly. Potential reasons: Could be due to incompatibility in software integration. Steps already taken: System was restarted, backups were reviewed, and user manual was referenced.",Problem,Incident,0.977
+"Occasional Login Issues Detected in Project Management System
+
+Several users are encountering sporadic login difficulties. The issue might be related to heightened server activity during peak hours. Resetting the users' passwords and cleaning their browser caches could potentially fix the problem. However, if the issue continues, a deeper investigation is needed to identify the underlying cause.",Problem,Incident,0.974
+"Concern about Service Disruption
+
+A service disruption has affected several software integrations, halting project management processes. This might be due to recent software updates or server issues. I've attempted to restart applications and clear cache, but the problem remains unresolved. I would greatly appreciate if you could address this urgently and provide a solution, along with an estimated time for resolution. Please inform me if there is any additional information needed to assist with the investigation.",Problem,Incident,0.974
+"The team faced significant connectivity issues during a crucial investment meeting on Google Meet, which disrupted data analysis discussions. Steps taken include restarting the laptop, verifying the network connection, and checking software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Urgent assistance is needed to resolve this issue to avoid further disruptions.",Problem,Incident,0.974
+"Problem with vanishing project timelines
+
+Hello Customer Support, I am contacting you to address an issue where my project timelines have disappeared without cause. I believe it might be a software problem or an integration issue. Despite attempting to restart the application, checking for updates, and confirming my settings, the issue remains unresolved. I would be very grateful if you could examine this and furnish a solution at your earliest convenience. If you require any further details from me to address this, please do inform me. I am eagerly awaiting your response and assistance. Thanks for your attention and help.",Problem,Incident,0.973
+"Support Required Following Data Breach
+
+Dear Customer Support,\n\nI am contacting you to report an incident where patient records were accessed without authorization. It is possible that the breach resulted from human error or the use of outdated security software.\n\nTo mitigate the issue, we have already updated our firewalls and conducted antivirus scans. Nonetheless, we need further assistance to secure our systems and safeguard sensitive patient data.\n\nI would appreciate your guidance on the necessary actions to take and any advice for improving our security protocols to prevent future incidents.\n\nThank you for your quick response.\n\nSincerely,\n[Your Name]",Problem,Incident,0.972
+"Support Concerning Marketing Firm
+
+The marketing firm observed a drop in client engagement metrics due to ineffective digital strategies.",Problem,Incident,0.972
+"Reported System Performance Degradation
+
+The project management SaaS encountered an abrupt decline in system performance, impacting multiple integrations, potentially due to database overload or software bugs. Cache was cleared and services were restarted; however, the problem persists, disrupting workflows. The team is actively working to identify and resolve the issue, but the root cause remains uncertain. Kindly assist in diagnosing and fixing the problem promptly to reduce operational disruptions.",Problem,Incident,0.97
+"Facing System Downtime on Multiple Platforms
+
+Our system",Problem,Incident,0.97
+"Disruptions in Digital Strategy Encountered
+
+Customer Support has reported an issue in the report writing process related to the marketing agency's digital strategy. The disruptions are leading to delays in the brand's growth. Initial troubleshooting efforts, including updating critical applications and rebooting systems, have not resolved the problem. There is concern that this may be impacting the online presence and reputation. Could you please help us in resolving this issue?",Problem,Incident,0.969
+"Concerns About Digital Campaign Performance
+
+Greetings,\n\nI am reaching out to highlight the suboptimal performance of our recent digital campaigns, which have not met our expectations. Efforts made to correct this have not yet yielded the desired results, and we are seeking to understand the underlying causes.\n\nUpon reviewing our metrics, we have noticed potential issues with ineffective targeting and outdated strategies. We have made some adjustments and sought expert advice, but have not seen any notable improvements.\n\nI would greatly appreciate your input and assistance in addressing this matter. We aim to identify the causes of this performance decline and develop strategies to enhance the effectiveness of our campaigns.\n\nSpecifically, we would like to know:\n- Are there any new targeting options or strategies that we might be missing?\n- Could there be any issues with our ad content or messaging that are contributing to this performance?\n- Are there any external factors affecting our campaign's success, such as changes in the market or consumer behavior?\n\nWe value your support and look forward to your suggestions.\n\nThank you for your attention.\n\nSincerely,\n[Your Name]",Problem,Incident,0.969
+"The marketing agency faced delays in campaign analytics reporting, potentially due to recent updates to the platform. Initial troubleshooting steps, such as clearing the cache, did not resolve the issue. This problem has caused significant delays in tracking and analyzing marketing campaign performance. Since the agency heavily depends on analytics to guide marketing strategies and make data-driven decisions, they are requesting prompt assistance to minimize business impact. The agency would like support to resolve this issue as soon as possible.",Problem,Incident,0.968
+"Integration Problem Report
+
+Dear Support Team, We are experiencing an integration issue that has impacted our system's functionality. Specifically, several tools are failing to synchronize data, which is essential for our daily operations. We believe this problem may stem from API authentication difficulties, as we've faced similar issues before. Despite attempting to restart our services and verifying our credentials, the issue still persists. We kindly request you to address this matter promptly and provide us with a solution. Please inform us if you require any additional information from us. Thank you for your assistance.",Problem,Incident,0.967
+"Software Performance Difficulties
+
+Customer Support, users are experiencing performance problems with the software across various devices. These issues might be caused by resource-intensive applications or hardware compatibility concerns. Attempts to resolve by restarting devices and updating the software have not succeeded. We would appreciate your help in resolving this matter promptly. Please inform us if you require any further information. We look forward to your prompt response. Thank you for your support.",Problem,Incident,0.966
+"Problem with Sony Vegas Pro Integration
+
+Here is a concise description of the issue: Integration failure with Sony Vegas Pro 18. What happened: Syncing projects failed overnight. Possible reason: API key might have expired. Steps taken: Restarted system, verified API credentials. Please assist in resolving this issue promptly.",Problem,Incident,0.965
+"Reported Issue with Data Analytics Dashboard
+
+Dear Customer Support, I am contacting you to report a problem with our data analytics dashboard. It failed to update last night because of a sync failure. I suspect this might be related to an issue with the Smartsheet API. I have already attempted to restart Smartsheet and check our network connection, but the issue still exists. I would greatly appreciate any help you can offer to resolve this. If you need any more information from me, please let me know. Thank you for your time and support, and I look forward to your response soon.",Problem,Incident,0.964
+"Problem with Marketing Engagement
+
+The marketing agency observed a notable decrease in online engagement metrics. Possible reasons might be recent strategy modifications. We have analyzed the current campaigns and adjusted the targeting settings.",Problem,Incident,0.964
+"Medical Data Breach Due to Firewall Issues
+
+An unexpected medical data breach happened due to inadequate firewall rules, and unauthorized access was detected yesterday. Although I have performed McAfee scans and updated Drupal, the problem continues. I require support to address this issue.",Problem,Incident,0.964
+"Reported Medical Data Breach Incident
+
+Dear Customer Support, I am writing to inform you of an unexpected data breach related to my medical information. It seems the issue might be due to an outdated CPU cooler causing a system failure. After investigating, I restarted the WLAN router and updated PyTorch, but the problem still persists. It is essential to address this urgently as it involves sensitive medical data. I would greatly appreciate your immediate assistance in investigating and resolving this. Could you provide guidance on the next steps and any preventive measures to avoid similar incidents in the future? Your support is highly valued, and I look forward to your prompt response. Please let me know if you need any additional information to proceed. Kindly respond as soon as possible. Best regards, [Your Name]",Problem,Incident,0.962
+"Several Problems with Product Integration Encountered
+
+Customer Support, while preparing a report for the marketing agency, faced numerous challenges with product integration that led to considerable delays in campaign execution. Despite performing system reboots and basic troubleshooting steps, the issues remained unresolved. The probable cause appears to be incompatible updates across different platforms. Attempts to identify the root cause have been unsuccessful so far. Your prompt assistance in resolving these issues would be highly valued. Kindly inform us of the next steps.",Problem,Incident,0.962
+"Problem with Billing System
+
+The company encountered unforeseen billing mistakes impacting several products. It is suspected that a system malfunction or data synchronization problem was the cause. Efforts to resolve the issue included restarting accounts and verifying payment information.",Problem,Incident,0.961
+"Security Concern: Unauthorized Access to Medical Data
+
+We have detected unauthorized access attempts to medical data. This is a serious security issue and we take it very seriously. Could you please provide us with the date and time these attempts occurred along with any relevant details? We will immediately launch an investigation into this matter and take the necessary steps to prevent any future attempts. For your convenience, I am available to discuss this matter over the phone at <tel_num>. Alternatively, please let me know a suitable time to call you regarding this issue related to account <acc_num>.",Problem,Incident,0.961
+"Equipment Malfunction During Video Production
+
+I am encountering equipment malfunction during my video production, where the devices have frozen and disrupted the workflow suddenly. I believe the issues could be due to outdated drivers or compatibility problems. So far, I have attempted to restart the devices, update the software, and ensure all connections are secure, yet the problem still persists. I would be grateful for any assistance or advice to resolve this. Please advise if any additional information is necessary for you to fully comprehend the situation.",Problem,Incident,0.961
+"Issue with investment data analytics tool due to software integration error
+
+The investment data analytics tool is malfunctioning as a result of a software integration problem.",Problem,Incident,0.958
+"Inaccurate investment forecasts reported
+
+The investment forecasts are not accurate. It seems there might be an issue with the data analytics tool, as restarting the Hub and Kubernetes did not resolve it.",Problem,Incident,0.958
+"Assistance Required for Data Analytics
+
+The data analytics tool is generating inaccurate investment forecasts, which is causing suboptimal decision-making. This might be due to outdated algorithms or corrupt data inputs. After attempts to recalibrate the models and clean the data, the issue was resolved. I would appreciate assistance in identifying the root cause and implementing a solution to ensure accurate forecasts.",Problem,Incident,0.957
+"Recurring Payment Processing Issues
+
+Several payments for products have encountered difficulties that may be related to a problem with the payment processing system. I have reached out to my bank and reviewed the gateway configurations.",Problem,Incident,0.955
+"Healthcare Provider's Data Breach Due to Outdated Software and Inadequate Security Measures
+
+A healthcare provider has faced a data breach owing to outdated software and insufficient security measures. Despite updating the software and conducting a security audit, vulnerabilities persist. We need your assistance in identifying and addressing these weaknesses to ensure that security systems effectively protect sensitive patient information.",Incident,Problem,0.955
+"Intermittent Connectivity Problems Across Several Products
+
+Customer Support is documenting intermittent audio connectivity problems impacting multiple products. Despite rebooting devices and updating drivers, the issues continue. It is suspected that network compatibility conflicts may be the cause. The problems occur sporadically, complicating diagnosis and resolution. Troubleshooting steps have been attempted, but the issues persist. Assistance in identifying the root cause and finding a solution would be appreciated. Could you please advise on the next steps? I am available to provide further details if needed.",Problem,Incident,0.955
+"Assistance Required with Investment Analytics Tool
+
+The investment analytics tool has ceased to produce reports following the latest software update. I have tried restarting the application and verifying server connectivity, but the problem still exists.",Problem,Incident,0.955
+"Problem with Project Data Vanishing Today
+
+Project data has vanished. Might be related to a database synchronization issue.",Problem,Incident,0.954
+"Problem with Investment Predictions
+
+Experienced discrepancies in investment predictive analytics due to errors in data input and the use of outdated algorithms.",Incident,Problem,0.953
+"Problem with Project Management Tools
+
+After the recent software update, the project management tools are loading slowly and frequently crashing, which may be due to compatibility issues with various products. I have already tried restarting the affected applications and checking for updates. I would appreciate your assistance in resolving this issue.",Problem,Incident,0.95
+"Problem with Billing Payments
+
+Hello Customer Support, I am encountering unexpected discrepancies in my billing payment transactions. The issue might be due to problems with data integration in the software. After reviewing the recent software updates and cross-referencing the transaction logs, the problem still persists. I need your help to resolve this matter as soon as possible to avoid further discrepancies. Please assist in identifying the root cause and providing a solution to rectify the issue.",Incident,Problem,0.949
+"Concerns Regarding Data Discrepancies
+
+Dear Customer Support, we would like to draw your attention to a pressing matter concerning data discrepancies in our investment analytics reports. Our financial firm places significant reliance on accurate data to inform our investment decisions, but we are currently experiencing inconsistencies that are causing concern. Despite our attempts to manually cross-check and reconcile the datasets, the issue persists. We have also tried using tools like Zoho CRM and Laravel 8 to streamline data integration, but unfortunately, our efforts have met with limited success.",Incident,Problem,0.949
+"Performance Degradation in Data Analytics System
+
+Dear Customer Support, recently, our financial firm has encountered a performance issue with the data analytics system, which has affected the investment optimization process. This could be due to high data volume or software compatibility issues. We have already attempted restarting the affected software and optimizing system settings, but the issue still persists. We would greatly appreciate your guidance in troubleshooting potential solutions to resolve this matter. Please let us know if there is any additional information needed to facilitate a speedy resolution.",Problem,Incident,0.948
+"Assistance Required for Billing Discrepancy
+
+I am encountering billing problems across several healthcare products. Despite performing initial troubleshooting steps such as restarting the system, the issue remains unresolved. I believe the problem may stem from integration errors or outdated payment modules. I would be grateful if you could investigate this matter and offer a solution promptly. Please inform me if any further information is needed to resolve the issue. I look forward to your quick response. Thank you for your time and support.",Problem,Incident,0.948
+"Incident of Security Breach in Hospital System
+
+A security breach has been identified in the hospital system, which could expose sensitive medical information. This might have happened due to outdated software or a phishing attack. Immediate system scans have been carried out, and updated security protocols are in place to prevent further breaches. The cause is currently under investigation.",Problem,Incident,0.948
+"System Performance Concerns
+
+The digital strategies implemented by the marketing agency have led to performance problems within the system. Affected products include Windows 10, macOS, and Adobe Sign. Potential causes might be incompatible software updates or network congestion. Attempts to resolve the issue by restarting devices and updating the affected software have not succeeded, as issues continue.",Problem,Incident,0.946
+"Health Information Protection
+
+Identified possible weaknesses in health data protection mechanisms, despite recent enhancements and scans, ongoing security worries remain.",Incident,Problem,0.945

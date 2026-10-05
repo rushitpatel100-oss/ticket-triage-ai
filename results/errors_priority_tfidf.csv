@@ -1,0 +1,149 @@
+text,actual,predicted,confidence
+"Google Cloud Integration
+
+I require assistance in connecting Google Cloud Platform with our current project management tools to improve scalability and performance. Could you offer some guidance on this?",high,medium,0.961
+"Assistance Request: ClickUp Integration Guides for Adobe Photoshop CC 2021 and QuickBooks Online
+
+I'm contacting you to seek ClickUp integration guides for Adobe Photoshop CC 2021 and QuickBooks Online. It would be of great help if you could provide me with detailed, step-by-step instructions on integrating these tools with ClickUp. Additionally, any resources or materials you can share to assist me in this process would be very much appreciated.",medium,high,0.959
+"Service Disruptions
+
+Encountered service interruptions across various products, specifically the Smart-Thermostat Polk Audio Signa S2, following the latest software update.",medium,high,0.959
+"Technical Support Connectivity Issues
+
+Have encountered connectivity issues that have impacted productivity. Rebooting and updating the firmware resolved the issue.",high,medium,0.957
+"Assistance with ClickUp Integration for Adobe Photoshop CC 2021 and QuickBooks Online
+
+I am contacting you to seek ClickUp integration guides for Adobe Photoshop CC 2021 and QuickBooks Online. Could you kindly provide detailed, step-by-step instructions on how to integrate these tools with ClickUp? Any resources or assistance you can provide to help me begin this process would be greatly appreciated.",medium,high,0.953
+"Inquiry About Pricing and Scalability for Project Management SaaS
+
+Dear Customer Support, I am reaching out to inquire about the pricing options and scalability features of your project management SaaS. Specifically, I am interested in understanding the compatibility with iOS devices and the integration capabilities with ClickUp. Could you please provide a detailed breakdown of the different pricing tiers along with the features included in each? I would also appreciate information on any custom pricing options available for large-scale enterprises. Additionally, I would like to know the security measures in place to protect user data.",high,medium,0.948
+"Support Ticket for SaaS Connectivity Problems
+
+Users reported sporadic connectivity disruptions on the SaaS platform, potentially due to network database latency. Initial troubleshooting efforts resulted in minimal progress.",medium,low,0.942
+"Support Inquiry for Data Loss
+
+The project data vanished unexpectedly due to an issue with software integration.",medium,high,0.928
+"Guidance on Digital Strategy for Brand Growth
+
+I would like to learn about digital strategy options for brand growth using Notion and H2O.ai tools. Could you share how these tools can improve our brand presence and drive growth? Any resources or advice you could provide would be greatly appreciated.",medium,high,0.923
+"Request for Data Security Solutions in Healthcare Providers and Hospital Systems
+
+Could you please provide information on data security solutions for healthcare providers and hospital systems? Your timely assistance in this matter would be greatly appreciated.",medium,low,0.923
+"Support for Mailchimp and BigCommerce Integration
+
+Dear Customer Support, I am seeking detailed instructions on how to integrate Mailchimp with BigCommerce to optimize digital marketing campaigns. Could you please provide a step-by-step guide on connecting these two platforms and utilizing their features to enhance email marketing efforts? I would also appreciate any additional tips or recommendations to ensure a smooth integration and maximize campaign effectiveness. Thank you for your time and assistance. I look forward to your prompt response.",medium,high,0.923
+"Incident of Data Leakage
+
+Underwent a data leakage event. Enhanced firewall configurations and provided training to staff members.",medium,high,0.922
+"Support for TensorFlow Integration
+
+I am seeking detailed documentation on how to integrate TensorFlow with TYPO3 on Ubuntu 22.04 LTS. A step-by-step guide would be very helpful in better understanding the process and ensuring a smooth implementation. Could you also provide information on the specific system requirements and dependencies that need to be met? Thank you for your assistance, and I look forward to hearing back soon.",medium,high,0.917
+"Update on Incident Report
+
+An incident took place resulting in extensive outages for the project management SaaS. The suspected cause is a server overload linked to a recent deployment problem. Servers have been restarted and recent updates have been reverted. We are now closely observing the system's performance to guarantee stability and to prevent similar incidents in the future. The team is working hard to resolve the issue as quickly as possible.",high,medium,0.914
+"Concerns About Digital Campaign Performance
+
+Greetings,\n\nI am reaching out to highlight the suboptimal performance of our recent digital campaigns, which have not met our expectations. Efforts made to correct this have not yet yielded the desired results, and we are seeking to understand the underlying causes.\n\nUpon reviewing our metrics, we have noticed potential issues with ineffective targeting and outdated strategies. We have made some adjustments and sought expert advice, but have not seen any notable improvements.\n\nI would greatly appreciate your input and assistance in addressing this matter. We aim to identify the causes of this performance decline and develop strategies to enhance the effectiveness of our campaigns.\n\nSpecifically, we would like to know:\n- Are there any new targeting options or strategies that we might be missing?\n- Could there be any issues with our ad content or messaging that are contributing to this performance?\n- Are there any external factors affecting our campaign's success, such as changes in the market or consumer behavior?\n\nWe value your support and look forward to your suggestions.\n\nThank you for your attention.\n\nSincerely,\n[Your Name]",low,medium,0.914
+"Support Request for Service Outage
+
+Encountering service outage with medical data systems",medium,high,0.912
+"Required Assistance with Security Incident
+
+There has been unauthorized access to medical data, which is likely due to insufficient security measures.",medium,low,0.909
+"Strategies for Brand Growth in the Digital Realm
+
+Hello customer support, I am contacting you to ask about the digital strategies available for boosting my brand's growth and development. Can you give me more information on the services you provide? I am eager to find out how your company can assist my brand's expansion in the digital domain. Could you specify which services you offer and how they could be advantageous for my business? I am looking forward to your response and further details on your offerings.",low,medium,0.907
+"Enhancing Investment Data Analytics Performance
+
+A financial organization working to improve its investment data analytics has encountered system performance issues when integrating multiple products. These problems may stem from resource conflicts or data overload. Despite rebooting systems and updating software, the issues persist. The firm manages a large portfolio and depends heavily on data analytics to make well-informed decisions. The ongoing system slowdowns are causing delays and risking potential financial losses. We seek assistance to address and resolve these problems. Could you please help?",medium,high,0.906
+"Detected Software Compatibility Problems
+
+A financial organization is encountering software compatibility issues among its applications.",high,medium,0.904
+"Security Measures for Medical Information
+
+Which security measures are advised?",high,medium,0.898
+"Support Needed for Data Security on Medical Data Storage
+
+I am contacting you to seek advice on the appropriate security measures for storing medical data on Dell UltraSharp U2720Q monitors. Could you provide details on the optimal security practices for safeguarding sensitive medical information on these monitors? I would be grateful for any insights on encryption strategies, access control mechanisms, and other security steps to ensure the protection of medical data.",medium,high,0.891
+"Access to Medical Data
+
+Your request for medical data access was unexpectedly denied, which may be due to a glitch in a recent security update.",high,medium,0.889
+"Problem with Investment Reports Due to Incorrect Data Imports
+
+Dear Customer Support, I am contacting you to report a problem with the investment reports I have been receiving. The reports are not accurate, which I suspect is due to incorrect data imports. Upon investigation, I discovered that the integration between Airtable and SAP ERP is not working properly, which is causing the inaccuracies. Despite my efforts to resolve the issue by verifying data sources and restarting the systems, the problem still persists. I would greatly appreciate your help in addressing this issue as soon as possible. Could you please investigate and provide assistance or direct me to the appropriate steps to resolve the integration issues between Airtable and SAP ERP? I am ready to provide any additional information or support needed to solve this problem. Thank you for your time and assistance. Sincerely, [Your Name]",medium,low,0.888
+"Problem with Cross-User Data Synchronization
+
+Users are facing difficulties in syncing project data. This might be due to API conflicts or network issues. They have already attempted to reset their API connections.",low,medium,0.888
+"Security Protocols for Medical Data on ASUS Xonar AE Soundkarte
+
+I am currently using an ASUS Xonar AE Soundkarte and am concerned about the security of medical data. Could you please advise on the recommended security protocols for this device? Additionally, I would appreciate any best practices for safeguarding sensitive information. Please provide me with some guidance on securing my device. I would like to discuss this further, so could you contact me at <tel_num> to go over my specific security requirements for <acc_num>?",medium,high,0.886
+"Problem with Data Analytics Tool Performance
+
+The data analytics tool experiences slowdown during peak periods.",high,medium,0.878
+Offer comprehensive instructions for integrating Malwarebytes with Wix.,medium,high,0.877
+"Inquiry Regarding Data Analytics Tools Information
+
+Customer Support is reaching out to inquire about the data analytics tools employed for investment optimization. Could you please share details about the tools and technologies used? I am interested in understanding their features, benefits, case studies, and success stories. This information will help us better comprehend how to optimize investments. Thank you for your time and assistance on this matter. I look forward to your reply.",medium,low,0.877
+"Deviation in Investment Projections Noted Today
+
+The investment projections diverged from anticipated results because of insufficient data visualization techniques. I examined the input data and also reviewed the system logs.",medium,low,0.876
+"Enhanced Security Protocols
+
+Enact strengthened security protocols to secure medical data and safeguard the hospital's infrastructure from unauthorized access.",low,high,0.875
+"security breach related to medical data detected
+
+An initial investigation included reviewing access logs, but the issue remains unresolved. The breach may have originated from recent system updates. We are actively working to resolve the issue and ensure the security systems are robust.",low,high,0.863
+"Support for Digital Marketing Strategy
+
+Our aim is to develop digital strategies that promote brand growth and enhance the capabilities of a marketing agency.",high,medium,0.863
+"Concern Regarding Efficiency of Data Analytics Software
+
+There are delays in generating investment reports due to performance problems with the data analytics software.",low,medium,0.863
+"Frequent Crashes in SaaS Platform
+
+Facing frequent crashes during load operations",medium,high,0.858
+"Assistance Needed for Protecting Medical Records Systems
+
+Greetings, I would appreciate guidance on safeguarding medical data within hospital IT systems. I am eager to understand security procedures.",low,medium,0.858
+"Project Integration Malfunction
+
+Integrations have encountered issues",medium,high,0.857
+"Security Incident: Potential Data Breach in Health Records
+
+We have identified a potential data breach in our patient health records system. It's believed that a security flaw in a third-party application might be the cause. We have conducted antivirus scans and reviewed firewall logs to date.",medium,high,0.857
+"Issue Affecting Cloud Software Service
+
+Dear Customer Support Team,\n\nWe are presently encountering a major outage impacting our cloud-based software service. Several clients have reported access problems, which seem to have resulted from a recent deployment involving new Kubernetes resource allocations across various microservices. We have already performed immediate rollback and restarted the affected pods; however, these actions did not fully resolve the issue. We urgently need assistance to diagnose and mitigate the disruption quickly to restore normal service for our users.",medium,high,0.853
+"Healthcare Data Management in PostgreSQL
+
+Requesting assistance with integrating healthcare data into PostgreSQL.",high,medium,0.852
+"Request for Assistance Regarding Data Breach
+
+Dear Customer Support,\n\nI am reporting a critical issue within a healthcare provider's system. Recently, there was an unauthorized access to sensitive medical information, which I suspect is due to outdated security patches. Despite updating to the latest security patches, the problem continues. I am worried about the potential repercussions of this breach and would appreciate your help in resolving the issue promptly. Could you please advise on the next steps to ensure the system's security?\n\nThank you.",medium,high,0.851
+"Best Practices for Securing Medical Data on macOS
+
+Hello Customer Support, I am writing to seek advice on securing medical data on my macOS device. As a healthcare practitioner, I am aware of the critical importance of maintaining the privacy of patient information. Could you please share with me the most effective security measures to safeguard the confidentiality, integrity, and availability of such data? Additionally, do you have any recommended security protocols or software that I should use? I would be grateful if you could also recommend any relevant resources. I would appreciate a call from you at a convenient time for further discussion. Best regards, [Your Name]",medium,high,0.85
+"Promptly Update Software Licenses
+
+Seek to update software licenses to boost analytics tools and refine investment optimization processes.",low,high,0.849
+"Slow Loading Dashboard
+
+I am encountering slow loading times for the dashboard following the last update. Restarting my browser and clearing the cache have not resolved the problem. I believe it could be related to inadequate system resources. Could you assist in resolving this?",medium,low,0.847
+"Support for Smart Licht
+
+Seeking detailed guidance on integrating Smart Licht with MacOS Monterey for project management workflows. Could you provide step-by-step instructions and any available resources to help get started? Appreciate information on compatibility and potential issues.",high,medium,0.847
+"Inquiry About Product Details
+
+Dear Customer Support,\n\nI am seeking comprehensive information about your product range. Would you be able to share the pertinent details about the available services? Your assistance is greatly appreciated.\n\nThanks a lot.",medium,low,0.847
+"Security Protocols for OLED Monitors in Medical Environments
+
+Respected Customer Support, I am writing to seek advice on the security measures required for OLED monitors in medical facilities. Given the critical nature of patient data handled by medical institutions, it is imperative to have robust security protocols in place. OLED monitors, known for their superior image quality and energy efficiency, are widely used in healthcare settings. Nevertheless, I am concerned about the potential security risks involved. Could you please suggest the necessary security measures to ensure the safe and secure usage of OLED monitors in medical environments? Are there any specific guidelines or protocols that should be followed? Your insights would be greatly appreciated. Furthermore, are there any OLED monitor models that are specifically equipped with security features for medical settings? Please feel free to request additional details from me should you need them to provide a comprehensive response. I look forward to your prompt reply and assistance. Thank you for your time and effort. Best regards, [Your Name]",low,medium,0.845
+"Enhanced Analytics Features
+
+Inquiring about support for incorporating advanced analytics features into the project. This would significantly boost our capability to track and analyze project performance in real-time, aiding in data-driven decision-making. The requested features include real-time data visualization, predictive analytics, and automated reporting. Would be grateful if you could share the timeline for implementing these features and additional details on the integration process. Kindly provide specific information on the products where you would like to see this integration. Looking forward to further discussion. Best regards.",high,medium,0.844
+"Information on New Subscription Plans
+
+I would like to subscribe to your service and am curious about the payment methods you provide for new plans. Could you please detail the ways in which I can pay for my subscription?",high,low,0.843
+"Support Inquiry for Airtable Integration
+
+Dear Customer Support, I am in need of detailed guidance on how to integrate Airtable with our SaaS platform. Could you provide me with step-by-step instructions or tutorials to successfully integrate these two tools? Your assistance would be greatly appreciated as I look forward to receiving detailed support to ensure a smooth integration process. Thank you, and I look forward to your prompt response.",high,medium,0.84
