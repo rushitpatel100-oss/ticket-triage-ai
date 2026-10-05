@@ -13,10 +13,10 @@ baselines, and served through a Gradio web demo.
 
 ## Why I built this
 
-I work in first-line IT support, where a big part of the job is reading incoming requests (login problems,
-access issues, platform errors) and deciding where they should go. When a ticket lands in the wrong queue,
-it bounces between teams and the user waits longer. This project asks: **how much of that first triage step
-can a small language model do reliably, and how do we keep a human in the loop when it can't?**
+Every service desk starts with the same step: reading an incoming request (a login problem, an access issue, a
+platform error) and deciding where it should go. When a ticket lands in the wrong queue, it bounces between
+teams and the user waits longer. This project asks: **how much of that first triage step can a small language
+model do reliably, and how do we keep a human in the loop when it can't?**
 
 ## What it does
 
