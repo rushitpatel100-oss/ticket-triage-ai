@@ -125,7 +125,8 @@ on every push through GitHub Actions.
 ticket-triage-ai/
 ├── app.py                      # Gradio demo
 ├── notebooks/
-│   └── train_on_colab.ipynb    # end-to-end training on a free GPU
+│   ├── train_on_colab.ipynb    # end-to-end training on a free GPU
+│   └── prepare_real_data.ipynb # v2: download and check the real-world data
 ├── src/
 │   ├── config.py               # all settings in one place
 │   ├── data.py                 # download, clean, split
@@ -133,8 +134,10 @@ ticket-triage-ai/
 │   ├── train.py                # DistilBERT fine-tuning
 │   ├── evaluate.py             # metrics, confusion matrices, error analysis
 │   ├── predict.py              # TicketClassifier used by the demo
-│   └── report.py               # writes the results table into this README
-├── tests/test_pipeline.py      # offline end-to-end tests
+│   ├── report.py               # writes the results table into this README
+│   └── sources/                # v2: loaders for TechQA, Stack Exchange, ServiceNow log
+├── docs/                       # v2 design and data card
+├── tests/                      # offline end-to-end tests
 ├── results/                    # metrics, charts and error samples (committed)
 ├── requirements.txt
 └── .github/workflows/tests.yml # CI
@@ -191,6 +194,24 @@ Each number comes from a single training run on one fixed split, so small gaps (
   several tickets about "service disruptions" or "service outages" are labelled *Technical Support* or *Product Support*, while
   the model predicts *Service Outages and Maintenance*, which is arguably the better answer. I read only the top handful, so
   this is an observation, not a measured noise rate.
+
+## v2 (in progress): resolve, assist or escalate
+
+The next version turns the classifier into an AI service desk agent: for each ticket it decides whether
+it can **resolve it by itself**, **draft an answer for an agent**, or **escalate it** to the right team,
+and logs why. See the [design](docs/v2-design.md).
+
+Because the routing data is synthetic, v2 adds real-world data, each used for what it is real for
+([data card](docs/DATA_CARD.md)):
+
+- **TechQA**: 910 real IBM support-forum questions and 28,481 IBM Technotes. A third of the questions
+  have no answer in the documents, the real "escalate" case.
+- **Stack Exchange** (Super User, Ask Ubuntu): 40,000 real questions with accepted answers.
+- **A real ServiceNow incident log** (24,918 incidents): 45.6% were reassigned at least once, which is the
+  cost that better routing targets.
+
+Progress: data loaders done (`python -m src.sources`); retrieval, the resolve-or-escalate model, the LLM
+step and guardrails come next.
 
 ## Dataset and licence
 

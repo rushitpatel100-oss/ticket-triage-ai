@@ -36,7 +36,7 @@ def make_techqa(folder):
     with zipfile.ZipFile(folder / "corpus.zip", "w") as zf:
         for i in range(20):
             zf.writestr(f"corpus/swgTRAIN{i}.txt", f"TITLE {i}\nFix pack {i} resolves it.")
-        zf.writestr("corpus/swgEXTRA.txt", "Unrelated technote\nAbout something else.")
+        zf.writestr("corpus/swgEXTRA.txt", "Title: IBM Unrelated technote - United States\n\nText:\nAbout something else.")
         zf.writestr("__MACOSX/corpus/._swgEXTRA.txt", "junk")
     return folder
 
@@ -51,6 +51,7 @@ def test_techqa_load(dirs):
     assert len(docs) == 31 and docs["doc_id"].is_unique
     assert "techqa:swgEXTRA" in set(docs["doc_id"])
     assert docs.loc[docs["doc_id"] == "techqa:swgTRAIN3", "title"].item() == "TITLE 3"
+    assert docs.loc[docs["doc_id"] == "techqa:swgEXTRA", "title"].item() == "IBM Unrelated technote"
     assert "   " not in queries["text"].iloc[0] and "\n\n\n" not in queries["text"].iloc[0]
     # official DEV questions become the test set; TRAIN is split into train/val
     test_ids = set(queries.loc[queries["split"] == "test", "query_id"])

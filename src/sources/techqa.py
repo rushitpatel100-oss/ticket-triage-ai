@@ -42,6 +42,14 @@ def doc_id_from_filename(filename: str) -> str:
     return f"{NAME}:{PurePosixPath(str(filename)).stem}"
 
 
+def technote_title(text: str) -> str:
+    """Technotes start with a line like 'Title: IBM What is ...? - United States'."""
+    title = first_line(text)
+    if title.lower().startswith("title:"):
+        title = title[len("title:"):].strip()
+    return title.removesuffix(" - United States").strip()
+
+
 def _read_records(path: Path) -> list[dict]:
     text = path.read_text(encoding="utf-8")
     try:
@@ -97,7 +105,7 @@ def load(in_dir: Path | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
     docs["text"] = docs["text"].map(normalise_whitespace)
     docs = docs[docs["text"].str.len() > 0].reset_index(drop=True)
     docs["source"] = SOURCE
-    docs["title"] = docs["text"].map(first_line)
+    docs["title"] = docs["text"].map(technote_title)
     docs["url"] = ""
 
     queries["split"] = official_or_stratified_split(queries)

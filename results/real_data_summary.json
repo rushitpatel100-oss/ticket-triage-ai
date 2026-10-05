@@ -1,0 +1,80 @@
+{
+  "techqa": {
+    "docs": 28481,
+    "doc_median_words": 385,
+    "queries": 910,
+    "query_median_words": 44,
+    "answerable_share": 0.6703,
+    "split_counts": {
+      "train": 510,
+      "test": 310,
+      "val": 90
+    },
+    "answerable_by_split": {
+      "test": 0.5161,
+      "train": 0.751,
+      "val": 0.7444
+    }
+  },
+  "stackexchange": {
+    "docs": 32025,
+    "doc_median_words": 70,
+    "queries": 40000,
+    "query_median_words": 72,
+    "answerable_share": 0.8006,
+    "split_counts": {
+      "train": 31999,
+      "val": 4001,
+      "test": 4000
+    },
+    "answerable_by_split": {
+      "test": 0.8005,
+      "train": 0.8007,
+      "val": 0.8005
+    },
+    "sites": [
+      "superuser.com",
+      "askubuntu.com"
+    ]
+  },
+  "itsm_log": {
+    "events": 141712,
+    "incidents": 24918,
+    "median_events_per_incident": 5.0,
+    "priority_counts": {
+      "1": 270,
+      "2": 408,
+      "3": 23466,
+      "4": 774
+    },
+    "contact_type_counts": {
+      "Phone": 24688,
+      "Self service": 158,
+      "Email": 59,
+      "IVR": 9,
+      "Direct opening": 4
+    },
+    "reassigned_share": 0.4563,
+    "mean_reassignments": 0.94,
+    "more_than_one_group_share": 0.3843,
+    "reopened_share": 0.011,
+    "made_sla_true_share": 0.6342,
+    "knowledge_used_share": 0.1425,
+    "resolved_share": 0.9376,
+    "median_resolution_hours": 22.1,
+    "median_resolution_hours_by_priority": {
+      "1": 80.2,
+      "2": 38.2,
+      "3": 21.6,
+      "4": 5.0
+    },
+    "median_resolution_hours_reassigned": {
+      "no": 0.7,
+      "yes": 79.9
+    },
+    "median_resolution_hours_knowledge_used": {
+      "no": 12.2,
+      "yes": 77.5
+    }
+  }
+}
