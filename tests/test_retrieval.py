@@ -165,3 +165,32 @@ def test_run_all_end_to_end(tmp_path, monkeypatch):
     again = run_all(["techqa"], FakeEncoder(), [])
     assert again["techqa"]["methods"]["dense"]["splits"] == methods["dense"]["splits"]
     assert list(again["techqa"]["methods"]) == ["bm25", "dense", "hybrid"]
+
+
+def test_paired_comparison(tmp_path, monkeypatch):
+    from src.retrieval.compare import compare, paired_bootstrap
+    from src.sources import common
+
+    monkeypatch.setattr(config, "DATA_DIR", tmp_path / "processed")
+    docs = pd.DataFrame({"doc_id": ["a", "b"], "source": "kb", "title": "", "text": ["x", "y"], "url": ""})
+    queries = pd.DataFrame({"query_id": [f"q{i}" for i in range(6)], "source": "kb", "text": "t",
+                            "answerable": [True] * 5 + [False], "gold_doc_ids": [["a"]] * 5 + [[]],
+                            "gold_answer": "", "split": ["train", "val", "test", "test", "train", "test"]})
+    common.save_tables("techqa", docs, queries)
+    good = [["a", "b"]] * 6
+    bad = [["b", "a"]] * 6  # correct document second: reciprocal rank 0.5
+    runs = pd.concat([
+        pd.DataFrame({"query_id": queries["query_id"], "split": queries["split"], "answerable": queries["answerable"],
+                      "method": m, "doc_ids": d, "scores": [[1.0, 0.5]] * 6})
+        for m, d in (("hybrid", bad), ("dense", good))])
+    (tmp_path / "processed" / "retrieval").mkdir(parents=True)
+    runs.to_parquet(tmp_path / "processed" / "retrieval" / "techqa_runs.parquet", index=False)
+
+    out = compare("techqa", reference="hybrid")["methods"]["dense"]
+    assert out["dev"]["n_queries"] == 3 and out["test"]["n_queries"] == 2  # the unanswerable query is skipped
+    assert out["test"]["mrr@10"]["mean_diff"] == 0.5
+    assert out["test"]["mrr@10"]["share_of_resamples_better"] == 1.0
+    assert out["dev"]["hit@5"]["mean_diff"] == 0.0  # both find it within 5
+
+    r = paired_bootstrap(np.array([0.0, 0.0, 1.0, -1.0]))
+    assert r["questions_better"] == 1 and r["questions_worse"] == 1 and r["ci95"][0] < 0 < r["ci95"][1]
