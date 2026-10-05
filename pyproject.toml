@@ -1,0 +1,17 @@
+[project]
+name = "ticket-triage-ai"
+version = "0.1.0"
+description = "Fine-tuned DistilBERT that routes support tickets by team, priority and ITIL type"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning"]
+
+[tool.ruff]
+line-length = 130
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]

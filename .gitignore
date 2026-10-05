@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data and models are rebuilt by the scripts (and are too big for git)
+data/
+models/
+*.joblib
+*.safetensors
+
+# Secrets: never commit tokens or API keys
+.env
+*.token
+
+# Misc
+.DS_Store
+.gradio/
+flagged/
+*.zip
