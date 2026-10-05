@@ -1,135 +1,139 @@
 text,actual,predicted,confidence
-"Incident of Data Leakage
+"Problems with Synchronizing Financial Data
 
-Underwent a data leakage event. Enhanced firewall configurations and provided training to staff members.",medium,high,0.973
-"Critical Hardware Service Disruptions
+Dear Customer Support, I am reaching out regarding inconsistent data synchronization that is causing delays in receiving investment insights from our financial analytics tools. Despite performing initial troubleshooting steps such as software updates, the problem remains unresolved. It seems there may be underlying integration issues contributing to the problem. Our team has attempted to address this internally without success. We are concerned that this may affect our ability to make well-informed investment decisions. Could you please assist us in resolving this matter? Your support would be greatly appreciated.",high,low,0.999
+"Unexpected Crash of SaaS Platform
 
-The Ubuntu 20.04 LTS environment encountered several hardware component failures, disrupting EMR/PACS telemedicine functionalities. Potential reasons include a network security breach or hardware malfunction. The SOC DevSecOps teams attempted preliminary diagnostics but were unsuccessful. Prompt support is needed to resolve the problem.",medium,high,0.967
-"Crash Problem
+The SaaS platform encountered an unexpected crash, likely due to Elasticsearch overload. After restarting ClickUp and reviewing Debian 10 logs, the issue still exists. Assistance is needed to address this problem and avoid future crashes.",high,low,0.998
+"Slow Loading Dashboard
 
-Customer Support, I am submitting a report regarding frequent crashes experienced on the investment optimization data analytics platform, which handles large volumes of data. The issue appears to be related to software integration conflicts. Despite restarting the systems and updating the relevant software, the problem persists. I have attempted various troubleshooting methods, but the issue remains unresolved. I would appreciate it if you could investigate this matter and provide a solution as soon as possible. Please let me know if you require any additional information to assist with the investigation.",medium,high,0.967
-"The team has faced significant connectivity problems during a critical investment meeting on Google Meet, which has disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",medium,high,0.966
-"Digital Tools Operational
+I am encountering slow loading times for the dashboard following the last update. Restarting my browser and clearing the cache have not resolved the problem. I believe it could be related to inadequate system resources. Could you assist in resolving this?",medium,low,0.998
+"Hello Customer Support, I am inquiring about the delay issues I am experiencing with our data analytics dashboards. Upon investigation, I discovered that the problem stems from insufficient RAM and an outdated ClickUp integration. I have already attempted to upgrade Docker and restart my MacBook Air, but the issue remains unresolved. I would be grateful for your assistance in addressing this. Please inform me if there are any further actions that I need to take or if you require additional information. I am eager to receive your guidance. Thank you for your attention, and I anticipate your prompt response.",medium,low,0.998
+"Request for Billing Update
 
-The digital strategy tools used by the marketing agency are experiencing malfunctions. Restarting devices and updating applications have resolved the problem.",medium,high,0.965
-"Application Crashes in Project Management Software
+Hello Customer Support, I am contacting you to update my billing details as my current subscription costs do not accurately reflect the services I am using. I noticed increased bill discrepancies and suspect there might be an error in the charges. Could you please investigate and correct my account to reflect the correct costs? It would be helpful if you could provide me with an update. Please provide me with any additional data you need from me. Thanks for your assistance. Regards, [Your Name]",medium,low,0.997
+"Dear Customer Support, we are exploring digital strategies to enhance our brand growth and are interested in gaining information on methods and techniques that can be used to increase brand awareness and customer engagement. We would greatly appreciate a detailed explanation of your approach to social media marketing, content creation, and customer interaction. Additionally, could you provide us with information on the analytics and measurement tools you use to track the success of your strategies? We look forward to your prompt assistance and are eagerly awaiting your response.",high,low,0.997
+"Hello Customer Support, I hope this message finds you well. I am writing to seek assistance with the inconsistent results we are encountering in our digital strategy. It seems there might be some issues related to software integration and data discrepancies. Despite our efforts to troubleshoot by updating the software and cross-referencing the analytics, we have not yet seen any improvements. We would be very grateful for your support in resolving this issue. Could you please help us identify the root cause and suggest potential solutions? We are eager to get this sorted and are open to scheduling a call at your convenience. Please let us know a time that works for you.",medium,low,0.997
+"Request for Enhanced Encryption for Medical Data
 
-Customer Support, users have reported frequent crashes while using the project management software. The issue might be linked to compatibility concerns with Node.js version 14.17. Attempts such as clearing caches and reinstalling dependencies have not resolved the problem. We would appreciate your assistance in addressing this issue. Please inform us if additional information or troubleshooting steps are required. Thank you for your support.",medium,high,0.964
-"The team faced significant connectivity issues during a critical investment meeting on Google Meet, which disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",medium,high,0.962
-"Service Disruptions
+Dear Customer Support, I am reaching out to inquire about the encryption methods and plans for future enhancements that you use for storing and transmitting medical data to ensure compliance with HIPAA. As you know, HIPAA imposes stringent standards for handling sensitive patient information. To maintain our clients' trust and avoid legal issues, it is crucial that we prioritize the security of their medical data. Could you please provide more details on the encryption algorithms you use, your key management processes, and the protocols for secure data transmission? Additionally, I would be grateful for any advice on aligning our internal policies with HIPAA requirements. Please let me know if there are any steps we need to take to ensure the confidentiality, integrity, and availability of medical data. I look forward to your response. Sincerely, [Your Name]",high,low,0.997
+"Critical Data Loss
 
-Encountered service interruptions across various products, specifically the Smart-Thermostat Polk Audio Signa S2, following the latest software update.",medium,high,0.962
+Dear Customer Service Team,\n\nI am contacting you to report a serious issue with my project data. Overnight, all of my project data has vanished, and I am unable to retrieve it. I am worried that there might have been a database connectivity or synchronization problem that led to this.\n\nI have attempted to address the problem by verifying user permissions, restarting the system, and inspecting the logs, but I have not been successful in fixing it. I am now reaching out to request your help in recovering my lost data and ensuring that such an issue does not recur in the future.\n\nBelow are the specifics of the problem:\n\n* What happened: Project data disappeared suddenly during the night.\n* Possible cause: Database connectivity or synchronization issue.\n* Steps taken so far: Checked user access, rebooted the system, reviewed logs.\n\nI would greatly appreciate any assistance you can offer in resolving this situation. Please notify me if you need any more information from me or if there are additional steps I can take to assist in the recovery of my data.\n\nThank you for your attention and support.\n\nSincerely,\n[Your Name]",medium,high,0.996
 "Problem with Marketing Agency Website
 
-Customer Support, please address the critical issue with the marketing agency's website as reported in this email. The website crash has delayed the scheduled campaign launch and caused significant operational disruptions. Despite efforts to restart the server and clear caches, the issue remains unresolved. I suspect the crash might be due to server overload or coding errors. I would greatly appreciate it if you could investigate this matter urgently and provide a solution to get the website back online as soon as possible.",medium,high,0.96
-"Problems with Software Performance and Stability
-
-Customer Support, <br>The organization is encountering software performance issues, including crashes, across various applications, which is affecting productivity. These issues might be due to recent updates or conflicts with software versions. We have tried troubleshooting steps such as restarting systems and reinstalling affected applications, but the problems persist. <br>The performance issues are causing significant disruptions to our work, and we need assistance in resolving this matter as soon as possible. <br>We would appreciate your guidance.",medium,high,0.959
-"Security Measures for Smart Water Leak Detection Systems
-
-Which security measures are advised for the integration of Smart-Wassermelder systems into hospital IT networks to safeguard data and meet regulatory criteria?",medium,high,0.958
-"The team faced significant connectivity issues during a crucial investment meeting on Google Meet, which disrupted data analysis discussions. Steps taken include restarting the laptop, verifying the network connection, and checking software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Urgent assistance is needed to resolve this issue to avoid further disruptions.",medium,high,0.957
-"Improve scalability of customer support writing request
-
-Our customer support team is experiencing increased user traffic and data volume, causing our current system to struggle with demand. We are seeking to optimize the product to support growth more efficiently. Potential improvements could include upgrades to the database, server, and network infrastructure. We believe these enhancements are essential to ensure the continued success of the product. Please advise on the feasible next steps.",medium,high,0.956
-"Issue Affecting Cloud Software Service
-
-Dear Customer Support Team,\n\nWe are presently encountering a major outage impacting our cloud-based software service. Several clients have reported access problems, which seem to have resulted from a recent deployment involving new Kubernetes resource allocations across various microservices. We have already performed immediate rollback and restarted the affected pods; however, these actions did not fully resolve the issue. We urgently need assistance to diagnose and mitigate the disruption quickly to restore normal service for our users.",medium,high,0.956
-"Hello, I encountered a problem with my investment analytics dashboard as it has crashed. I believe it might be due to a recent database update that is not compatible. After attempting to restart the system and reviewing the database logs, the issue still hasn't been resolved. Could you provide assistance?",medium,high,0.955
-"Assistance Required for Data Analytics
-
-The data analytics tool is generating inaccurate investment forecasts, which is causing suboptimal decision-making. This might be due to outdated algorithms or corrupt data inputs. After attempts to recalibrate the models and clean the data, the issue was resolved. I would appreciate assistance in identifying the root cause and implementing a solution to ensure accurate forecasts.",medium,high,0.952
+Customer Support, please address the critical issue with the marketing agency's website as reported in this email. The website crash has delayed the scheduled campaign launch and caused significant operational disruptions. Despite efforts to restart the server and clear caches, the issue remains unresolved. I suspect the crash might be due to server overload or coding errors. I would greatly appreciate it if you could investigate this matter urgently and provide a solution to get the website back online as soon as possible.",medium,high,0.996
 "Problem with Licenses
 
-Hi Customer Support, I am contacting you to address an issue with my licenses. Several of them have been unexpectedly deactivated. There might be a payment processing problem causing this. Despite restarting the services and verifying my payment status, the issue remains unresolved. Kindly investigate and offer a solution at the earliest. If more details are needed from my end to resolve this, please let me know. This situation is affecting my operations, and I am eager to have it resolved promptly. Thank you for your assistance. I am looking forward to your response.",medium,high,0.951
-"Problem with Website Analytics Tracking
+Hi Customer Support, I am contacting you to address an issue with my licenses. Several of them have been unexpectedly deactivated. There might be a payment processing problem causing this. Despite restarting the services and verifying my payment status, the issue remains unresolved. Kindly investigate and offer a solution at the earliest. If more details are needed from my end to resolve this, please let me know. This situation is affecting my operations, and I am eager to have it resolved promptly. Thank you for your assistance. I am looking forward to your response.",medium,high,0.996
+"Issue Affecting Cloud Software Service
 
-The tracking code for website analytics has unexpectedly ceased to function. I believe there might be a code conflict or an update-related issue. I have reviewed the code and confirmed the data sources, but the problem remains unresolved. I would greatly appreciate your assistance in resolving this issue promptly. Please inform me if additional details are required from me.",medium,high,0.947
-"Concern Regarding Suspected Data Breach and Wi-Fi Vulnerability
+Dear Customer Support Team,\n\nWe are presently encountering a major outage impacting our cloud-based software service. Several clients have reported access problems, which seem to have resulted from a recent deployment involving new Kubernetes resource allocations across various microservices. We have already performed immediate rollback and restarted the affected pods; however, these actions did not fully resolve the issue. We urgently need assistance to diagnose and mitigate the disruption quickly to restore normal service for our users.",medium,high,0.996
+"Digital Campaigns Underperformance in the Quarter
 
-I am reporting a potential data breach related to a Wi-Fi network vulnerability. Despite restarting my router, the problem continues. I am worried about the security of my personal data and am seeking prompt resolution. Kindly advise on the necessary actions to be taken.",low,high,0.945
-"Support for Digital Marketing Tools
+Customer Support, composing a report on digital campaigns, indicates that the marketing agency's efforts fell short due to potential changes in the platform's algorithm. Despite attempts to optimize ad targeting and creatives, the expected outcomes were not achieved. Multiple strategies were tested to enhance performance, but unfortunately, none yielded success. We seek your assistance in investigating this issue and exploring potential solutions to boost the campaign's effectiveness. Could you kindly review and advise on the appropriate steps to proceed?",medium,low,0.996
+"The team faced significant connectivity issues during a critical investment meeting on Google Meet, which disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",medium,high,0.996
+"Incident of Data Leakage
 
-Requesting enhancements in digital marketing tools to optimize software performance, enabling effective brand growth strategies and improving the overall customer experience. Appreciate any prompt assistance to provide a solution soon, as it is needed at this time.",medium,high,0.945
-"Software Crashes Reported on Various Devices
+Underwent a data leakage event. Enhanced firewall configurations and provided training to staff members.",medium,high,0.996
+"Alert for Unauthorized Access in Medical Data System Triggered
 
-Users have reported recurring software crashes on several device platforms. Recent updates might be causing compatibility issues. Initial attempts to resolve the problem through rollback procedures and system reboots have not been successful. These issues are affecting the consistency of productivity workflows. Assistance is required to resolve the problem and prevent further disruptions.",medium,high,0.943
-"Assistance Required for Digital Marketing Campaign Optimization
+Customer Support, in preparation of the report, the unauthorized access alert has triggered in our medical data system. This alert might be due to outdated security protocols. We have attempted to reset access credentials and reinforce firewalls, but the issue still persists. We would greatly appreciate if you could look into this matter urgently and provide a solution to prevent potential data breaches. Please let us know if you require any additional information to facilitate the investigation. We look forward to hearing from you soon. Thank you.",medium,low,0.996
+"Critical Hardware Service Disruptions
 
-Our digital marketing campaigns are currently underperforming, resulting in stagnant brand growth. Despite adjusting budgets and refining targeting, we've noticed some improvement. It's possible recent algorithm updates on social media platforms are impacting ad visibility. We need help in revamping our strategy to boost brand growth.",low,high,0.939
-"Issue with Data Analytics Platform
+The Ubuntu 20.04 LTS environment encountered several hardware component failures, disrupting EMR/PACS telemedicine functionalities. Potential reasons include a network security breach or hardware malfunction. The SOC DevSecOps teams attempted preliminary diagnostics but were unsuccessful. Prompt support is needed to resolve the problem.",medium,high,0.995
+"Improve Integration Features for Users
 
-The investment optimization feature on the data analytics platform is not functioning properly, leading to incorrect data insights. We suspect potential software conflicts or configuration problems. After restarting the affected applications and clearing the cache, the issue remains unresolved. We would appreciate it if you could look into this matter promptly and provide a solution to fix the problem. Please let us know if you require any additional information to assist with troubleshooting. We look forward to your prompt response. Thank you for your support.",medium,high,0.936
-"Problem with Server Performance
+Customer Support, requesting enhancements in integration capabilities for the SaaS platform, particularly for the products that are affected. These improvements would significantly enhance the user experience and facilitate better collaboration among users. The current limitations are restricting the full utilization of the platform's potential. We propose the following enhancements: improving API connectivity, enhancing data synchronization, and expanding compatibility with third-party tools. These improvements would benefit users by increasing their ability to fully utilize the platform's potential.",low,high,0.995
+"Inquiry About Hospital Solutions for Securing Medical Data
 
-Lately, users have reported performance issues with our project management SaaS, which might be due to high server load. It is suspected that the problem is linked to Redis configurations. So far, we have optimized server resources and restarted services, but the issues still persist.",medium,high,0.935
-"Problem with Service Interruptions
+Customer Support, I am reaching out to inquire about the medical data practices and hospital solutions used by your organization. As a healthcare professional, I understand the importance of protecting sensitive patient information. Could you provide information on the latest security protocols and measures that have been implemented to ensure the confidentiality and integrity of medical data? I would appreciate any recommendations for hospital solutions that prioritize data security. Additionally, could you let me know about the relevant regulations and compliance standards that must be met? Thank you.",high,low,0.995
+"Digital Tools Operational
 
-Facing service outages that impact several essential tools. This might be due to server maintenance or unexpected load. So far, we have tried restarting the applications and clearing the cache, but these efforts have not been successful. Urgent help is needed to resolve this issue.",medium,high,0.934
-"Security Protocols for Medical Data on ASUS Xonar AE Soundkarte
-
-I am currently using an ASUS Xonar AE Soundkarte and am concerned about the security of medical data. Could you please advise on the recommended security protocols for this device? Additionally, I would appreciate any best practices for safeguarding sensitive information. Please provide me with some guidance on securing my device. I would like to discuss this further, so could you contact me at <tel_num> to go over my specific security requirements for <acc_num>?",medium,high,0.931
+The digital strategy tools used by the marketing agency are experiencing malfunctions. Restarting devices and updating applications have resolved the problem.",medium,high,0.995
+"The team has faced significant connectivity problems during a critical investment meeting on Google Meet, which has disrupted data analysis discussions. Steps already taken include restarting the laptop, checking the network connection, and verifying software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Assistance is needed to resolve this issue soon to avoid further disruptions.",medium,high,0.995
 "Problems with Digital Campaigns
 
-Greetings Customer Support, I am contacting you to highlight an ongoing problem with our digital campaigns which are not launching as planned. The campaigns are remaining inactive, and we are uncertain about the root cause. We have attempted to reset the servers and verified the code, yet the issue remains unresolved. We believe the problem could be related to incorrectly set Firebase configurations. We would be immensely grateful if you could examine this situation and provide a solution at your earliest convenience. Kindly inform us if any additional information is needed from us to address this issue. We look forward to your prompt response. Thank you for your time and help.",medium,high,0.93
-"Digital Marketing Strategies Not Meeting Expectations
-
-The digital marketing strategies being implemented by the agency are not yielding the expected results, leading to slower brand growth. This may be due to a misalignment with the target audience's digital tactics. After analyzing the current campaigns and adjusting the messaging, the improvements have been minimal.",medium,high,0.926
-Offer comprehensive instructions for integrating Malwarebytes with Wix.,medium,high,0.925
-"Problem with Data Analytics Dashboard Performance
-
-Respected Customer Support, I am contacting you to report a problem with our data analytics dashboard. It has suddenly stopped updating and we have already attempted to restart the system and check the RAM. We believe the problem could be due to a RAM shortage or software conflict. The dashboard is crucial for our operations, and we require it to function without issues. Kindly investigate this matter and offer a solution or guidance on how to fix it. We would greatly appreciate any support you can provide to restore the dashboard. Thanks for your attention and assistance.",medium,high,0.925
-"Urgent Enhancement of Data Analytics Tools
-
-Requesting improvements in data analytics tools for better investment optimization and performance tracking. Current tools are insufficient for providing the necessary insights required for informed decision-making. Desiring advanced features such as real-time data tracking, customizable dashboards, and integration with investment platforms. These enhancements would significantly improve the investment experience and enable more informed decisions.",medium,high,0.924
-"Reported Crash Issue in Digital Campaign Platform
-
-Customer Support reports an unexpected crash in the digital campaign platform. The crash happened suddenly without prior warning, possibly caused by software conflicts or overload. The team has tried to fix the problem by restarting systems and updating the affected software, but these attempts have been unsuccessful so far. We are concerned about the potential impact on marketing operations and urgently request assistance to resolve this issue. Could you please investigate the problem and provide a solution?",medium,high,0.924
-"The data analytics platform experienced an unexpected crash, resulting in the loss of investment data. This may have been caused by a software bug or system overload. Efforts to restart and recover the data are underway.",medium,high,0.924
-"Please Improve Integration Features
-
-Dear customer support, I am writing to request enhancements in integration capabilities for the listed products, which would significantly boost project management efficiency and the user experience. I believe these changes would be highly beneficial and appreciated by users. We would greatly value your consideration of this request. Thank you for your time and assistance.",medium,high,0.924
-"Need Assistance with Troubled Investment Forecasts
-
-I am encountering difficulties with my investment predictions. The data appears to be erratic, causing my forecasts to be inaccurate. I've attempted to rectify the situation by restarting the Django server, validating the data sources, and ensuring the software is current, yet the issue remains unresolved. I believe the problem could stem from incorrect data association or complications with the analytics tool integration. I would be very grateful if you could assist me in addressing this problem.",low,high,0.923
-"The investment optimization software is producing inaccurate projections. Recent updates might have introduced data input errors. Despite resetting the system and reviewing data inputs, the discrepancies still exist. Assistance is needed to resolve this issue.",medium,high,0.921
-"Reported Network Outage
-
-Hello Customer Support, I am contacting you to report a network issue that is preventing access to essential medical data. It might be due to a malfunctioning TP-Link switch or a Wireless Adapter. I have already tried to restart the switch, adjusted the adapter settings, and checked the network cables, but the problem still exists. I would be very grateful if you could help me resolve this as quickly as possible. Please inform me if there are any further actions I need to take or if you require additional details from me. Thank you for your assistance.",medium,high,0.919
-"Problem with the Data Analytics Platform Suddenly Failed
-
-Dear Support Team, <br><br>I hope this message finds you well. I am reaching out to report an issue with our data analytics platform. It suddenly crashed, and we are currently unable to access our data. We believe that the lack of adequate server resources might have caused the crash. <br><br>We have already attempted to restart the server and reviewed the system logs, but the problem still exists. The crash happened unexpectedly, and we did not have any prior indication of it. <br><br>We would greatly appreciate your assistance in resolving this matter as soon as possible. Please let us know if there are any additional steps we can take to troubleshoot the issue or if you require any further information from us. <br><br>Thank you for your swift response to this issue. We look forward to your prompt resolution. <br><br>Sincerely, <br>[Your Name]",low,high,0.918
-"Reporting an issue with the data analytics platform while generating a report on investment optimization. The platform unexpectedly crashed, potentially due to recent software updates. I attempted to reboot the system and perform a basic check, but the problem remains unresolved. I have tried troubleshooting but was unable to fix the issue on my own. I would greatly appreciate it if you could investigate this matter and provide a solution as soon as possible. Please let me know if you need any additional information to assist in resolving the issue. I am available to provide further details if required.",medium,high,0.917
-"Problem with Data Analytics Investment Optimization Tool
-
-The data analytics tool for investment optimization has stopped working. The possible reasons could be a software bug or server overload. After restarting the tool and checking the server load, there seems to be an improvement, but further assistance is needed to resolve the issue.",medium,high,0.916
-"Frequent Loss of Network Connections
-
-Briefly, the issue is frequent disconnections. Possible cause: The network may be overloaded. Tried: Restarted the router, but the problem remains unresolved. I have already restarted my router, but the issue is still occurring. I would appreciate your help in resolving this. Kindly let me know if you need more details to diagnose the problem.",low,high,0.913
-"Issue with digital campaign analytics and Cassandra 4.0 database integration
-
-The digital campaign analytics have stopped tracking user engagement possibly due to an integration issue with the new Cassandra 4.0 database. We have restarted the servers and reviewed the Figma design files for any errors, but the problem continues.",medium,high,0.908
-"Urgent Investigation Needed for Data Breach
-
-Unexpected data breach has compromised secure medical records. This may be due to misconfigured firewall settings or outdated software. Despite restarting affected systems and updating security protocols, vulnerabilities persist. Immediate assistance is required to rectify the situation.",medium,high,0.906
-"Problem Related to Data Breach
-
-Underwent a data breach impacting medical records.",medium,high,0.905
-"Urgent Improvement of Data Analytics Tools
-
-Request for enhancement of data analytics tools to improve integrations, better investment optimization, and performance tracking. Current tools are insufficient for providing the necessary insights needed for informed decision-making. I would like to see advanced features such as real-time data tracking, customizable dashboards, and integration with investment platforms. This would significantly enhance the investment experience and allow for more informed decisions.",medium,high,0.905
-"Seeking Guidance
-
-In need of customer support to seek guidance on integrating TensorFlow with SAP ERP for investment optimization. Would appreciate resources and documentation to help get started on the project. Looking to leverage machine learning for investment optimization using TensorFlow and SAP ERP. Specifically, interested in knowing the existing APIs and tools that can facilitate this integration. Thank you for your time and assistance. Looking forward to hearing back soon. Regards, [Your",low,high,0.905
+Greetings Customer Support, I am contacting you to highlight an ongoing problem with our digital campaigns which are not launching as planned. The campaigns are remaining inactive, and we are uncertain about the root cause. We have attempted to reset the servers and verified the code, yet the issue remains unresolved. We believe the problem could be related to incorrectly set Firebase configurations. We would be immensely grateful if you could examine this situation and provide a solution at your earliest convenience. Kindly inform us if any additional information is needed from us to address this issue. We look forward to your prompt response. Thank you for your time and help.",medium,high,0.995
 "Technical Glitch in Website Analytics
 
-Greetings, I am correspondencing to inform you about a technical glitch with our website analytics. It ceased to function unexpectedly, and we are uncertain about the reasons behind this. We have attempted to confirm the setup, check for any updates, and restart the services, but to no avail. We suspect that the issue may stem from a potential code integration problem or an update anomaly. Kindly review this situation and supply us with a solution at your earliest convenience. Your assistance in resolving this matter would be greatly appreciated as our website analytics are vital for our business operation, and they must function correctly. Many thanks for your understanding and support.",medium,high,0.903
-"Advice on Leveraging Xero for Investment Analytics
+Greetings, I am correspondencing to inform you about a technical glitch with our website analytics. It ceased to function unexpectedly, and we are uncertain about the reasons behind this. We have attempted to confirm the setup, check for any updates, and restart the services, but to no avail. We suspect that the issue may stem from a potential code integration problem or an update anomaly. Kindly review this situation and supply us with a solution at your earliest convenience. Your assistance in resolving this matter would be greatly appreciated as our website analytics are vital for our business operation, and they must function correctly. Many thanks for your understanding and support.",medium,high,0.995
+"The team faced significant connectivity issues during a crucial investment meeting on Google Meet, which disrupted data analysis discussions. Steps taken include restarting the laptop, verifying the network connection, and checking software configurations, but the issue still persists. The problem might be due to network configuration errors or resource overload on the Lenovo ThinkPad. Urgent assistance is needed to resolve this issue to avoid further disruptions.",medium,high,0.995
+"Support for Excel Analytics Tools
 
-I am reaching out for customer support to inquire about optimizing investment analytics using Xero. Could you provide guidance on how to effectively use the platform for its intended purpose? I would greatly appreciate any tips or resources that could assist me in getting started. Thank you for your time and assistance. I look forward to hearing from you soon.",medium,high,0.903
-"Incident of Unauthorized Access in Healthcare System
+Hello Customer Support, I am contacting you to seek advice on the most suitable analytics tools that can be effectively integrated with Excel 2021 for my investment data analysis needs. As an investment analyst, I heavily depend on Excel for data analysis and visualization. In order to broaden my analytical toolkit, I am exploring options that include advanced analytics functionalities, such as add-ins or plugins that can be readily integrated with Excel 2021. Specifically, I am interested in tools that can provide data visualization, predictive modeling, and machine learning features. I would also appreciate any guidance on how to begin using these tools and any potential limitations or drawbacks. Thank you for your time and support. I eagerly await your response.",medium,low,0.995
+"Experienced Service Outage Impacting Project Management Tools Integration
 
-An unauthorized access incident recently occurred in the healthcare system, which might have compromised medical data. The cause is suspected to be outdated security protocols due to a recent software vulnerability. A security audit has been initiated, and software updates have been implemented, but concerns persist.",medium,high,0.902
-"Urgent Data Breach Assistance Required
+We are facing service outages that are affecting the integration of project management tools such as ActiveCampaign, Xero, and MongoDB 4.4. Recent updates to the configurations may be causing these issues. Our attempts to roll back the updates and restart the services have not resolved the problem. We need your assistance to resolve this issue.",medium,high,0.995
+"Enhancement of Digital Tools for Brand Expansion
 
-Unauthorised access to medical records, likely due to weak password protocols.",medium,high,0.9
+Our Customer Support team has noticed that the digital tools essential for our brand growth have been malfunctioning recently. This has impeded the execution and communication of our campaign. The issue might have arisen from a system update that is not compatible with the current software versions. We have tried troubleshooting by restarting individual devices, but the problems still persist. Given that our team relies heavily on these tools for daily operations, the disruption is causing significant delays. We would greatly appreciate if you could look into this matter urgently and provide a solution or a workaround to get our systems back to normal.",medium,high,0.995
+"Detected Unauthorized Access to Medical Data. Possible Vulnerabilities Due to Software Misconfiguration or Network Security Settings. Conducted Preliminary Security Audit and Updated Antivirus Software.
+
+There has been an unauthorized access to medical data detected. This could be due to possible vulnerabilities caused by software misconfiguration or network security settings. We have already conducted a preliminary security audit and updated the antivirus software.",medium,low,0.995
+"Inquiry Regarding Data Analytics Tools Information
+
+Customer Support is reaching out to inquire about the data analytics tools employed for investment optimization. Could you please share details about the tools and technologies used? I am interested in understanding their features, benefits, case studies, and success stories. This information will help us better comprehend how to optimize investments. Thank you for your time and assistance on this matter. I look forward to your reply.",medium,low,0.994
+"Improve Integration Capabilities for IFTTT in Project Management SaaS
+
+I am drafting a request to enhance the integration capabilities of IFTTT within our existing project management SaaS platform. This improvement would significantly boost workflow automation and productivity. At present, our team heavily depends on manual workarounds to connect IFTTT with our project management tool, which is time-consuming and error-prone. An enhanced integration would enable us to streamline tasks, reduce manual labor, and focus on higher-value activities. We would greatly appreciate it if you could consider our request and provide an update on the potential timeline for implementation. To better understand your requirements, could you please provide more details about the current workarounds and the specific features you would like to see in the enhanced integration? We would like to discuss and explore possible solutions soon.",medium,low,0.993
+"Support Required Following Data Breach
+
+Dear Customer Support,\n\nI am contacting you to report an incident where patient records were accessed without authorization. It is possible that the breach resulted from human error or the use of outdated security software.\n\nTo mitigate the issue, we have already updated our firewalls and conducted antivirus scans. Nonetheless, we need further assistance to secure our systems and safeguard sensitive patient data.\n\nI would appreciate your guidance on the necessary actions to take and any advice for improving our security protocols to prevent future incidents.\n\nThank you for your quick response.\n\nSincerely,\n[Your Name]",low,high,0.993
+"Request for Integration of Project Management Features
+
+Could you please integrate project management features into the affected products to enhance collaboration? We believe this would greatly benefit our team. We would like to discuss this further and would appreciate your feedback on the matter. Could you let us know if this has been considered?",medium,high,0.993
+"Ongoing Service Disruptions Reported Today
+
+Customer Support, our organization is experiencing repeated service disruptions impacting Docker, MySQL, and Zapier integrations. These outages are probably due to recent software updates that were applied. The team has attempted to restart the services and reviewed the logs for errors, but unfortunately, the issue remains unresolved. We are seeking assistance to troubleshoot and resolve this problem as soon as possible. Kindly inform us of any additional steps we should take or if you need further information from us. We appreciate your prompt response.",medium,high,0.993
+"Seek Assistance for Integration Support
+
+Dear support team, I am writing to request support for integrating our SaaS platform with various affected products. This integration aims to improve project management functionality and enhance workflow compatibility. I would greatly appreciate any guidance on the necessary steps to achieve this integration. Please let me know if there are any additional requirements or information you need from my end. I look forward to hearing from you soon.",medium,high,0.993
+"Support Request for Service Outage
+
+Encountering service outage with medical data systems",medium,high,0.993
+"Immediate Update of Software Licenses
+
+Request for updating software licenses to enhance analytics tools and improve investment optimization processes.",low,high,0.993
+"Problem Related to Data Breach
+
+Underwent a data breach impacting medical records.",medium,high,0.992
+"Intermittent Connectivity Problems Across Several Products
+
+Customer Support is documenting intermittent audio connectivity problems impacting multiple products. Despite rebooting devices and updating drivers, the issues continue. It is suspected that network compatibility conflicts may be the cause. The problems occur sporadically, complicating diagnosis and resolution. Troubleshooting steps have been attempted, but the issues persist. Assistance in identifying the root cause and finding a solution would be appreciated. Could you please advise on the next steps? I am available to provide further details if needed.",high,low,0.992
+"Digital Marketing Strategy Underperforming
+
+The company's digital marketing approach is not effectively promoting brand growth; previous social media and SEO initiatives have shown limited results. This is likely due to outdated content and ineffective targeting. Efforts to update campaigns and optimize keywords have led to some improvements. Currently, the strategy is not achieving the desired outcomes, making it crucial to reevaluate the digital marketing approach. A comprehensive analysis of the target audience and prevailing market trends is essential to develop a more effective strategy.",high,low,0.992
+"Exploration of Digital Brand Growth Tactics
+
+Customer Support, seeking details on digital strategies for brand growth. Would appreciate information on methods and techniques that could assist brands in expanding their online presence. Particularly interested in learning about the approach to social media marketing, content creation, and search engine optimization. Thanks for your time and assistance. Looking forward to hearing from you soon. Your guidance is greatly appreciated in navigating the digital marketing landscape.",medium,low,0.992
+"Integration Options for Salesforce CRM
+
+Can you provide details on the integration options available for Salesforce CRM?",high,low,0.992
+"Unforeseen Payment Issues Experienced Today
+
+Dear Support Team, <br><br>I hope this message finds you well. I need to inform you about recurring payment disruptions for my subscriptions that occurred today. This might be linked to an underlying problem with the QuickBooks Online interface. Despite checking my account configurations and payment details, the issue remains unresolved. <br><br>I kindly request that you thoroughly examine the situation and offer a timely solution. If more information is required, please do not hesitate to reach out to me. <br><br>Thank you for your prompt attention to this matter. I eagerly await your response. <br><br>Sincerely, <br>[Your Name]",medium,high,0.991
+"Interdisciplinary Agile Teams
+
+Dear Customer Support Team,\n\nI hope this message reaches you well. I am seeking comprehensive details regarding the configurations of interdisciplinary Agile teams, with particular emphasis on methodologies that incorporate AI-powered resource management and Kubernetes orchestration within SaaS environments. Our team intends to improve efficiency and scalability by adopting these sophisticated approaches and would highly value any provided documentation.\n\nWould you be able to share relevant resources, case studies, or whitepapers demonstrating successful integrations by organizations?\n\nThank you for your assistance in understanding these structures. Please specify which SaaS platforms and tools are involved so we can customize the resources accordingly. Also, inform us if a follow-up call is preferred.",low,high,0.991
+"Problems with Digital Tools at Agency
+
+The digital tools used by the marketing agency are not functioning properly, which is hindering efforts to grow the brand. Potential reasons might be conflicts between software or hardware problems. Attempts to fix the issue by restarting devices and updating software have not been successful. We would be grateful for prompt assistance to resolve this matter.",medium,high,0.991
+"Wireless Internet Connection Problems
+
+Dear Customer Support Team,\n\nI hope this message reaches you well. I am writing to report persistent issues with the Wi-Fi connection at our office. Over the past few days, the internet has been unreliable, with frequent disconnections and slow speeds, which has greatly affected our daily activities.\n\nOur office depends heavily on a stable internet connection for communication, accessing cloud services, and virtual meetings. Regrettably, these ongoing connectivity problems are causing delays and reducing productivity.",medium,low,0.991
+"Issue with Data Analytics Platform
+
+The investment optimization feature on the data analytics platform is not functioning properly, leading to incorrect data insights. We suspect potential software conflicts or configuration problems. After restarting the affected applications and clearing the cache, the issue remains unresolved. We would appreciate it if you could look into this matter promptly and provide a solution to fix the problem. Please let us know if you require any additional information to assist with troubleshooting. We look forward to your prompt response. Thank you for your support.",medium,high,0.991
+"Support Required for Digital Campaign
+
+Our digital marketing campaign has underperformed this month. Changes to the algorithm might have affected visibility. We adjusted the ad spend and refreshed the ad creatives, which showed some improvement. Please assist us in identifying the issue and suggest solutions to get the campaign back on track.",medium,high,0.991
+"Inquiry About Product Details
+
+Dear Customer Support,\n\nI am seeking comprehensive information about your product range. Would you be able to share the pertinent details about the available services? Your assistance is greatly appreciated.\n\nThanks a lot.",medium,low,0.99
+"Upgraded Security Protocols
+
+Deploy advanced security procedures for encrypting medical data in the impacted applications and infrastructure. Guarantee the confidentiality and integrity of sensitive information, preventing unauthorized access and data breaches.",medium,high,0.99
+"Support Request: Performance Issues
+
+The team has faced performance challenges with the project management SaaS. High traffic on AR-Brille and RapidMiner could be contributing to these issues. Restarting the system and clearing the cache may help improve the situation. However, a deeper investigation is required.",high,low,0.99

@@ -38,13 +38,13 @@ flowchart LR
 |---|---|---|---|---|
 | queue | Majority class | 0.289 | 0.045 | 0.130 |
 | queue | TF-IDF + LogReg | 0.636 | **0.649** | 0.637 |
-| queue | DistilBERT (fine-tuned) | 0.506 | 0.414 | 0.490 |
+| queue | DistilBERT (fine-tuned) | 0.500 | 0.550 | 0.495 |
 | priority | Majority class | 0.417 | 0.196 | 0.245 |
 | priority | TF-IDF + LogReg | 0.683 | **0.675** | 0.683 |
-| priority | DistilBERT (fine-tuned) | 0.609 | 0.578 | 0.602 |
+| priority | DistilBERT (fine-tuned) | 0.664 | 0.654 | 0.663 |
 | type | Majority class | 0.404 | 0.144 | 0.233 |
-| type | TF-IDF + LogReg | 0.870 | **0.879** | 0.871 |
-| type | DistilBERT (fine-tuned) | 0.859 | 0.866 | 0.857 |
+| type | TF-IDF + LogReg | 0.870 | 0.879 | 0.871 |
+| type | DistilBERT (fine-tuned) | 0.898 | **0.904** | 0.897 |
 
 *Scores on 2,375 held-out test tickets. Best macro F1 per task in bold.*
 
@@ -70,7 +70,9 @@ ignores the small teams completely; macro F1 gives every class equal weight, so 
 2. **Baselines** (`src/baseline.py`): a majority-class model (the "do nothing" floor) and TF-IDF with
    logistic regression, with its regularisation strength tuned on the validation set.
 3. **Fine-tuning** (`src/train.py`): `distilbert-base-uncased` fine-tuned separately for each task with the
-   Hugging Face `Trainer`. The best epoch is chosen by validation macro F1.
+   Hugging Face `Trainer`, for 6 epochs with a class-weighted loss (rare classes count more, the same idea as
+   `class_weight="balanced"` in the baseline). The best epoch is chosen by validation macro F1.
+   Each model takes about 10 minutes on a free Colab T4 GPU.
 4. **Evaluation** (`src/evaluate.py`): accuracy, macro and weighted F1, a confusion matrix per task, and a CSV of
    the model's most confident mistakes for error analysis. Everything is measured on the untouched test set.
 5. **Demo** (`app.py`): a Gradio app that shows the top predictions with confidence scores, the ITIL next
@@ -146,6 +148,8 @@ ticket-triage-ai/
   A shared multi-task model is a natural next step.
 - **A baseline first.** If TF-IDF gets close to DistilBERT, the simpler model may be the better choice in
   production (cheaper, faster, easier to explain). The results table answers this with numbers.
+- **Class-weighted loss.** The tickets are imbalanced (Technical Support is about 29% of tickets, General Inquiry about 1.4%).
+  Without weighting, the transformer ignored the small teams. See the findings for the accuracy trade-off.
 - **Human in the loop.** In a real service desk a wrong auto-route costs more than a manual check, so
   low-confidence predictions are sent to a person.
 
@@ -158,7 +162,8 @@ ticket-triage-ai/
 
 ## Next steps
 
-- Re-train DistilBERT with class-weighted loss and more epochs, to make the comparison with the baseline fair
+- Train longer and tune the learning rate for the team task, where validation F1 was still rising
+- Repeat runs with several random seeds and report mean and spread
 - Train a single multi-task model with three output heads
 - Calibrate the confidence scores and pick the review threshold from the validation data
 - Add German with a multilingual model such as `distilbert-base-multilingual-cased`
@@ -166,23 +171,26 @@ ticket-triage-ai/
 
 ## What I found
 
-These are results of the first run (3 epochs, see [Next steps](#next-steps) for what changed afterwards).
+Each number comes from a single training run on one fixed split, so small gaps (a point or two) should not be over-read.
 
-- **The simple model won.** TF-IDF + logistic regression beat DistilBERT on all three tasks, by a wide margin on
-  team (0.65 vs 0.41 macro F1) and priority (0.68 vs 0.58), and only narrowly on ITIL type (0.88 vs 0.87).
-- **Part of that gap was my own setup.** The baseline used balanced class weights; the transformer did not. DistilBERT
-  scored 0.00 F1 on the rare *General Inquiry* team (34 test tickets) and 0.25 on *Human Resources*, while TF-IDF scored
-  0.54 and 0.76. Training was also still improving at epoch 3, so the transformer was under-trained. An unfair
-  comparison is easy to run by accident, which is why the baseline is worth building first.
-- **Team confusions make sense.** The confusion matrix shows most mistakes between neighbouring teams: *Technical Support*,
-  *Product Support*, *IT Support* and *Customer Service* are the teams most often mixed up with each other,
-  and their descriptions overlap, so some of these tickets are genuinely ambiguous.
-- **ITIL type is the easy task, except for *Problem*.** *Request* and *Change* tickets are near-perfect (F1 0.98 to 1.00),
-  but *Problem* (F1 0.64 to 0.70) is mixed up with *Incident* (the baseline sends 28% of Problems to Incident and 17% of
-  Incidents to Problem), a distinction that is easy to blur in practice too.
-- **Confident mistakes are label noise.** The most confident errors (`results/errors_queue_*.csv`) are often tickets labelled
-  *Technical Support* that the model sends to *Service Outages and Maintenance*, which suggests ambiguous labels in the
-  synthetic data rather than a model failure.
+- **A bigger model is not automatically better.** TF-IDF + logistic regression beat DistilBERT on team (0.65 vs 0.55 macro F1)
+  and was slightly ahead on priority (0.68 vs 0.65). DistilBERT only won on ITIL type (0.90 vs 0.88).
+- **My first comparison was unfair, and fixing it mattered.** In the first run the baseline used balanced class weights and
+  DistilBERT did not, with 3 epochs. DistilBERT scored 0.00 F1 on the rare *General Inquiry* team and 0.41 macro F1 overall on
+  team. Adding a class-weighted loss and training for 6 epochs lifted that to 0.52 and 0.55. Team validation F1 was still rising
+  at epoch 6, so more training would probably help further.
+- **Class weighting has a price.** Overall accuracy on team fell from 0.51 to 0.50 even as macro F1 rose, because the biggest team,
+  *Technical Support*, now has only 35% recall: 22% of those tickets go to *IT Support*, 16% to *Product Support*
+  and 15% to *Customer Service*. Which metric matters depends on what a wrong route costs.
+- **Team confusions make sense.** Most of the confusion in the matrices involves *Technical Support*, *Product Support*,
+  *IT Support* and *Customer Service*, teams whose descriptions overlap, so some tickets are genuinely ambiguous.
+- **ITIL *Problem* vs *Incident* is the hard part of type.** *Request* and *Change* are near-perfect (F1 0.98 to 1.00).
+  *Problem* is the weakest class (F1 0.70 baseline, 0.75 DistilBERT); the baseline sends 28% of Problems to *Incident*
+  and 17% of Incidents to *Problem*.
+- **Confident mistakes often look like label noise.** Reading the most confident team errors (`results/errors_queue_*.csv`):
+  several tickets about "service disruptions" or "service outages" are labelled *Technical Support* or *Product Support*, while
+  the model predicts *Service Outages and Maintenance*, which is arguably the better answer. I read only the top handful, so
+  this is an observation, not a measured noise rate.
 
 ## Dataset and licence
 
