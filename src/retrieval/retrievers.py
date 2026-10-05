@@ -65,13 +65,18 @@ class BM25:
 class SentenceTransformerEncoder:
     """Wraps a sentence-transformers model; embeddings are L2-normalised so dot product = cosine."""
 
-    def __init__(self, model_name: str, query_prefix: str = "", batch_size: int = 128, max_length: int = 512):
+    def __init__(self, model_name: str, query_prefix: str = "", batch_size: int = 128, max_length: int = 512,
+                 fp16: bool = False):
+        import torch
         from sentence_transformers import SentenceTransformer  # imported here so tests stay offline
 
         self.name = model_name
         self.model = SentenceTransformer(model_name)
         self.model.max_seq_length = max_length
         self.query_prefix, self.batch_size = query_prefix, batch_size
+        self.fp16 = fp16 and torch.cuda.is_available()
+        if self.fp16:
+            self.model.half()  # about twice as fast on a GPU; similarities change only in the 3rd-4th decimal
 
     def _encode(self, texts) -> np.ndarray:
         emb = self.model.encode(list(texts), batch_size=self.batch_size, normalize_embeddings=True,
@@ -88,9 +93,12 @@ class SentenceTransformerEncoder:
 class DenseRetriever:
     """Embeds every passage; a document's score is the score of its best passage."""
 
-    def __init__(self, encoder, passage_texts, passage_doc_pos: np.ndarray, starts: np.ndarray):
+    def __init__(self, encoder, passage_texts, passage_doc_pos: np.ndarray, starts: np.ndarray,
+                 passage_emb: np.ndarray | None = None):
         self.encoder = encoder
-        self.passage_emb = encoder.encode_docs(passage_texts)
+        self.passage_emb = passage_emb if passage_emb is not None else encoder.encode_docs(passage_texts)
+        if len(self.passage_emb) != len(passage_doc_pos):
+            raise ValueError("passage embeddings do not match the passages")
         self.passage_doc_pos, self.starts = passage_doc_pos, starts
 
     def search(self, query_emb: np.ndarray, k: int, batch_size: int = 256) -> Ranking:
@@ -112,12 +120,21 @@ class DenseRetriever:
 class CrossEncoderReranker:
     """Reads query and passage together (slower but more accurate than comparing two embeddings)."""
 
-    def __init__(self, model_name: str, batch_size: int = 64, max_length: int = 512):
+    def __init__(self, model_name: str, batch_size: int = 64, max_length: int = 512, fp16: bool = False):
+        import torch
         from sentence_transformers import CrossEncoder
 
         self.name = model_name
         self.model = CrossEncoder(model_name, max_length=max_length)
         self.batch_size = batch_size
+        self.fp16 = fp16 and torch.cuda.is_available()
+        if self.fp16:
+            # Half precision roughly doubles speed on a GPU; rankings barely change.
+            module = self.model if isinstance(self.model, torch.nn.Module) else getattr(self.model, "model", None)
+            if isinstance(module, torch.nn.Module):
+                module.half()
+            else:
+                self.fp16 = False
 
     def score(self, pairs: list[tuple[str, str]]) -> np.ndarray:
         return np.asarray(self.model.predict(pairs, batch_size=self.batch_size,

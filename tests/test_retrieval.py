@@ -142,17 +142,26 @@ def test_run_all_end_to_end(tmp_path, monkeypatch):
     queries = pd.DataFrame(rows)
     common.save_tables("techqa", docs, queries)
 
-    results = run_all(["techqa"], FakeEncoder(), OverlapReranker())
+    results = run_all(["techqa"], FakeEncoder(), [OverlapReranker()])
     methods = results["techqa"]["methods"]
-    assert set(methods) == {"bm25", "dense", "hybrid", "hybrid+rerank"}
+    assert list(methods) == ["bm25", "dense", "hybrid", "hybrid+rerank:fake-overlap-reranker"]
+    assert methods["hybrid+rerank:fake-overlap-reranker"]["label"] == "Hybrid + rerank (fake-overlap-reranker)"
     for m in methods.values():
-        assert m["splits"]["all"]["n_queries"] == int(queries["answerable"].sum())
-        assert m["splits"]["all"]["hit@1"] == 1.0  # every question names its topic exactly
-        assert set(m["splits"]) == {"train", "val", "test", "all"}
+        assert sum(m["splits"][k]["n_queries"] for k in ("dev", "test")) == int(queries["answerable"].sum())
+        assert m["splits"]["test"]["hit@1"] == 1.0  # every question names its topic exactly
+        assert set(m["splits"]) == {"train", "val", "dev", "test"}
+        assert m["splits"]["dev"]["n_queries"] == m["splits"]["train"]["n_queries"] + m["splits"]["val"]["n_queries"]
 
     runs = pd.read_parquet(tmp_path / "processed" / "retrieval" / "techqa_runs.parquet")
     assert len(runs) == 4 * len(queries)  # every query, answerable or not, for every method
     assert runs["doc_ids"].map(len).max() <= config.RUN_DEPTH
     saved = json.loads((tmp_path / "results" / "retrieval_metrics.json").read_text())
-    assert saved["techqa"]["info"]["reranker"] == "fake-overlap-reranker"
+    assert saved["techqa"]["info"]["rerankers"] == ["fake-overlap-reranker"]
     assert (tmp_path / "results" / "retrieval_comparison.png").exists()
+
+    # A second run reuses the cached passage embeddings and gives the same results
+    cached = list((tmp_path / "processed" / "retrieval").glob("techqa_fake-hashing-encoder_*.npy"))
+    assert len(cached) == 1
+    again = run_all(["techqa"], FakeEncoder(), [])
+    assert again["techqa"]["methods"]["dense"]["splits"] == methods["dense"]["splits"]
+    assert list(again["techqa"]["methods"]) == ["bm25", "dense", "hybrid"]
