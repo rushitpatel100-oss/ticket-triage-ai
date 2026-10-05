@@ -27,7 +27,7 @@ SEED = 42
 # --- Transformer fine-tuning -----------------------------------------------
 BASE_MODEL = "distilbert-base-uncased"
 MAX_LENGTH = 256
-EPOCHS = 3
+EPOCHS = 6  # the first run used 3 and was still improving
 BATCH_SIZE = 32
 LEARNING_RATE = 5e-5
 

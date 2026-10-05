@@ -15,6 +15,7 @@ import time
 import numpy as np
 import pandas as pd
 import torch
+import torch.nn.functional as F
 from datasets import Dataset
 from sklearn.metrics import accuracy_score, f1_score
 from transformers import (
@@ -28,6 +29,27 @@ from transformers import (
 from src import config
 from src.data import label_names, load_splits
 from src.evaluate import compute_metrics, log_result, plot_confusion_matrix, save_errors
+
+
+class WeightedTrainer(Trainer):
+    """Trainer whose loss gives rare classes more weight (the same idea as class_weight="balanced" in scikit-learn)."""
+
+    def __init__(self, *args, class_weights=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.class_weights = class_weights
+
+    def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
+        labels = inputs.pop("labels")
+        outputs = model(**inputs)
+        weight = self.class_weights.to(outputs.logits.device) if self.class_weights is not None else None
+        loss = F.cross_entropy(outputs.logits, labels, weight=weight)
+        return (loss, outputs) if return_outputs else loss
+
+
+def balanced_class_weights(labels_idx, n_classes: int) -> torch.Tensor:
+    """weight = n_samples / (n_classes * count), so every class counts equally overall."""
+    counts = np.bincount(labels_idx, minlength=n_classes).astype(float)
+    return torch.tensor(len(labels_idx) / (n_classes * np.maximum(counts, 1)), dtype=torch.float)
 
 
 def display_name(model_name: str) -> str:
@@ -80,8 +102,13 @@ def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataF
         report_to="none",
         seed=config.SEED,
     )
-    trainer = Trainer(
+    class_weights = None
+    if args.class_weights:
+        class_weights = balanced_class_weights(train[col].map(label2id).to_numpy(), len(labels))
+        print("Class weights:", {lab: round(float(w), 2) for lab, w in zip(labels, class_weights)})
+    trainer = WeightedTrainer(
         model=model,
+        class_weights=class_weights,
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=val_ds,
@@ -102,7 +129,8 @@ def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataF
     name = display_name(args.model_name)
     metrics = compute_metrics(test[col], preds, labels)
     metrics["params"] = {"base_model": args.model_name, "epochs": args.epochs, "batch_size": args.batch_size,
-                         "lr": args.lr, "max_length": args.max_length, "train_rows": len(train)}
+                         "lr": args.lr, "max_length": args.max_length, "train_rows": len(train),
+                         "class_weights": bool(args.class_weights)}
     metrics["train_seconds"] = train_seconds
     metrics["device"] = torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu"
     log_result(task, name, metrics)
@@ -132,6 +160,8 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=config.BATCH_SIZE)
     parser.add_argument("--lr", type=float, default=config.LEARNING_RATE)
     parser.add_argument("--max-length", type=int, default=config.MAX_LENGTH)
+    parser.add_argument("--no-class-weights", dest="class_weights", action="store_false",
+                        help="train with the plain loss (rare classes are then easy to ignore)")
     parser.add_argument("--max-train-samples", type=int, help="use a random subset of the training data")
     parser.add_argument("--push-to-hub", metavar="USER/PREFIX", help="upload models as USER/PREFIX-<task>")
     args = parser.parse_args()

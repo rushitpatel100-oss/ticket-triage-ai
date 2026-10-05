@@ -128,7 +128,8 @@ def test_transformer_training_end_to_end(workspace):
 
     train, val, test = load_splits()
     model_dir = make_tiny_transformer(workspace / "tiny-model", train["text"].tolist())
-    args = Namespace(model_name=model_dir, epochs=1, batch_size=8, lr=1e-3, max_length=64, push_to_hub=None)
+    args = Namespace(model_name=model_dir, epochs=1, batch_size=8, lr=1e-3, max_length=64, push_to_hub=None,
+                    class_weights=True)
 
     metrics = train_task("queue", train, val, test, args)
     assert 0 <= metrics["macro_f1"] <= 1
