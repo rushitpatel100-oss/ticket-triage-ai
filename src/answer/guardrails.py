@@ -50,8 +50,8 @@ def flagged(ticket: str, evidence: list[dict]) -> bool:
     return bool(injection_hits(ticket)) or any(injection_hits(e.get("text", "")) for e in evidence)
 
 
-def defense_report(llm) -> dict:
-    cases = redteam.cases()
+def defense_report(llm, which: str = "main") -> dict:
+    cases = redteam.cases(which)
     kinds = [c["kind"] for c in cases]
     out = {}
     for defense in DEFENSES:
@@ -136,7 +136,8 @@ def utility_check(llm, table: pd.DataFrame, n: int = 60, seed: int = config.SEED
 def run_all(datasets, llm, encoder, utility_n: int = 60) -> dict:
     from src.answer.__main__ import build_evidence
 
-    results = {"model": getattr(llm, "name", None), "defenses": defense_report(llm),
+    results = {"model": getattr(llm, "name", None),
+               "defenses": {"main": defense_report(llm, "main"), "heldout": defense_report(llm, "heldout")},
                "scanner_false_alarms": false_alarms(datasets)}
     for name in datasets:
         if not (config.DATA_DIR / "retrieval" / f"{name}_runs.parquet").exists():
