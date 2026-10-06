@@ -107,9 +107,11 @@ password resets being 20-50% of help desk calls.
 
 ## 6. Build order
 
-Status: steps 1 and 2 done. Retrieval results and the decision they led to are in
-[RETRIEVAL.md](RETRIEVAL.md): dense embeddings are the retriever; off-the-shelf rerankers lowered accuracy
-(mostly on long tickets), so their scores become candidate signals for step 3 rather than the ranking.
+Status: steps 1 to 3 done.
+- Retrieval ([RETRIEVAL.md](RETRIEVAL.md)): dense embeddings are the retriever. Off-the-shelf rerankers lowered
+  accuracy (mostly on long tickets), so their scores became signals for the decision instead of the ranking.
+- Decision ([DECISION.md](DECISION.md)): retrieval signals give AUROC 0.76 to 0.78, but no auto-resolve
+  threshold meets 10% wrong with 95% confidence, so step 4 adds an answer-level check as a new signal.
 
 1. Data loaders for TechQA, Stack Exchange subset, UCI log; data card.
 2. Retrieval (E2).

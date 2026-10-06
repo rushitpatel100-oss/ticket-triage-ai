@@ -65,7 +65,7 @@ RUN_DEPTH = 20           # results kept per query for the resolve-or-escalate mo
 PRIMARY_RETRIEVER = "dense"   # chosen in docs/RETRIEVAL.md
 CONTEXT_DOCS = 3              # articles the answer step will read; "resolvable" = correct one among them
 TARGET_RISK = 0.10            # at most 10% of auto-resolved tickets may be wrong...
-RISK_CONFIDENCE = 0.95        # ...with 95% confidence (Clopper-Pearson bound, fixed-sequence testing)
+RISK_CONFIDENCE = 0.95        # ...with 95% confidence (Clopper-Pearson bounds, Bonferroni over a binary search)
 ASSIST_RECALL = 0.90          # escalate without a draft only below the score that keeps 90% of resolvable tickets
 CV_FOLDS = 5
 

@@ -8,6 +8,8 @@ security incidents, privileged access, data deletion, ITIL changes and urgent ti
 import re
 from dataclasses import dataclass, field
 
+import numpy as np
+
 # (name, pattern, lane). Patterns are case-insensitive and match whole words.
 RULES = [
     ("security incident", r"phishing|malware|ransomware|virus|hacked|compromised|data breach|breach|"
@@ -45,17 +47,19 @@ def rule_hits(text: str, priority: str | None = None, itil_type: str | None = No
 
 def decide(probability: float, text: str, t_auto: float, t_escalate: float, priority: str | None = None,
            itil_type: str | None = None) -> Decision:
-    if probability >= t_auto:
-        lane, reason = "auto", f"confidence {probability:.2f} is at or above the auto-resolve threshold {t_auto:.2f}"
-    elif probability >= t_escalate:
-        lane, reason = "assist", (f"confidence {probability:.2f} is between {t_escalate:.2f} and {t_auto:.2f}: "
-                                  "draft an answer for an agent")
+    p = float(probability)
+    if p >= t_auto:
+        lane, reason = "auto", f"confidence {p:.3f} is at or above the auto-resolve threshold {t_auto:.3f}"
+    elif p >= t_escalate:
+        upper = (f"below the auto-resolve threshold {t_auto:.3f}" if np.isfinite(t_auto)
+                 else "no auto-resolve threshold met the error target on past tickets")
+        lane, reason = "assist", f"confidence {p:.3f}; {upper}: draft an answer for an agent"
     else:
-        lane, reason = "escalate", (f"confidence {probability:.2f} is below {t_escalate:.2f}: the knowledge base "
+        lane, reason = "escalate", (f"confidence {p:.3f} is below {t_escalate:.3f}: the knowledge base "
                                     "probably has no answer")
     reasons = [reason]
     for name, matched, rule_lane in rule_hits(text, priority, itil_type):
         if LANE_ORDER[rule_lane] > LANE_ORDER[lane]:
             lane = rule_lane
         reasons.append(f"rule '{name}' matched '{matched}': at least {rule_lane}")
-    return Decision(lane=lane, probability=round(float(probability), 4), reasons=reasons)
+    return Decision(lane=lane, probability=round(p, 4), reasons=reasons)

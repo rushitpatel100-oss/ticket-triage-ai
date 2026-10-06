@@ -63,6 +63,14 @@ def test_features_and_labels():
     with pytest.raises(ValueError):
         build_features(runs[runs["method"] != "dense"], queries)
 
+    # An unanswerable question stays unresolvable even if its record lists the retrieved document
+    q2 = queries.copy()
+    first = q2.index[0]
+    q2.at[first, "answerable"] = False
+    q2.at[first, "gold_doc_ids"] = [runs[(runs["query_id"] == q2.at[first, "query_id"]) & (runs["method"] == "dense")]
+                                    ["doc_ids"].iloc[0][0]]
+    assert not build_features(runs, q2).set_index("query_id").at[q2.at[first, "query_id"], "resolvable"]
+
 
 def test_clopper_pearson_rule_of_three():
     # With no errors, about 29 tickets are needed before a 10% error rate can be claimed with 95% confidence
@@ -132,7 +140,9 @@ def test_rules_only_make_decisions_more_cautious():
     assert decide(0.99, "Upgrade the database cluster", 0.8, 0.3, itil_type="Change").lane == "assist"
     assert decide(0.1, "Printer offline", 0.8, 0.3).lane == "escalate"   # rules never relax a decision
     assert rule_hits("antivirus update failed") == []                    # whole words only
-    assert decide(0.5, "Printer offline", 0.8, 0.3).reasons[0].startswith("confidence 0.50 is between")
+    assert decide(0.5, "Printer offline", 0.8, 0.3).reasons[0].startswith("confidence 0.500; below the auto-resolve")
+    no_auto = decide(0.99, "Printer offline", float("inf"), 0.3)
+    assert no_auto.lane == "assist" and "no auto-resolve threshold met the error target" in no_auto.reasons[0]
 
 
 def test_run_all_end_to_end(tmp_path, monkeypatch):

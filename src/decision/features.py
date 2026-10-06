@@ -72,8 +72,10 @@ def build_features(runs: pd.DataFrame, queries: pd.DataFrame, primary: str = con
         scores = {m: list(by_method[m].at[qid, "scores"]) for m in lists}
         gold = set(q.at[qid, "gold_doc_ids"])
         primary_top = lists[primary]
-        row = {"query_id": qid, "split": q.at[qid, "split"], "answerable": bool(q.at[qid, "answerable"]),
-               "resolvable": bool(gold & set(primary_top[:context_docs]))}
+        answerable = bool(q.at[qid, "answerable"])
+        # An unanswerable question is never resolvable, even if its record lists related documents
+        row = {"query_id": qid, "split": q.at[qid, "split"], "answerable": answerable,
+               "resolvable": answerable and bool(gold & set(primary_top[:context_docs]))}
         for m in methods:
             if m in lists:
                 row.update(score_features(scores[m], short_name(m)))

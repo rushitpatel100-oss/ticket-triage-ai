@@ -155,7 +155,8 @@ def plot_risk_coverage(results: dict, path) -> None:
         best = res["selected_model"]
         for (mname, label), colour in zip(((best, LABELS[best] + " (selected)"), ("score_only", LABELS["score_only"])),
                                           SERIES):
-            curve = res["models"][mname]["test_curve"]
+            # Skip the first few points: with fewer than 20 tickets the error rate is mostly noise
+            curve = [p for p in res["models"][mname]["test_curve"] if p["coverage"] * res["n_test"] >= 20]
             ax.plot([p["coverage"] for p in curve], [p["risk"] for p in curve], color=colour, linewidth=2, label=label,
                     zorder=3)
         lanes = res["models"][best]["test_lanes"]
@@ -184,9 +185,11 @@ def plot_risk_coverage(results: dict, path) -> None:
             ax.spines[side].set_color(GRID)
         ax.tick_params(colors=INK_MUTED, labelsize=8)
         title = {"techqa": "TechQA (IBM Technotes)", "stackexchange": "Stack Exchange"}[name]
-        ax.set_title(f"{title}, test set ({res['n_test']:,} questions)", loc="left", fontsize=10, color=INK)
+        note = "" if lanes["auto"]["n"] else f"\nNo safe threshold ({config.TARGET_RISK:.0%} target, 95% confidence)"
+        ax.set_title(f"{title}, test set ({res['n_test']:,} questions){note}", loc="left", fontsize=10, color=INK)
         ax.legend(loc="upper left", frameon=False, fontsize=8, labelcolor=INK_SECONDARY)
-    fig.text(0.01, 0.01, "Lower and further right is better. Threshold chosen on dev questions only.",
+    fig.text(0.01, 0.01, "Lower and further right is better. Curves start at 20 auto-resolved tickets. "
+             "Threshold chosen on dev questions only.",
              fontsize=8, color=INK_MUTED)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(path, dpi=160, facecolor=SURFACE)
