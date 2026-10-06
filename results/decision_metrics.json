@@ -938,7 +938,25 @@
         "assist": 0.7129,
         "escalate": 0.2871
       }
-    }
+    },
+    "examples": [
+      {
+        "lane": "assist",
+        "question": "Web GUI 8.1 FP7 requires DASH 3.1.2.1 or later\n\nYou wanted to install Web GUI 8.1 FP7, but your DASH version does not meet the required version.\n\nIM 1.8 displayed the following:\n\nERROR: The installed ",
+        "resolvable": false,
+        "reasons": [
+          "confidence 0.357; no auto-resolve threshold met the error target on past tickets: draft an answer for an agent"
+        ]
+      },
+      {
+        "lane": "escalate",
+        "question": "Error #2070\n\nI purchased the SPSS grad pack and put one of the licenses on one computer and another on this one. This computer crashed and I was forced to reformat the hard drive. Subsequently, I lost",
+        "resolvable": false,
+        "reasons": [
+          "confidence 0.057 is below 0.112: the knowledge base probably has no answer"
+        ]
+      }
+    ]
   },
   "stackexchange": {
     "n_dev": 4000,
@@ -1883,7 +1901,25 @@
         "assist": 0.8025,
         "escalate": 0.1975
       }
-    }
+    },
+    "examples": [
+      {
+        "lane": "assist",
+        "question": "Question pretty sums it up - should I expect any problems having an external USB hard drive with 2 or more partitions and using one of those partitions as my Mac Time Machine backup (formatted HFS+ of",
+        "resolvable": false,
+        "reasons": [
+          "confidence 0.486; no auto-resolve threshold met the error target on past tickets: draft an answer for an agent"
+        ]
+      },
+      {
+        "lane": "escalate",
+        "question": "When copying a file from my laptop to my PC or vice-versa on my wireless G network I only use about 20% of the available bandwidth (according to Windows Performance). Both are connected at 54mbps thou",
+        "resolvable": false,
+        "reasons": [
+          "confidence 0.138 is below 0.144: the knowledge base probably has no answer"
+        ]
+      }
+    ]
   },
   "transfer_stackexchange_to_techqa": {
     "target": "techqa",
@@ -2117,5 +2153,5 @@
       }
     ]
   },
-  "note": "Produced by python -m src.decision on the retrieval runs in results/retrieval_metrics.json (Colab, 2026-10-06). Example decisions with reasons are printed by the command and not stored here."
+  "note": "Produced by python -m src.decision (Colab, 2026-10-06) on the retrieval runs behind results/retrieval_metrics.json; re-run after the answerable safeguard with identical numbers. The per-question feature list is omitted."
 }

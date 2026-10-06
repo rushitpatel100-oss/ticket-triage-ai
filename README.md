@@ -273,13 +273,14 @@ What it showed:
 A model reads the retrieval signals (scores, gaps, whether keyword search, embeddings and rerankers agree)
 and estimates whether the right article is among the top 3. The auto-resolve threshold is set so that at most
 10% of auto-resolved tickets are wrong **with 95% confidence** (selection with guaranteed risk), and hard rules
-(security, privileged access, changes, urgent) can only make a decision more cautious. Full write-up:
+(security, legal or personal data, privileged access, data deletion, ITIL changes, urgent) can only make a
+decision more cautious. Full write-up:
 [docs/DECISION.md](docs/DECISION.md).
 
 | Test set | TechQA (IBM) | Stack Exchange |
 |---|---|---|
 | Wrong if everything were automated | 67% | 61% |
-| AUROC: best-match score only / learned model | 0.63 / 0.76 | 0.67 / 0.77 |
+| AUROC: best-match score only / selected model | 0.63 / 0.76 | 0.67 / 0.77 |
 | Auto-resolved at the 10% target | 0% | 0% |
 | Escalated straight to a person (share solvable) | 29% (10%) | 19% (15%) |
 
@@ -288,7 +289,7 @@ and estimates whether the right article is among the top 3. The auto-resolve thr
 What it showed:
 
 - **Retrieval confidence alone cannot certify safe automation** of open technical questions: no threshold
-  met the 10% target. At a 20% target, Stack Exchange auto-resolved 13.6% of test tickets with 17.3% wrong.
+  met the 10% target with 95% confidence on dev. At a 20% target, Stack Exchange auto-resolved 13.6% of test tickets with 17.3% wrong.
 - **It is useful for triage**: the escalate lane sends 19% to 29% of tickets straight to a person, and only
   10% to 15% of those could have been solved, while fewer than 9% of solvable tickets are wrongly escalated.
 - **The model trained on Stack Exchange transfers to IBM's documents** (AUROC 0.78), but its thresholds need
