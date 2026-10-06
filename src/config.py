@@ -61,6 +61,14 @@ RERANK_DEPTH = 30        # hybrid candidates the reranker re-scores
 RERANK_CHUNKS_PER_DOC = 3  # best passages per document (by embedding similarity) shown to the reranker
 RUN_DEPTH = 20           # results kept per query for the resolve-or-escalate model
 
+# --- Resolve, assist or escalate (v2) -----------------------------------------
+PRIMARY_RETRIEVER = "dense"   # chosen in docs/RETRIEVAL.md
+CONTEXT_DOCS = 3              # articles the answer step will read; "resolvable" = correct one among them
+TARGET_RISK = 0.10            # at most 10% of auto-resolved tickets may be wrong...
+RISK_CONFIDENCE = 0.95        # ...with 95% confidence (Clopper-Pearson bound, fixed-sequence testing)
+ASSIST_RECALL = 0.90          # escalate without a draft only below the score that keeps 90% of resolvable tickets
+CV_FOLDS = 5
+
 # --- Demo ------------------------------------------------------------------
 # Below this confidence the demo flags the ticket for a human to check.
 REVIEW_THRESHOLD = 0.60
