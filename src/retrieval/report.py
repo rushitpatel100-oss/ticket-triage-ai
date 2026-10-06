@@ -12,7 +12,10 @@ TITLES = {"techqa": "TechQA (IBM Technotes)", "stackexchange": "Stack Exchange (
 
 
 def fmt(x) -> str:
-    return "–" if x is None else f"{x:.2f}"
+    """Two decimals, rounding halves up (0.625 -> 0.63), as people expect in a table."""
+    from decimal import ROUND_HALF_UP, Decimal
+
+    return "–" if x is None else str(Decimal(str(x)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
 
 def table(results: dict, paired: dict | None = None) -> str:

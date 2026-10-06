@@ -221,9 +221,9 @@ Four retrieval methods compared on the real knowledge bases (`python -m src.retr
 | Method | Dev hit@5 | Dev MRR@10 | Test hit@5 | Test MRR@10 | Test hit@5 95% CI | ms per query |
 |---|---|---|---|---|---|---|
 | BM25 (keywords) | 0.57 | 0.49 | 0.62 | 0.51 | 0.54–0.69 | 1 |
-| **Dense (embeddings)** | 0.63 | 0.54 | 0.69 | 0.56 | 0.62–0.76 | 4 |
-| Hybrid (RRF) | 0.63 | 0.54 | 0.69 | 0.58 | 0.62–0.76 | 6 |
-| Hybrid + rerank (MiniLM) | 0.66 | 0.52 | 0.66 | 0.53 | 0.59–0.72 | 142 |
+| **Dense (embeddings)** | 0.63 | 0.54 | 0.69 | 0.56 | 0.63–0.76 | 4 |
+| Hybrid (RRF) | 0.63 | 0.54 | 0.69 | 0.58 | 0.63–0.76 | 6 |
+| Hybrid + rerank (MiniLM) | 0.66 | 0.52 | 0.66 | 0.53 | 0.59–0.73 | 142 |
 | Hybrid + rerank (BGE base) | 0.63 | 0.54 | 0.69 | 0.55 | 0.62–0.76 | 438 |
 
 Paired difference in dev MRR@10 against hybrid (bootstrap over questions, 95% interval):
@@ -257,12 +257,12 @@ Models: `BAAI/bge-small-en-v1.5` embeddings; rerankers `cross-encoder/ms-marco-M
 
 What it showed:
 
-- **Embedding search wins and is cheap** (about 4 ms per question). Adding keyword search (hybrid) gave no
-  gain on IBM's documents and lost accuracy on Stack Exchange.
-- **Off-the-shelf rerankers made results worse** and were 20 to 75 times slower. The main cause: a
-  reranker reads question and answer through one 512-token window, so long tickets with logs crowd the
-  answer out. On the longest quarter of Stack Exchange questions the BGE reranker's MRR fell to 0.14,
-  against 0.39 for hybrid.
+- **Embedding search is best or tied, and cheap** (3 to 4 ms per question). Adding keyword search (hybrid)
+  gave no gain on IBM's documents and lost accuracy on Stack Exchange.
+- **Off-the-shelf rerankers did not help** and were about 19 to 75 times slower: no clear difference on
+  IBM's documents, clearly worse on Stack Exchange. A big part of the reason: a reranker reads question and
+  answer through one 512-token window, so long tickets with logs crowd the answer out. On the longest
+  quarter of Stack Exchange questions the BGE reranker's MRR fell to 0.14, against 0.39 for hybrid.
 - **Caveat:** the embedding model was trained partly on Stack Exchange data, so its lead there is probably
   optimistic; IBM's Technotes are the fairer test.
 

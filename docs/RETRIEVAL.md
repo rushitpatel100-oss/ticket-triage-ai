@@ -50,15 +50,18 @@ Paired difference in dev MRR@10 against hybrid (95% interval):
 
 ## What we learned
 
-**1. Embeddings beat keywords on both knowledge bases.** Dense search is ahead of BM25 by 0.05 MRR on
-TechQA and 0.14 on Stack Exchange, and costs only 2 to 3 ms more per question.
+**1. Embeddings beat keywords on both knowledge bases.** On dev, dense search is ahead of BM25 by
++0.052 MRR on TechQA (paired 95% interval +0.017 to +0.087) and +0.140 on Stack Exchange (+0.127 to
++0.155), for about 1.5 to 3 ms more per question. On TechQA's small test set the gap is similar (+0.048)
+but its interval crosses zero (−0.009 to +0.104).
 
 **2. Adding keywords (hybrid) did not help.** On TechQA hybrid and dense are tied; on Stack Exchange BM25
 pulls the fusion down. Reciprocal rank fusion gives both lists equal say, which hurts when one list is much
 weaker.
 
-**3. Off-the-shelf rerankers made things worse, not better, and were 20 to 75 times slower than hybrid.**
-On Stack Exchange the BGE reranker moved the correct answer **down for 1,021** of the 1,964 dev questions
+**3. Off-the-shelf rerankers did not help, and were about 19 to 75 times slower than hybrid.** On TechQA
+there is no clear difference either way (every paired interval includes zero). On Stack Exchange they are
+clearly worse: the BGE reranker moved the correct answer **down for 1,021** of the 1,964 dev questions
 where hybrid had found it, and up for only 469. Of the 926 questions hybrid ranked first, 280 dropped below
 5th place.
 
@@ -83,9 +86,12 @@ only its first 64 words:
 | Stack Exchange, BGE reranker | 0.294 | 0.327 | 0.376 |
 | Stack Exchange, MiniLM reranker | 0.262 | 0.259 | 0.376 |
 
-Shortening helps the BGE reranker but does not close the gap, so length is part of the story, not all of it.
-(This test scores whole documents rather than the best three passages, so its numbers differ slightly
-from the main table.)
+On TechQA, shortening the question lets the BGE reranker almost exactly match hybrid (0.539 against 0.540).
+On Stack Exchange it recovers about 40% of the gap for BGE and nothing for MiniLM, so there length is part
+of the story, not all of it. This test differs from the main run in three ways, so its numbers are not
+directly comparable with the main table: it scores whole documents (truncated by the model) rather than
+the best three passages, reranks 20 candidates rather than 30, and on Stack Exchange uses a random sample of
+1,000 dev questions (hence hybrid's 0.376 here against 0.369 on all dev questions).
 
 **5. The rest looks like genuine topical mistakes.** In the examples the reranker chose answers that share
 the question's words but solve a different problem: asked how to install a LaTeX package through
@@ -105,7 +111,7 @@ Synaptic, it preferred an answer about pinning a package version in Synaptic.
 
 ## Decision for the next step
 
-- **Use dense retrieval** to find candidate articles: best or tied on both bases, at about 4 ms per question.
+- **Use dense retrieval** to find candidate articles: best or tied on both bases, at 3 to 4 ms per question.
 - **Keep BM25 and reranker scores as signals, not as the ranking.** A reranker that orders results poorly
   may still help tell "nothing relevant here" from "this is the answer", which is what the
   resolve-or-escalate model needs. Phase 3 tests that.
