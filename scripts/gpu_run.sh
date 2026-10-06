@@ -3,7 +3,7 @@
 #   real data -> retrieval with both rerankers -> decision (retrieval signals only)
 #   -> LLM answer step -> decision with the LLM signal -> guardrails.
 # Stack Exchange tables are built too: the guardrail run measures scanner false alarms on them.
-# Takes about an hour on one T4. Usage, from the repository root:  bash scripts/gpu_run.sh
+# Takes about 80 minutes on one T4. Usage, from the repository root:  bash scripts/gpu_run.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
 

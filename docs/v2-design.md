@@ -107,13 +107,16 @@ password resets being 20-50% of help desk calls.
 
 ## 6. Build order
 
-Status: steps 1 and 2 done; step 3 done except calibrating the routing models (E1).
+Status: steps 1 and 2 done; step 3 done except calibrating the routing models (E1); step 4 done on TechQA.
 - Retrieval ([RETRIEVAL.md](RETRIEVAL.md)): dense embeddings are the retriever. Off-the-shelf rerankers lowered
   accuracy, worst on long tickets, so their scores became signals for the decision instead of the ranking.
 - Decision ([DECISION.md](DECISION.md)): retrieval signals give AUROC 0.76 to 0.78, but no auto-resolve
   threshold meets 10% wrong with 95% confidence, so step 4 adds an answer-level check as a new signal.
 - Still to do from step 3: temperature scaling and multi-seed runs for the routing classifiers (E1).
-- Step 4 in progress ([ANSWER.md](ANSWER.md)): open-model judge, cited answers and red team done on TechQA; the decision with the LLM signal, Stack Exchange and the guardrail runs are waiting for GPU time.
+- Answer step ([ANSWER.md](ANSWER.md)): the LLM judge beats the best-match score (AUROC 0.73 vs 0.63) and lifts
+  the decision model, but still certifies no automation. The keyword scanner stopped only the attacks it was
+  written against, and a faithfulness self-check could not catch answers built from the wrong article. Stack Exchange answer
+  run still to do.
 
 1. Data loaders for TechQA, Stack Exchange subset, UCI log; data card.
 2. Retrieval (E2).

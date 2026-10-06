@@ -149,7 +149,7 @@ def transfer(source: dict, target_name: str, target_runs: pd.DataFrame, target_q
             "test_curve": risk_coverage_curve(p, y)}
 
 
-def plot_risk_coverage(results: dict, path) -> None:
+def plot_risk_coverage(results: dict, path, with_llm: bool = False) -> None:
     import matplotlib
 
     matplotlib.use("Agg")
@@ -158,11 +158,12 @@ def plot_risk_coverage(results: dict, path) -> None:
     from src.evaluate import GRID, INK, INK_MUTED, INK_SECONDARY, SERIES, SURFACE
 
     names = [n for n in DATASETS if n in results]
-    fig, axes = plt.subplots(1, len(names), figsize=(5.4 * len(names), 3.8), squeeze=False, facecolor=SURFACE)
+    fig, axes = plt.subplots(1, len(names), figsize=(max(5.4 * len(names), 7.2), 3.8), squeeze=False, facecolor=SURFACE)
     for ax, name in zip(axes[0], names):
         res = results[name]
         best = res["selected_model"]
-        series = [(best, LABELS[best] + " (selected)"), ("score_only", LABELS["score_only"])]
+        selected = LABELS[best] + (" with the LLM signal" if with_llm else "") + " (selected)"
+        series = [(best, selected), ("score_only", LABELS["score_only"])]
         if "llm_only" in res["models"]:
             series.append(("llm_only", LABELS["llm_only"]))
         for (mname, label), colour in zip(series, SERIES):
@@ -234,7 +235,7 @@ def run_all(datasets=DATASETS, llm_judge: bool = False) -> dict:
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     (config.RESULTS_DIR / f"decision_metrics{suffix}.json").write_text(json.dumps(results, indent=2, default=str))
     if any(n in results for n in DATASETS):
-        plot_risk_coverage(results, config.RESULTS_DIR / f"decision_risk_coverage{suffix}.png")
+        plot_risk_coverage(results, config.RESULTS_DIR / f"decision_risk_coverage{suffix}.png", with_llm=llm_judge)
     return results
 
 

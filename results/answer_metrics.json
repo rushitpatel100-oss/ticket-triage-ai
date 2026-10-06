@@ -5,21 +5,21 @@
   "techqa": {
     "questions": 910,
     "judge_nan": 0,
-    "judge_ms_per_question": 666.1,
-    "yes_no_mass_median": 1,
+    "judge_ms_per_question": 806.5,
+    "yes_no_mass_median": 1.0,
     "judge": {
       "dev": {
         "resolvable": {
-          "auroc": 0.7281,
-          "average_precision": 0.6116,
+          "auroc": 0.7579,
+          "average_precision": 0.7003,
           "brier": 0.3668,
           "ece": 0.3689,
           "positive_rate": 0.4383,
           "n": 600
         },
         "answerable": {
-          "auroc": 0.6093,
-          "average_precision": 0.8067,
+          "auroc": 0.6094,
+          "average_precision": 0.8161,
           "brier": 0.3372,
           "ece": 0.3383,
           "positive_rate": 0.75,
@@ -28,16 +28,16 @@
       },
       "test": {
         "resolvable": {
-          "auroc": 0.6956,
-          "average_precision": 0.4661,
+          "auroc": 0.7261,
+          "average_precision": 0.5568,
           "brier": 0.4558,
           "ece": 0.4634,
           "positive_rate": 0.329,
           "n": 310
         },
         "answerable": {
-          "auroc": 0.5928,
-          "average_precision": 0.5787,
+          "auroc": 0.6118,
+          "average_precision": 0.6273,
           "brier": 0.4181,
           "ece": 0.42,
           "positive_rate": 0.5161,
@@ -109,5 +109,5 @@
       }
     ]
   },
-  "note": "TechQA run on a Colab T4 (2026-10-06), fp16. The Stack Exchange run, the decision with the LLM signal and the guardrail experiments were cut short when Colab's free GPU allowance ran out; rerun with notebooks/answer_colab.ipynb."
+  "note": "TechQA. Drafted answers and red team: Colab T4 (2026-10-06), fp16; a full re-run on a Kaggle T4 gave identical figures apart from timing. Judge figures: re-run on Kaggle with the judgement computed from log-probabilities (commit 4d7f0e4, --max-answers 0, SHA-256 a7bae70b... before this note). Guardrail experiments: results/guardrail_metrics.json."
 }

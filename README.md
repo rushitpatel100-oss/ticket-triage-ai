@@ -295,23 +295,44 @@ What it showed:
 - **The model trained on Stack Exchange transfers to IBM's documents** (AUROC 0.78), but its thresholds need
   re-calibrating, and a shift in the ticket mix breaks calibration. Both point to monitoring in production.
 
-### Step 3 in progress: an LLM reads the articles
+### Step 3 done: an LLM reads the articles
 
 An open model ([Qwen3-4B-Instruct](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507), Apache-2.0, free on
-Colab; Claude is a drop-in option) reads the top 3 articles, judges whether they contain the answer, and
-drafts a cited reply or says `NOT_FOUND`. Full write-up: [docs/ANSWER.md](docs/ANSWER.md). First results on
-TechQA:
+Colab or Kaggle; Claude is a drop-in option) reads the top 3 articles. It judges whether they contain the
+answer and drafts a cited reply or says `NOT_FOUND`. It is then attacked with prompt injections. Full
+write-up: [docs/ANSWER.md](docs/ANSWER.md). Results on TechQA (test set):
 
-- **The LLM's judgement is a real signal**: AUROC 0.70 on test, against 0.63 for the best-match score
-  (the combined retrieval signals reach 0.76 to 0.78).
-- **It cites the right article 88% of the time when it is there, but rarely admits ignorance**: it said
-  `NOT_FOUND` for only 17% of tickets whose articles lacked the answer.
-- **Prompt injection works**: 11 of 15 planted instructions took over the reply, including all 5 hidden in
-  knowledge-base articles. A keyword scanner caught 12 of the 15 attacks it was written for but **0 of 13
-  held-out ones**.
+| | |
+|---|---|
+| AUROC, "the right article is in the top 3": best-match score / LLM judge / decision model with the LLM signal | 0.63 / 0.73 / 0.78 |
+| Auto-resolved at the 10% target, with the LLM signal | 0% |
+| Escalated straight to a person, with the LLM signal (share solvable) | 38% (9%) |
+| Replies citing the right article when it was retrieved | 88% |
+| Said `NOT_FOUND` when the right article was missing | 17% |
+| Injection attacks that worked, no defence / scanner + datamarking: designed set | 73% / 7% |
+| Same, on held-out attacks written after the scanner | 23% / 23% |
 
-Still to run (Colab's free GPU allowance ran out): the Stack Exchange answer run, the decision with the LLM
-signal added, and the guardrail experiments (datamarking, faithfulness).
+![risk-coverage with the LLM signal](results/decision_risk_coverage_llm.png)
+
+What it showed:
+
+- **The LLM's judgement is far stronger than the best-match score** (AUROC 0.73 against 0.63).
+  Adding it lifts the decision model, clearly on dev (0.78 to 0.83) and slightly on test. **But it still
+  certifies no automation:** even the most confident tenth of tickets is wrong about 30% of the time. It
+  helps triage instead: 38% of tickets go straight to a person, and 9 in 10 of those did not have the
+  correct article in the top 3.
+- **A precision bug was hiding part of that signal.** In 32-bit floats, a confident "Yes" rounds to exactly 1.0,
+  so all confident tickets tied. Computing the score in log space raised its AUROC by 0.03 with no other change.
+- **A faithfulness self-check cannot catch the wrong article.** On average 82-83% of an answer's claims count as
+  supported whether or not the right article was retrieved: answers drawn from related articles are grounded,
+  just not correct.
+- **The keyword scanner only stops the attacks it was written against.** With datamarking it cut successful
+  injections from 73% to 7% on those attacks, and made no difference on held-out ones (23%). The
+  scanner almost never fires on real questions (4 of 40,000), and datamarking did not hurt real answers.
+  The real protection is structural: no actions without a person, hard rules, and a certified threshold.
+
+A free Kaggle re-run (`bash scripts/gpu_run.sh`, about 80 minutes on a T4) reproduced the retrieval,
+decision and answer figures exactly. The judge figures come from a later judge-only re-run after the precision fix.
 
 ## Dataset and licence
 

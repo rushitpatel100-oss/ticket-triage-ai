@@ -129,3 +129,7 @@ not open technical questions like these. To raise the safe auto-resolve rate the
 **answer-level check**: the LLM reads the top three articles, answers with citations, and says whether
 the articles actually contain the answer. That judgement becomes a new signal, and the same certified
 threshold is re-run to see whether any automation becomes safe.
+
+**Result** ([ANSWER.md](ANSWER.md)): on TechQA the LLM judgement raised dev AUROC from 0.78 to 0.83 and let the
+escalate lane take 38% of tickets instead of 29%, but still no threshold met the 10% target. The most confident
+tenth of tickets was still wrong about 30% of the time.

@@ -1,0 +1,1274 @@
+{
+  "techqa": {
+    "n_dev": 600,
+    "n_test": 310,
+    "features": [
+      "bm25_top1",
+      "bm25_gap12",
+      "bm25_z1",
+      "dense_top1",
+      "dense_gap12",
+      "dense_z1",
+      "hybrid_top1",
+      "hybrid_gap12",
+      "hybrid_z1",
+      "rr_minilm_top1",
+      "rr_minilm_gap12",
+      "rr_minilm_z1",
+      "rr_bge_top1",
+      "rr_bge_gap12",
+      "rr_bge_z1",
+      "agree_bm25_rank_of_dense_top1",
+      "agree_hybrid_rank_of_dense_top1",
+      "agree_rr_minilm_rank_of_dense_top1",
+      "agree_rr_bge_rank_of_dense_top1",
+      "agree_top5_overlap_bm25",
+      "agree_methods_same_top1",
+      "q_log_words",
+      "q_lines",
+      "q_code_share",
+      "llm_p_yes",
+      "llm_yes_no_mass",
+      "llm_logit"
+    ],
+    "resolvable_rate": {
+      "dev": 0.4383,
+      "test": 0.329
+    },
+    "answerable_rate": {
+      "dev": 0.75,
+      "test": 0.5161
+    },
+    "always_automate": {
+      "coverage": 1.0,
+      "wrong_automation_rate": 0.671
+    },
+    "models": {
+      "score_only": {
+        "label": "Best-match score only",
+        "dev_crossfit": {
+          "auroc": 0.6727,
+          "average_precision": 0.5869,
+          "brier": 0.2252,
+          "ece": 0.041,
+          "positive_rate": 0.4383,
+          "n": 600
+        },
+        "test": {
+          "auroc": 0.6308,
+          "average_precision": 0.4362,
+          "brier": 0.2236,
+          "ece": 0.105,
+          "positive_rate": 0.329,
+          "n": 310
+        },
+        "test_detects_answerable": {
+          "auroc": 0.5237,
+          "average_precision": 0.5336,
+          "brier": 0.2699,
+          "ece": 0.1385,
+          "positive_rate": 0.5161,
+          "n": 310
+        },
+        "thresholds": {
+          "auto": {
+            "threshold": Infinity,
+            "coverage": 0.0,
+            "observed_risk": null,
+            "risk_upper_bound": null,
+            "n_auto": 0,
+            "thresholds_tested": 10
+          },
+          "escalate": 0.2892
+        },
+        "test_lanes": {
+          "auto": {
+            "share": 0.0,
+            "n": 0,
+            "resolvable_rate": null
+          },
+          "assist": {
+            "share": 0.8226,
+            "n": 255,
+            "resolvable_rate": 0.3647
+          },
+          "escalate": {
+            "share": 0.1774,
+            "n": 55,
+            "resolvable_rate": 0.1636
+          },
+          "wrong_automation_rate": null,
+          "resolvable_missed_by_escalation": 0.0882
+        },
+        "test_curve": [
+          {
+            "coverage": 0.0032,
+            "risk": 1.0
+          },
+          {
+            "coverage": 0.0226,
+            "risk": 0.4286
+          },
+          {
+            "coverage": 0.0419,
+            "risk": 0.3846
+          },
+          {
+            "coverage": 0.0613,
+            "risk": 0.3684
+          },
+          {
+            "coverage": 0.0839,
+            "risk": 0.4615
+          },
+          {
+            "coverage": 0.1032,
+            "risk": 0.5312
+          },
+          {
+            "coverage": 0.1226,
+            "risk": 0.5526
+          },
+          {
+            "coverage": 0.1452,
+            "risk": 0.5333
+          },
+          {
+            "coverage": 0.1645,
+            "risk": 0.5686
+          },
+          {
+            "coverage": 0.1839,
+            "risk": 0.5789
+          },
+          {
+            "coverage": 0.2065,
+            "risk": 0.5781
+          },
+          {
+            "coverage": 0.2258,
+            "risk": 0.5571
+          },
+          {
+            "coverage": 0.2452,
+            "risk": 0.5658
+          },
+          {
+            "coverage": 0.2645,
+            "risk": 0.5732
+          },
+          {
+            "coverage": 0.2871,
+            "risk": 0.573
+          },
+          {
+            "coverage": 0.3065,
+            "risk": 0.5789
+          },
+          {
+            "coverage": 0.3258,
+            "risk": 0.5941
+          },
+          {
+            "coverage": 0.3484,
+            "risk": 0.5833
+          },
+          {
+            "coverage": 0.3677,
+            "risk": 0.5789
+          },
+          {
+            "coverage": 0.3871,
+            "risk": 0.5583
+          },
+          {
+            "coverage": 0.4097,
+            "risk": 0.5748
+          },
+          {
+            "coverage": 0.429,
+            "risk": 0.5714
+          },
+          {
+            "coverage": 0.4484,
+            "risk": 0.5612
+          },
+          {
+            "coverage": 0.471,
+            "risk": 0.5753
+          },
+          {
+            "coverage": 0.4903,
+            "risk": 0.5724
+          },
+          {
+            "coverage": 0.5097,
+            "risk": 0.5823
+          },
+          {
+            "coverage": 0.529,
+            "risk": 0.5732
+          },
+          {
+            "coverage": 0.5516,
+            "risk": 0.5789
+          },
+          {
+            "coverage": 0.571,
+            "risk": 0.5876
+          },
+          {
+            "coverage": 0.5903,
+            "risk": 0.5902
+          },
+          {
+            "coverage": 0.6129,
+            "risk": 0.6
+          },
+          {
+            "coverage": 0.6323,
+            "risk": 0.6122
+          },
+          {
+            "coverage": 0.6516,
+            "risk": 0.6188
+          },
+          {
+            "coverage": 0.6742,
+            "risk": 0.622
+          },
+          {
+            "coverage": 0.6935,
+            "risk": 0.6186
+          },
+          {
+            "coverage": 0.7129,
+            "risk": 0.6244
+          },
+          {
+            "coverage": 0.7355,
+            "risk": 0.6272
+          },
+          {
+            "coverage": 0.7548,
+            "risk": 0.6282
+          },
+          {
+            "coverage": 0.7742,
+            "risk": 0.625
+          },
+          {
+            "coverage": 0.7935,
+            "risk": 0.6301
+          },
+          {
+            "coverage": 0.8161,
+            "risk": 0.6364
+          },
+          {
+            "coverage": 0.8355,
+            "risk": 0.6371
+          },
+          {
+            "coverage": 0.8548,
+            "risk": 0.6453
+          },
+          {
+            "coverage": 0.8774,
+            "risk": 0.6434
+          },
+          {
+            "coverage": 0.8968,
+            "risk": 0.6403
+          },
+          {
+            "coverage": 0.9161,
+            "risk": 0.6479
+          },
+          {
+            "coverage": 0.9387,
+            "risk": 0.6564
+          },
+          {
+            "coverage": 0.9581,
+            "risk": 0.6599
+          },
+          {
+            "coverage": 0.9774,
+            "risk": 0.6634
+          },
+          {
+            "coverage": 1.0,
+            "risk": 0.671
+          }
+        ],
+        "other_targets": {
+          "0.05": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          },
+          "0.2": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          }
+        }
+      },
+      "llm_only": {
+        "label": "LLM judgement only",
+        "dev_crossfit": {
+          "auroc": 0.7517,
+          "average_precision": 0.6824,
+          "brier": 0.2021,
+          "ece": 0.0459,
+          "positive_rate": 0.4383,
+          "n": 600
+        },
+        "test": {
+          "auroc": 0.7261,
+          "average_precision": 0.5568,
+          "brier": 0.2079,
+          "ece": 0.128,
+          "positive_rate": 0.329,
+          "n": 310
+        },
+        "test_detects_answerable": {
+          "auroc": 0.6118,
+          "average_precision": 0.6273,
+          "brier": 0.2618,
+          "ece": 0.0967,
+          "positive_rate": 0.5161,
+          "n": 310
+        },
+        "thresholds": {
+          "auto": {
+            "threshold": Infinity,
+            "coverage": 0.0,
+            "observed_risk": null,
+            "risk_upper_bound": null,
+            "n_auto": 0,
+            "thresholds_tested": 10
+          },
+          "escalate": 0.2311
+        },
+        "test_lanes": {
+          "auto": {
+            "share": 0.0,
+            "n": 0,
+            "resolvable_rate": null
+          },
+          "assist": {
+            "share": 0.7419,
+            "n": 230,
+            "resolvable_rate": 0.3913
+          },
+          "escalate": {
+            "share": 0.2581,
+            "n": 80,
+            "resolvable_rate": 0.15
+          },
+          "wrong_automation_rate": null,
+          "resolvable_missed_by_escalation": 0.1176
+        },
+        "test_curve": [
+          {
+            "coverage": 0.0032,
+            "risk": 1.0
+          },
+          {
+            "coverage": 0.0226,
+            "risk": 0.2857
+          },
+          {
+            "coverage": 0.0419,
+            "risk": 0.3846
+          },
+          {
+            "coverage": 0.0613,
+            "risk": 0.2632
+          },
+          {
+            "coverage": 0.0839,
+            "risk": 0.2692
+          },
+          {
+            "coverage": 0.1032,
+            "risk": 0.2812
+          },
+          {
+            "coverage": 0.1226,
+            "risk": 0.3158
+          },
+          {
+            "coverage": 0.1452,
+            "risk": 0.3556
+          },
+          {
+            "coverage": 0.1645,
+            "risk": 0.4118
+          },
+          {
+            "coverage": 0.1839,
+            "risk": 0.4035
+          },
+          {
+            "coverage": 0.2065,
+            "risk": 0.4219
+          },
+          {
+            "coverage": 0.2258,
+            "risk": 0.4143
+          },
+          {
+            "coverage": 0.2452,
+            "risk": 0.4342
+          },
+          {
+            "coverage": 0.2645,
+            "risk": 0.4512
+          },
+          {
+            "coverage": 0.2871,
+            "risk": 0.4494
+          },
+          {
+            "coverage": 0.3065,
+            "risk": 0.4632
+          },
+          {
+            "coverage": 0.3258,
+            "risk": 0.4752
+          },
+          {
+            "coverage": 0.3484,
+            "risk": 0.4722
+          },
+          {
+            "coverage": 0.3677,
+            "risk": 0.4825
+          },
+          {
+            "coverage": 0.3871,
+            "risk": 0.5083
+          },
+          {
+            "coverage": 0.4097,
+            "risk": 0.5118
+          },
+          {
+            "coverage": 0.429,
+            "risk": 0.5038
+          },
+          {
+            "coverage": 0.4484,
+            "risk": 0.5036
+          },
+          {
+            "coverage": 0.471,
+            "risk": 0.5137
+          },
+          {
+            "coverage": 0.4903,
+            "risk": 0.5263
+          },
+          {
+            "coverage": 0.5097,
+            "risk": 0.5316
+          },
+          {
+            "coverage": 0.529,
+            "risk": 0.5244
+          },
+          {
+            "coverage": 0.5516,
+            "risk": 0.5322
+          },
+          {
+            "coverage": 0.571,
+            "risk": 0.5424
+          },
+          {
+            "coverage": 0.5903,
+            "risk": 0.5355
+          },
+          {
+            "coverage": 0.6129,
+            "risk": 0.5368
+          },
+          {
+            "coverage": 0.6323,
+            "risk": 0.551
+          },
+          {
+            "coverage": 0.6516,
+            "risk": 0.5644
+          },
+          {
+            "coverage": 0.6742,
+            "risk": 0.5789
+          },
+          {
+            "coverage": 0.6935,
+            "risk": 0.586
+          },
+          {
+            "coverage": 0.7129,
+            "risk": 0.5928
+          },
+          {
+            "coverage": 0.7355,
+            "risk": 0.6053
+          },
+          {
+            "coverage": 0.7548,
+            "risk": 0.6154
+          },
+          {
+            "coverage": 0.7742,
+            "risk": 0.6208
+          },
+          {
+            "coverage": 0.7935,
+            "risk": 0.622
+          },
+          {
+            "coverage": 0.8161,
+            "risk": 0.6245
+          },
+          {
+            "coverage": 0.8355,
+            "risk": 0.6293
+          },
+          {
+            "coverage": 0.8548,
+            "risk": 0.6264
+          },
+          {
+            "coverage": 0.8774,
+            "risk": 0.636
+          },
+          {
+            "coverage": 0.8968,
+            "risk": 0.6403
+          },
+          {
+            "coverage": 0.9161,
+            "risk": 0.6444
+          },
+          {
+            "coverage": 0.9387,
+            "risk": 0.6495
+          },
+          {
+            "coverage": 0.9581,
+            "risk": 0.6566
+          },
+          {
+            "coverage": 0.9774,
+            "risk": 0.6634
+          },
+          {
+            "coverage": 1.0,
+            "risk": 0.671
+          }
+        ],
+        "other_targets": {
+          "0.05": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          },
+          "0.2": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          }
+        }
+      },
+      "logistic": {
+        "label": "Logistic regression",
+        "dev_crossfit": {
+          "auroc": 0.8005,
+          "average_precision": 0.731,
+          "brier": 0.1813,
+          "ece": 0.0427,
+          "positive_rate": 0.4383,
+          "n": 600
+        },
+        "test": {
+          "auroc": 0.7886,
+          "average_precision": 0.5845,
+          "brier": 0.1879,
+          "ece": 0.1168,
+          "positive_rate": 0.329,
+          "n": 310
+        },
+        "test_detects_answerable": {
+          "auroc": 0.6716,
+          "average_precision": 0.6722,
+          "brier": 0.2475,
+          "ece": 0.1271,
+          "positive_rate": 0.5161,
+          "n": 310
+        },
+        "thresholds": {
+          "auto": {
+            "threshold": Infinity,
+            "coverage": 0.0,
+            "observed_risk": null,
+            "risk_upper_bound": null,
+            "n_auto": 0,
+            "thresholds_tested": 10
+          },
+          "escalate": 0.2249
+        },
+        "test_lanes": {
+          "auto": {
+            "share": 0.0,
+            "n": 0,
+            "resolvable_rate": null
+          },
+          "assist": {
+            "share": 0.7097,
+            "n": 220,
+            "resolvable_rate": 0.4273
+          },
+          "escalate": {
+            "share": 0.2903,
+            "n": 90,
+            "resolvable_rate": 0.0889
+          },
+          "wrong_automation_rate": null,
+          "resolvable_missed_by_escalation": 0.0784
+        },
+        "test_curve": [
+          {
+            "coverage": 0.0032,
+            "risk": 1.0
+          },
+          {
+            "coverage": 0.0226,
+            "risk": 0.5714
+          },
+          {
+            "coverage": 0.0419,
+            "risk": 0.3846
+          },
+          {
+            "coverage": 0.0613,
+            "risk": 0.3158
+          },
+          {
+            "coverage": 0.0839,
+            "risk": 0.3462
+          },
+          {
+            "coverage": 0.1032,
+            "risk": 0.3125
+          },
+          {
+            "coverage": 0.1226,
+            "risk": 0.3421
+          },
+          {
+            "coverage": 0.1452,
+            "risk": 0.3556
+          },
+          {
+            "coverage": 0.1645,
+            "risk": 0.3529
+          },
+          {
+            "coverage": 0.1839,
+            "risk": 0.3509
+          },
+          {
+            "coverage": 0.2065,
+            "risk": 0.3438
+          },
+          {
+            "coverage": 0.2258,
+            "risk": 0.3571
+          },
+          {
+            "coverage": 0.2452,
+            "risk": 0.3816
+          },
+          {
+            "coverage": 0.2645,
+            "risk": 0.378
+          },
+          {
+            "coverage": 0.2871,
+            "risk": 0.3933
+          },
+          {
+            "coverage": 0.3065,
+            "risk": 0.3895
+          },
+          {
+            "coverage": 0.3258,
+            "risk": 0.3861
+          },
+          {
+            "coverage": 0.3484,
+            "risk": 0.4074
+          },
+          {
+            "coverage": 0.3677,
+            "risk": 0.4123
+          },
+          {
+            "coverage": 0.3871,
+            "risk": 0.4167
+          },
+          {
+            "coverage": 0.4097,
+            "risk": 0.4252
+          },
+          {
+            "coverage": 0.429,
+            "risk": 0.4286
+          },
+          {
+            "coverage": 0.4484,
+            "risk": 0.4245
+          },
+          {
+            "coverage": 0.471,
+            "risk": 0.4384
+          },
+          {
+            "coverage": 0.4903,
+            "risk": 0.4474
+          },
+          {
+            "coverage": 0.5097,
+            "risk": 0.462
+          },
+          {
+            "coverage": 0.529,
+            "risk": 0.4817
+          },
+          {
+            "coverage": 0.5516,
+            "risk": 0.5029
+          },
+          {
+            "coverage": 0.571,
+            "risk": 0.5198
+          },
+          {
+            "coverage": 0.5903,
+            "risk": 0.5301
+          },
+          {
+            "coverage": 0.6129,
+            "risk": 0.5368
+          },
+          {
+            "coverage": 0.6323,
+            "risk": 0.5408
+          },
+          {
+            "coverage": 0.6516,
+            "risk": 0.5545
+          },
+          {
+            "coverage": 0.6742,
+            "risk": 0.5598
+          },
+          {
+            "coverage": 0.6935,
+            "risk": 0.5721
+          },
+          {
+            "coverage": 0.7129,
+            "risk": 0.5747
+          },
+          {
+            "coverage": 0.7355,
+            "risk": 0.5789
+          },
+          {
+            "coverage": 0.7548,
+            "risk": 0.5812
+          },
+          {
+            "coverage": 0.7742,
+            "risk": 0.5875
+          },
+          {
+            "coverage": 0.7935,
+            "risk": 0.5935
+          },
+          {
+            "coverage": 0.8161,
+            "risk": 0.6047
+          },
+          {
+            "coverage": 0.8355,
+            "risk": 0.6139
+          },
+          {
+            "coverage": 0.8548,
+            "risk": 0.6189
+          },
+          {
+            "coverage": 0.8774,
+            "risk": 0.6287
+          },
+          {
+            "coverage": 0.8968,
+            "risk": 0.6367
+          },
+          {
+            "coverage": 0.9161,
+            "risk": 0.6444
+          },
+          {
+            "coverage": 0.9387,
+            "risk": 0.6495
+          },
+          {
+            "coverage": 0.9581,
+            "risk": 0.6566
+          },
+          {
+            "coverage": 0.9774,
+            "risk": 0.6634
+          },
+          {
+            "coverage": 1.0,
+            "risk": 0.671
+          }
+        ],
+        "other_targets": {
+          "0.05": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          },
+          "0.2": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          }
+        },
+        "coefficients": [
+          [
+            "llm_logit",
+            1.018
+          ],
+          [
+            "llm_p_yes",
+            -0.355
+          ],
+          [
+            "rr_minilm_gap12",
+            0.308
+          ],
+          [
+            "agree_methods_same_top1",
+            0.3
+          ],
+          [
+            "agree_rr_bge_rank_of_dense_top1",
+            -0.3
+          ],
+          [
+            "rr_bge_top1",
+            -0.268
+          ],
+          [
+            "agree_bm25_rank_of_dense_top1",
+            -0.222
+          ],
+          [
+            "agree_rr_minilm_rank_of_dense_top1",
+            -0.218
+          ],
+          [
+            "bm25_z1",
+            0.185
+          ],
+          [
+            "q_lines",
+            0.175
+          ],
+          [
+            "hybrid_gap12",
+            -0.137
+          ],
+          [
+            "bm25_gap12",
+            -0.128
+          ],
+          [
+            "dense_top1",
+            0.119
+          ],
+          [
+            "rr_minilm_z1",
+            0.118
+          ],
+          [
+            "rr_bge_z1",
+            0.097
+          ],
+          [
+            "hybrid_z1",
+            -0.088
+          ],
+          [
+            "agree_hybrid_rank_of_dense_top1",
+            0.084
+          ],
+          [
+            "dense_z1",
+            -0.063
+          ],
+          [
+            "rr_minilm_top1",
+            0.053
+          ],
+          [
+            "dense_gap12",
+            0.053
+          ],
+          [
+            "bm25_top1",
+            0.052
+          ],
+          [
+            "q_log_words",
+            -0.04
+          ],
+          [
+            "agree_top5_overlap_bm25",
+            0.037
+          ],
+          [
+            "hybrid_top1",
+            0.02
+          ],
+          [
+            "rr_bge_gap12",
+            -0.003
+          ],
+          [
+            "q_code_share",
+            -0.003
+          ],
+          [
+            "llm_yes_no_mass",
+            0.0
+          ]
+        ]
+      },
+      "boosting": {
+        "label": "Gradient boosting",
+        "dev_crossfit": {
+          "auroc": 0.8252,
+          "average_precision": 0.7652,
+          "brier": 0.1762,
+          "ece": 0.0864,
+          "positive_rate": 0.4383,
+          "n": 600
+        },
+        "test": {
+          "auroc": 0.7757,
+          "average_precision": 0.5909,
+          "brier": 0.1996,
+          "ece": 0.1297,
+          "positive_rate": 0.329,
+          "n": 310
+        },
+        "test_detects_answerable": {
+          "auroc": 0.6558,
+          "average_precision": 0.6635,
+          "brier": 0.2861,
+          "ece": 0.2193,
+          "positive_rate": 0.5161,
+          "n": 310
+        },
+        "thresholds": {
+          "auto": {
+            "threshold": Infinity,
+            "coverage": 0.0,
+            "observed_risk": null,
+            "risk_upper_bound": null,
+            "n_auto": 0,
+            "thresholds_tested": 10
+          },
+          "escalate": 0.1626
+        },
+        "test_lanes": {
+          "auto": {
+            "share": 0.0,
+            "n": 0,
+            "resolvable_rate": null
+          },
+          "assist": {
+            "share": 0.6226,
+            "n": 193,
+            "resolvable_rate": 0.4715
+          },
+          "escalate": {
+            "share": 0.3774,
+            "n": 117,
+            "resolvable_rate": 0.094
+          },
+          "wrong_automation_rate": null,
+          "resolvable_missed_by_escalation": 0.1078
+        },
+        "test_curve": [
+          {
+            "coverage": 0.0032,
+            "risk": 0.0
+          },
+          {
+            "coverage": 0.0226,
+            "risk": 0.4286
+          },
+          {
+            "coverage": 0.0419,
+            "risk": 0.3846
+          },
+          {
+            "coverage": 0.0613,
+            "risk": 0.3684
+          },
+          {
+            "coverage": 0.0839,
+            "risk": 0.3077
+          },
+          {
+            "coverage": 0.1032,
+            "risk": 0.3125
+          },
+          {
+            "coverage": 0.1226,
+            "risk": 0.3158
+          },
+          {
+            "coverage": 0.1452,
+            "risk": 0.3333
+          },
+          {
+            "coverage": 0.1645,
+            "risk": 0.3137
+          },
+          {
+            "coverage": 0.1839,
+            "risk": 0.3158
+          },
+          {
+            "coverage": 0.2065,
+            "risk": 0.3281
+          },
+          {
+            "coverage": 0.2258,
+            "risk": 0.3429
+          },
+          {
+            "coverage": 0.2452,
+            "risk": 0.3816
+          },
+          {
+            "coverage": 0.2645,
+            "risk": 0.3902
+          },
+          {
+            "coverage": 0.2871,
+            "risk": 0.382
+          },
+          {
+            "coverage": 0.3065,
+            "risk": 0.4
+          },
+          {
+            "coverage": 0.3258,
+            "risk": 0.4158
+          },
+          {
+            "coverage": 0.3484,
+            "risk": 0.4259
+          },
+          {
+            "coverage": 0.3677,
+            "risk": 0.4386
+          },
+          {
+            "coverage": 0.3871,
+            "risk": 0.4333
+          },
+          {
+            "coverage": 0.4097,
+            "risk": 0.4646
+          },
+          {
+            "coverage": 0.429,
+            "risk": 0.4662
+          },
+          {
+            "coverage": 0.4484,
+            "risk": 0.482
+          },
+          {
+            "coverage": 0.471,
+            "risk": 0.4863
+          },
+          {
+            "coverage": 0.4903,
+            "risk": 0.4803
+          },
+          {
+            "coverage": 0.5097,
+            "risk": 0.481
+          },
+          {
+            "coverage": 0.529,
+            "risk": 0.4817
+          },
+          {
+            "coverage": 0.5516,
+            "risk": 0.4971
+          },
+          {
+            "coverage": 0.571,
+            "risk": 0.5028
+          },
+          {
+            "coverage": 0.5903,
+            "risk": 0.5082
+          },
+          {
+            "coverage": 0.6129,
+            "risk": 0.5211
+          },
+          {
+            "coverage": 0.6323,
+            "risk": 0.5357
+          },
+          {
+            "coverage": 0.6516,
+            "risk": 0.5495
+          },
+          {
+            "coverage": 0.6742,
+            "risk": 0.555
+          },
+          {
+            "coverage": 0.6935,
+            "risk": 0.5628
+          },
+          {
+            "coverage": 0.7129,
+            "risk": 0.5747
+          },
+          {
+            "coverage": 0.7355,
+            "risk": 0.5877
+          },
+          {
+            "coverage": 0.7548,
+            "risk": 0.594
+          },
+          {
+            "coverage": 0.7742,
+            "risk": 0.6042
+          },
+          {
+            "coverage": 0.7935,
+            "risk": 0.6138
+          },
+          {
+            "coverage": 0.8161,
+            "risk": 0.6206
+          },
+          {
+            "coverage": 0.8355,
+            "risk": 0.6255
+          },
+          {
+            "coverage": 0.8548,
+            "risk": 0.6264
+          },
+          {
+            "coverage": 0.8774,
+            "risk": 0.6324
+          },
+          {
+            "coverage": 0.8968,
+            "risk": 0.6367
+          },
+          {
+            "coverage": 0.9161,
+            "risk": 0.6444
+          },
+          {
+            "coverage": 0.9387,
+            "risk": 0.6529
+          },
+          {
+            "coverage": 0.9581,
+            "risk": 0.6566
+          },
+          {
+            "coverage": 0.9774,
+            "risk": 0.6634
+          },
+          {
+            "coverage": 1.0,
+            "risk": 0.671
+          }
+        ],
+        "other_targets": {
+          "0.05": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          },
+          "0.2": {
+            "dev_coverage": 0.0,
+            "test_coverage": 0.0,
+            "test_wrong_automation_rate": null
+          }
+        }
+      }
+    },
+    "selected_model": "boosting",
+    "with_rules": {
+      "tickets_matching_a_rule": 0,
+      "rule_counts": {},
+      "auto_share": 0.0,
+      "wrong_automation_rate": null,
+      "lane_shares": {
+        "auto": 0.0,
+        "assist": 0.6226,
+        "escalate": 0.3774
+      }
+    },
+    "examples": [
+      {
+        "lane": "assist",
+        "question": "Web GUI 8.1 FP7 requires DASH 3.1.2.1 or later\n\nYou wanted to install Web GUI 8.1 FP7, but your DASH version does not meet the required version.\n\nIM 1.8 displayed the following:\n\nERROR: The installed ",
+        "resolvable": false,
+        "reasons": [
+          "confidence 0.225; no auto-resolve threshold met the error target on past tickets: draft an answer for an agent"
+        ]
+      },
+      {
+        "lane": "escalate",
+        "question": "What can be done about \"Too many open files\" messages in the DASH systemOut?\n\nWhat can be done about \"Too many open files\" messages in the DASH systemOut log on an AIX box?",
+        "resolvable": false,
+        "reasons": [
+          "confidence 0.161 is below 0.163: the knowledge base probably has no answer"
+        ]
+      }
+    ]
+  },
+  "note": "TechQA only, Kaggle T4 (2026-10-06). The LLM judgement comes from log-probabilities (commit 4d7f0e4); the file is exactly as written by `python -m src.decision --datasets techqa --llm-judge` (SHA-256 f3269e6c...), with this note added."
+}
