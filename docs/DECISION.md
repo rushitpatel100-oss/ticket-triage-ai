@@ -45,7 +45,7 @@ fired. Two real test decisions:
 - TechQA, *"Web GUI 8.1 FP7 requires DASH 3.1.2.1 or later…"* → **assist**: *"confidence 0.357; no
   auto-resolve threshold met the error target on past tickets: draft an answer for an agent"*.
 - TechQA, *"Error #2070. I purchased the SPSS grad pack…"* → **escalate**: *"confidence 0.057 is below
-  0.112: the knowledge base probably has no answer"*. (Correct: its answer is not in the knowledge base.)
+  0.112: the knowledge base probably has no answer"*. (Right call: its correct article was not in the top 3.)
 
 **Does the guarantee hold?** A simulation in the tests calibrates the threshold on 200 independent samples of
 2,000 tickets with a known true error rate. 142 samples found a threshold, and in none of them did the true
