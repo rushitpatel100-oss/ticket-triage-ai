@@ -53,10 +53,11 @@ class OpenModel:
     def _texts(self, messages_list) -> list[str]:
         return [self.tok.apply_chat_template(m, tokenize=False, add_generation_prompt=True) for m in messages_list]
 
-    def _batches(self, texts):
+    def _batches(self, texts, batch_size: int | None = None):
+        batch_size = batch_size or self.batch_size
         order = np.argsort([len(t) for t in texts], kind="stable")  # similar lengths together = less padding
-        for start in range(0, len(order), self.batch_size):
-            idx = order[start:start + self.batch_size]
+        for start in range(0, len(order), batch_size):
+            idx = order[start:start + batch_size]
             enc = self.tok([texts[i] for i in idx], return_tensors="pt", padding=True).to(self.device)
             yield idx, enc
 
@@ -81,7 +82,7 @@ class OpenModel:
         torch = self.torch
         texts = self._texts([answer_messages(t, e) for t, e in zip(tickets, evidence)])
         out = [""] * len(texts)
-        for idx, enc in self._batches(texts):
+        for idx, enc in self._batches(texts, max(self.batch_size // 2, 1)):  # generation keeps a cache: smaller batches
             with torch.no_grad():
                 gen = self.model.generate(**enc, max_new_tokens=max_new_tokens, do_sample=False,
                                           pad_token_id=self.tok.pad_token_id)

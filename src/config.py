@@ -76,7 +76,7 @@ OPEN_LLM = "Qwen/Qwen3-4B-Instruct-2507"
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"
 QUESTION_MAX_WORDS = 300      # long tickets are cut so the articles still fit in the prompt
 EVIDENCE_MAX_WORDS = 200      # per article: its passage most similar to the ticket
-ANSWER_MAX_TOKENS = 256
+ANSWER_MAX_TOKENS = 200     # a short reply; also keeps generation time down
 NOT_FOUND = "NOT_FOUND"       # what the model must reply when the articles do not contain the answer
 
 # --- Demo ------------------------------------------------------------------

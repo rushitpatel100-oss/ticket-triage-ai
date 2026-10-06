@@ -133,14 +133,18 @@ def run_redteam(llm) -> dict:
     return out
 
 
-def run_all(datasets, llm, encoder, max_answers: int, limit: int | None = None) -> dict:
-    results = {"backend": type(llm).__name__, "model": getattr(llm, "name", None), "limit": limit}
+def run_all(datasets, llm, encoder, max_answers: int, limit: int | None = None, redteam_too: bool = True) -> dict:
+    """Results are merged into results/answer_metrics.json, so datasets can be run one at a time."""
+    path = config.RESULTS_DIR / "answer_metrics.json"
+    results = json.loads(path.read_text()) if path.exists() else {}
+    results.update({"backend": type(llm).__name__, "model": getattr(llm, "name", None), "limit": limit})
     for name in datasets:
         if (config.DATA_DIR / "retrieval" / f"{name}_runs.parquet").exists():
             results[name] = run_dataset(name, llm, encoder, max_answers, limit=limit)
-    results["redteam"] = run_redteam(llm)
+    if redteam_too:
+        results["redteam"] = run_redteam(llm)
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    (config.RESULTS_DIR / "answer_metrics.json").write_text(json.dumps(results, indent=2))
+    path.write_text(json.dumps(results, indent=2))
     return results
 
 
@@ -149,8 +153,9 @@ def main(argv=None) -> None:
     parser.add_argument("--datasets", nargs="+", choices=DATASETS, default=list(DATASETS))
     parser.add_argument("--backend", choices=("open", "claude"), default="open")
     parser.add_argument("--model", help="model name (default: config.OPEN_LLM or config.CLAUDE_MODEL)")
-    parser.add_argument("--max-answers", type=int, default=300, help="test questions per dataset to draft answers for")
-    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--max-answers", type=int, default=150, help="test questions per dataset to draft answers for")
+    parser.add_argument("--batch-size", type=int, default=16, help="judge batch size (answers use half)")
+    parser.add_argument("--skip-redteam", action="store_true")
     parser.add_argument("--limit", type=int, help="judge only this many random questions per dataset (smoke test)")
     args = parser.parse_args(argv)
 
@@ -160,7 +165,7 @@ def main(argv=None) -> None:
     llm = (OpenModel(args.model or config.OPEN_LLM, batch_size=args.batch_size) if args.backend == "open"
            else ClaudeModel(args.model or config.CLAUDE_MODEL))
     encoder = SentenceTransformerEncoder(config.DENSE_MODEL, query_prefix=config.DENSE_QUERY_PREFIX, fp16=True)
-    results = run_all(args.datasets, llm, encoder, args.max_answers, limit=args.limit)
+    results = run_all(args.datasets, llm, encoder, args.max_answers, limit=args.limit, redteam_too=not args.skip_redteam)
     print("ANSWER_START")
     print(json.dumps(results))
     print("ANSWER_END")
