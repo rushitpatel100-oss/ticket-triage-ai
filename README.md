@@ -210,8 +210,66 @@ Because the routing data is synthetic, v2 adds real-world data, each used for wh
 - **A real ServiceNow incident log** (24,918 incidents): 45.6% were reassigned at least once, which is the
   cost that better routing targets.
 
-Progress: data loaders done (`python -m src.sources`); retrieval, the resolve-or-escalate model, the LLM
-step and guardrails come next.
+### Step 1 done: finding the right knowledge article
+
+Four retrieval methods compared on the real knowledge bases (`python -m src.retrieval`, full write-up in
+[docs/RETRIEVAL.md](docs/RETRIEVAL.md)). Methods are chosen on dev questions; test is reported separately.
+
+<!-- RETRIEVAL:START -->
+**TechQA (IBM Technotes)**: 28,481 documents (89,614 passages); 450 dev and 160 test questions that have an answer.
+
+| Method | Dev hit@5 | Dev MRR@10 | Test hit@5 | Test MRR@10 | Test hit@5 95% CI | ms per query |
+|---|---|---|---|---|---|---|
+| BM25 (keywords) | 0.57 | 0.49 | 0.62 | 0.51 | 0.54–0.69 | 1 |
+| **Dense (embeddings)** | 0.63 | 0.54 | 0.69 | 0.56 | 0.62–0.76 | 4 |
+| Hybrid (RRF) | 0.63 | 0.54 | 0.69 | 0.58 | 0.62–0.76 | 6 |
+| Hybrid + rerank (MiniLM) | 0.66 | 0.52 | 0.66 | 0.53 | 0.59–0.72 | 142 |
+| Hybrid + rerank (BGE base) | 0.63 | 0.54 | 0.69 | 0.55 | 0.62–0.76 | 438 |
+
+Paired difference in dev MRR@10 against hybrid (bootstrap over questions, 95% interval):
+
+- BM25 (keywords): -0.047 (-0.069 to -0.026), worse
+- Dense (embeddings): +0.005 (-0.023 to +0.033), no clear difference
+- Hybrid + rerank (BGE base): -0.002 (-0.031 to +0.029), no clear difference
+- Hybrid + rerank (MiniLM): -0.024 (-0.055 to +0.005), no clear difference
+
+**Stack Exchange (Super User, Ask Ubuntu)**: 32,025 documents (38,350 passages); 3,154 dev and 1,615 test questions that have an answer.
+
+| Method | Dev hit@5 | Dev MRR@10 | Test hit@5 | Test MRR@10 | Test hit@5 95% CI | ms per query |
+|---|---|---|---|---|---|---|
+| BM25 (keywords) | 0.35 | 0.27 | 0.35 | 0.28 | 0.32–0.37 | 1 |
+| **Dense (embeddings)** | 0.53 | 0.42 | 0.53 | 0.43 | 0.51–0.56 | 3 |
+| Hybrid (RRF) | 0.47 | 0.37 | 0.48 | 0.38 | 0.46–0.51 | 4 |
+| Hybrid + rerank (MiniLM) | 0.34 | 0.24 | 0.34 | 0.25 | 0.32–0.36 | 71 |
+| Hybrid + rerank (BGE base) | 0.38 | 0.27 | 0.40 | 0.29 | 0.38–0.43 | 213 |
+
+Paired difference in dev MRR@10 against hybrid (bootstrap over questions, 95% interval):
+
+- BM25 (keywords): -0.094 (-0.103 to -0.085), worse
+- Dense (embeddings): +0.046 (+0.035 to +0.058), better
+- Hybrid + rerank (BGE base): -0.095 (-0.109 to -0.082), worse
+- Hybrid + rerank (MiniLM): -0.125 (-0.137 to -0.112), worse
+
+Models: `BAAI/bge-small-en-v1.5` embeddings; rerankers `cross-encoder/ms-marco-MiniLM-L-6-v2`, `BAAI/bge-reranker-base`. Timed on a Tesla T4 in half precision.
+<!-- RETRIEVAL:END -->
+
+![retrieval comparison](results/retrieval_comparison.png)
+
+What it showed:
+
+- **Embedding search wins and is cheap** (about 4 ms per question). Adding keyword search (hybrid) gave no
+  gain on IBM's documents and lost accuracy on Stack Exchange.
+- **Off-the-shelf rerankers made results worse** and were 20 to 75 times slower. The main cause: a
+  reranker reads question and answer through one 512-token window, so long tickets with logs crowd the
+  answer out. On the longest quarter of Stack Exchange questions the BGE reranker's MRR fell to 0.14,
+  against 0.39 for hybrid.
+- **Caveat:** the embedding model was trained partly on Stack Exchange data, so its lead there is probably
+  optimistic; IBM's Technotes are the fairer test.
+
+![accuracy by question length](results/retrieval_by_question_length.png)
+
+Next: the resolve-or-escalate model (does the knowledge base actually answer this ticket?), then the
+LLM step and guardrails.
 
 ## Dataset and licence
 

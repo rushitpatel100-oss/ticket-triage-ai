@@ -1,0 +1,396 @@
+{
+  "techqa": {
+    "reference": "hybrid",
+    "methods": {
+      "bm25": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": -0.0466,
+            "ci95": [
+              -0.0686,
+              -0.0256
+            ],
+            "share_of_resamples_better": 0.0002,
+            "questions_better": 35,
+            "questions_worse": 109
+          },
+          "hit@5": {
+            "mean_diff": -0.0533,
+            "ci95": [
+              -0.0844,
+              -0.0222
+            ],
+            "share_of_resamples_better": 0.0004,
+            "questions_better": 16,
+            "questions_worse": 40
+          },
+          "n_queries": 450
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.0671,
+            "ci95": [
+              -0.1066,
+              -0.0297
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 13,
+            "questions_worse": 44
+          },
+          "hit@5": {
+            "mean_diff": -0.075,
+            "ci95": [
+              -0.125,
+              -0.0312
+            ],
+            "share_of_resamples_better": 0.0004,
+            "questions_better": 2,
+            "questions_worse": 14
+          },
+          "n_queries": 160
+        }
+      },
+      "dense": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": 0.005,
+            "ci95": [
+              -0.0229,
+              0.033
+            ],
+            "share_of_resamples_better": 0.6344,
+            "questions_better": 69,
+            "questions_worse": 80
+          },
+          "hit@5": {
+            "mean_diff": 0.0067,
+            "ci95": [
+              -0.0289,
+              0.0422
+            ],
+            "share_of_resamples_better": 0.6172,
+            "questions_better": 33,
+            "questions_worse": 30
+          },
+          "n_queries": 450
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.0189,
+            "ci95": [
+              -0.0625,
+              0.0238
+            ],
+            "share_of_resamples_better": 0.1906,
+            "questions_better": 28,
+            "questions_worse": 34
+          },
+          "hit@5": {
+            "mean_diff": 0,
+            "ci95": [
+              -0.0563,
+              0.0563
+            ],
+            "share_of_resamples_better": 0.4562,
+            "questions_better": 11,
+            "questions_worse": 11
+          },
+          "n_queries": 160
+        }
+      },
+      "hybrid+rerank:bge-reranker-base": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": -0.0019,
+            "ci95": [
+              -0.0313,
+              0.0291
+            ],
+            "share_of_resamples_better": 0.4472,
+            "questions_better": 82,
+            "questions_worse": 90
+          },
+          "hit@5": {
+            "mean_diff": 0.0044,
+            "ci95": [
+              -0.0311,
+              0.0422
+            ],
+            "share_of_resamples_better": 0.5592,
+            "questions_better": 38,
+            "questions_worse": 36
+          },
+          "n_queries": 450
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.0281,
+            "ci95": [
+              -0.0767,
+              0.022
+            ],
+            "share_of_resamples_better": 0.137,
+            "questions_better": 25,
+            "questions_worse": 44
+          },
+          "hit@5": {
+            "mean_diff": -0.0063,
+            "ci95": [
+              -0.0625,
+              0.05
+            ],
+            "share_of_resamples_better": 0.3686,
+            "questions_better": 10,
+            "questions_worse": 11
+          },
+          "n_queries": 160
+        }
+      },
+      "hybrid+rerank:ms-marco-MiniLM-L-6-v2": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": -0.0244,
+            "ci95": [
+              -0.0549,
+              0.0052
+            ],
+            "share_of_resamples_better": 0.0552,
+            "questions_better": 82,
+            "questions_worse": 95
+          },
+          "hit@5": {
+            "mean_diff": 0.0289,
+            "ci95": [
+              -0.0111,
+              0.0667
+            ],
+            "share_of_resamples_better": 0.9142,
+            "questions_better": 48,
+            "questions_worse": 35
+          },
+          "n_queries": 450
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.047,
+            "ci95": [
+              -0.097,
+              0.0021
+            ],
+            "share_of_resamples_better": 0.0304,
+            "questions_better": 31,
+            "questions_worse": 38
+          },
+          "hit@5": {
+            "mean_diff": -0.0375,
+            "ci95": [
+              -0.0875,
+              0.0187
+            ],
+            "share_of_resamples_better": 0.0712,
+            "questions_better": 7,
+            "questions_worse": 13
+          },
+          "n_queries": 160
+        }
+      }
+    }
+  },
+  "stackexchange": {
+    "reference": "hybrid",
+    "methods": {
+      "bm25": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": -0.0941,
+            "ci95": [
+              -0.1034,
+              -0.0852
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 136,
+            "questions_worse": 929
+          },
+          "hit@5": {
+            "mean_diff": -0.1145,
+            "ci95": [
+              -0.1278,
+              -0.1018
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 49,
+            "questions_worse": 410
+          },
+          "n_queries": 3154
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.1062,
+            "ci95": [
+              -0.1197,
+              -0.0931
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 79,
+            "questions_worse": 527
+          },
+          "hit@5": {
+            "mean_diff": -0.1381,
+            "ci95": [
+              -0.1573,
+              -0.1189
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 30,
+            "questions_worse": 253
+          },
+          "n_queries": 1615
+        }
+      },
+      "dense": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": 0.0464,
+            "ci95": [
+              0.0351,
+              0.0575
+            ],
+            "share_of_resamples_better": 1,
+            "questions_better": 741,
+            "questions_worse": 506
+          },
+          "hit@5": {
+            "mean_diff": 0.0583,
+            "ci95": [
+              0.0444,
+              0.0723
+            ],
+            "share_of_resamples_better": 1,
+            "questions_better": 358,
+            "questions_worse": 174
+          },
+          "n_queries": 3154
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": 0.042,
+            "ci95": [
+              0.0274,
+              0.0572
+            ],
+            "share_of_resamples_better": 1,
+            "questions_better": 367,
+            "questions_worse": 263
+          },
+          "hit@5": {
+            "mean_diff": 0.0495,
+            "ci95": [
+              0.031,
+              0.0687
+            ],
+            "share_of_resamples_better": 1,
+            "questions_better": 165,
+            "questions_worse": 85
+          },
+          "n_queries": 1615
+        }
+      },
+      "hybrid+rerank:bge-reranker-base": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": -0.0953,
+            "ci95": [
+              -0.1093,
+              -0.0815
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 534,
+            "questions_worse": 937
+          },
+          "hit@5": {
+            "mean_diff": -0.0872,
+            "ci95": [
+              -0.104,
+              -0.0707
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 244,
+            "questions_worse": 519
+          },
+          "n_queries": 3154
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.0964,
+            "ci95": [
+              -0.1162,
+              -0.0771
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 276,
+            "questions_worse": 510
+          },
+          "hit@5": {
+            "mean_diff": -0.0811,
+            "ci95": [
+              -0.1053,
+              -0.0576
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 127,
+            "questions_worse": 258
+          },
+          "n_queries": 1615
+        }
+      },
+      "hybrid+rerank:ms-marco-MiniLM-L-6-v2": {
+        "dev": {
+          "mrr@10": {
+            "mean_diff": -0.1248,
+            "ci95": [
+              -0.1369,
+              -0.1119
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 358,
+            "questions_worse": 1003
+          },
+          "hit@5": {
+            "mean_diff": -0.1303,
+            "ci95": [
+              -0.1458,
+              -0.1148
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 134,
+            "questions_worse": 545
+          },
+          "n_queries": 3154
+        },
+        "test": {
+          "mrr@10": {
+            "mean_diff": -0.137,
+            "ci95": [
+              -0.1552,
+              -0.1192
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 197,
+            "questions_worse": 561
+          },
+          "hit@5": {
+            "mean_diff": -0.1461,
+            "ci95": [
+              -0.1678,
+              -0.1245
+            ],
+            "share_of_resamples_better": 0,
+            "questions_better": 71,
+            "questions_worse": 307
+          },
+          "n_queries": 1615
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "techqa": {
+    "dev_questions": 450,
+    "question_words_median": 44,
+    "movement_vs_hybrid": {
+      "hybrid+rerank:bge-reranker-base": {
+        "found_by_hybrid": 354,
+        "moved_up": 79,
+        "same": 178,
+        "moved_down": 97,
+        "was_first_now_below_5": 14,
+        "hybrid_first": 209
+      },
+      "hybrid+rerank:ms-marco-MiniLM-L-6-v2": {
+        "found_by_hybrid": 354,
+        "moved_up": 78,
+        "same": 172,
+        "moved_down": 104,
+        "was_first_now_below_5": 14,
+        "hybrid_first": 209
+      }
+    },
+    "mrr_by_question_length": {
+      "Q1 (shortest)": {
+        "words": "8-31",
+        "n": 115,
+        "bm25": 0.4384,
+        "dense": 0.5211,
+        "hybrid": 0.4849,
+        "hybrid+rerank:bge-reranker-base": 0.604,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.5007
+      },
+      "Q2": {
+        "words": "32-44",
+        "n": 120,
+        "bm25": 0.5941,
+        "dense": 0.6082,
+        "hybrid": 0.6457,
+        "hybrid+rerank:bge-reranker-base": 0.6431,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.5901
+      },
+      "Q3": {
+        "words": "45-62",
+        "n": 103,
+        "bm25": 0.5588,
+        "dense": 0.6454,
+        "hybrid": 0.5888,
+        "hybrid+rerank:bge-reranker-base": 0.5827,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.5861
+      },
+      "Q4 (longest)": {
+        "words": "63-259",
+        "n": 112,
+        "bm25": 0.3802,
+        "dense": 0.4078,
+        "hybrid": 0.437,
+        "hybrid+rerank:bge-reranker-base": 0.3156,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.3848
+      }
+    },
+    "top_document_words_median": {
+      "bm25": 359,
+      "dense": 344,
+      "hybrid": 349,
+      "hybrid+rerank:bge-reranker-base": 360,
+      "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 361,
+      "correct document": 358
+    },
+    "truncation_test": {
+      "questions": 450,
+      "short_words": 64,
+      "hybrid_mrr@10": 0.5396,
+      "ms-marco-MiniLM-L-6-v2:full_question_mrr@10": 0.5215,
+      "ms-marco-MiniLM-L-6-v2:first_words_mrr@10": 0.5267,
+      "bge-reranker-base:full_question_mrr@10": 0.5261,
+      "bge-reranker-base:first_words_mrr@10": 0.5385
+    }
+  },
+  "stackexchange": {
+    "dev_questions": 3154,
+    "question_words_median": 72,
+    "movement_vs_hybrid": {
+      "hybrid+rerank:bge-reranker-base": {
+        "found_by_hybrid": 1964,
+        "moved_up": 469,
+        "same": 474,
+        "moved_down": 1021,
+        "was_first_now_below_5": 280,
+        "hybrid_first": 926
+      },
+      "hybrid+rerank:ms-marco-MiniLM-L-6-v2": {
+        "found_by_hybrid": 1964,
+        "moved_up": 336,
+        "same": 484,
+        "moved_down": 1144,
+        "was_first_now_below_5": 243,
+        "hybrid_first": 926
+      }
+    },
+    "mrr_by_question_length": {
+      "Q1 (shortest)": {
+        "words": "6-44",
+        "n": 819,
+        "bm25": 0.2744,
+        "dense": 0.4244,
+        "hybrid": 0.3783,
+        "hybrid+rerank:bge-reranker-base": 0.3649,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.3159
+      },
+      "Q2": {
+        "words": "45-72",
+        "n": 761,
+        "bm25": 0.2547,
+        "dense": 0.4183,
+        "hybrid": 0.3583,
+        "hybrid+rerank:bge-reranker-base": 0.3256,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.2415
+      },
+      "Q3": {
+        "words": "73-119",
+        "n": 791,
+        "bm25": 0.2677,
+        "dense": 0.408,
+        "hybrid": 0.3489,
+        "hybrid+rerank:bge-reranker-base": 0.2616,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.2339
+      },
+      "Q4 (longest)": {
+        "words": "120-2789",
+        "n": 783,
+        "bm25": 0.3022,
+        "dense": 0.4103,
+        "hybrid": 0.3898,
+        "hybrid+rerank:bge-reranker-base": 0.14,
+        "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 0.182
+      }
+    },
+    "top_document_words_median": {
+      "bm25": 135,
+      "dense": 101,
+      "hybrid": 133,
+      "hybrid+rerank:bge-reranker-base": 93,
+      "hybrid+rerank:ms-marco-MiniLM-L-6-v2": 155,
+      "correct document": 69
+    },
+    "truncation_test": {
+      "questions": 1000,
+      "short_words": 64,
+      "hybrid_mrr@10": 0.3764,
+      "ms-marco-MiniLM-L-6-v2:full_question_mrr@10": 0.2616,
+      "ms-marco-MiniLM-L-6-v2:first_words_mrr@10": 0.2592,
+      "bge-reranker-base:full_question_mrr@10": 0.2938,
+      "bge-reranker-base:first_words_mrr@10": 0.3271
+    }
+  },
+  "note": "Examples of demoted answers are printed by `python -m src.retrieval.diagnose` and summarised in docs/RETRIEVAL.md."
+}

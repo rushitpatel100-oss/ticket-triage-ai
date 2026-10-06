@@ -142,6 +142,8 @@ def main(argv=None) -> None:
             results[name]["truncation_test"] = truncation_test(name, args.rerankers)
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     (config.RESULTS_DIR / "retrieval_diagnostics.json").write_text(json.dumps(results, indent=2))
+    if results:
+        plot_length_effect(results, config.RESULTS_DIR / "retrieval_by_question_length.png")
     print("DIAG_START")
     print(json.dumps(results))
     print("DIAG_END")
@@ -149,3 +151,56 @@ def main(argv=None) -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def plot_length_effect(diag: dict, path) -> None:
+    """MRR@10 by question-length quartile (dev questions): embeddings, hybrid and the BGE reranker."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    from src.evaluate import GRID, INK, INK_MUTED, INK_SECONDARY, SERIES, SURFACE
+
+    series = [("dense", "Dense (embeddings)"), ("hybrid", "Hybrid (RRF)"),
+              ("hybrid+rerank:bge-reranker-base", "Hybrid + rerank (BGE base)")]
+    names = [n for n in ("techqa", "stackexchange") if n in diag]
+    fig, axes = plt.subplots(1, len(names), figsize=(5.6 * len(names), 3.6), squeeze=False, facecolor=SURFACE)
+    for ax, name in zip(axes[0], names):
+        buckets = diag[name]["mrr_by_question_length"]
+        labels = [f"{k.split(' ')[0]}\n{v['words']} words" for k, v in buckets.items()]
+        x = range(len(labels))
+        ends = []
+        for (key, label), colour in zip(series, SERIES):
+            y = [v[key] for v in buckets.values()]
+            ax.plot(x, y, color=colour, linewidth=2, marker="o", markersize=8, markeredgecolor=SURFACE,
+                    markeredgewidth=2, label=label, zorder=3)
+            ends.append(y[-1])
+        # End labels, nudged apart so close values don't overlap
+        order = sorted(range(len(ends)), key=lambda i: ends[i])
+        placed = []
+        for i in order:
+            pos = ends[i] if not placed else max(ends[i], placed[-1] + 0.04)
+            placed.append(pos)
+            ax.text(len(labels) - 1 + 0.12, pos, f"{ends[i]:.2f}", va="center", fontsize=8.5, color=INK_SECONDARY)
+        ax.set_xticks(list(x), labels, fontsize=8, color=INK_SECONDARY)
+        ax.set_ylim(0, 0.75)
+        ax.set_xlim(-0.3, len(labels) - 0.4)
+        ax.set_ylabel("MRR@10 (dev)", fontsize=8.5, color=INK_SECONDARY)
+        ax.set_facecolor(SURFACE)
+        ax.grid(axis="y", color=GRID, linewidth=0.8, zorder=0)
+        for side in ("top", "right", "left"):
+            ax.spines[side].set_visible(False)
+        ax.spines["bottom"].set_color(GRID)
+        ax.tick_params(axis="y", colors=INK_MUTED, labelsize=8, length=0)
+        ax.tick_params(axis="x", length=0)
+        title = {"techqa": "TechQA (IBM Technotes)", "stackexchange": "Stack Exchange"}[name]
+        ax.set_title(f"{title}: accuracy by question length", loc="left", fontsize=10, color=INK)
+    handles, leg_labels = axes[0][0].get_legend_handles_labels()
+    fig.legend(handles, leg_labels, loc="upper center", ncol=3, frameon=False, fontsize=8.5, labelcolor=INK_SECONDARY,
+               bbox_to_anchor=(0.5, 1.0))
+    fig.text(0.01, 0.01, "Dev questions split into four equal groups by length. The reranker reads question and passage "
+             "in one 512-token window.", fontsize=8, color=INK_MUTED)
+    fig.tight_layout(rect=(0, 0.05, 1, 0.92))
+    fig.savefig(path, dpi=160, facecolor=SURFACE)
+    plt.close(fig)

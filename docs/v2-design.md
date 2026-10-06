@@ -106,6 +106,11 @@ password resets being 20-50% of help desk calls.
 - Licences differ (NC, share-alike); the README must keep data and code licences separate.
 
 ## 6. Build order
+
+Status: steps 1 and 2 done. Retrieval results and the decision they led to are in
+[RETRIEVAL.md](RETRIEVAL.md): dense embeddings are the retriever; off-the-shelf rerankers lowered accuracy
+(mostly on long tickets), so their scores become candidate signals for step 3 rather than the ranking.
+
 1. Data loaders for TechQA, Stack Exchange subset, UCI log; data card.
 2. Retrieval (E2).
 3. Calibration + resolvability model + rules (E1, E3).
