@@ -113,6 +113,7 @@ Status: steps 1 and 2 done; step 3 done except calibrating the routing models (E
 - Decision ([DECISION.md](DECISION.md)): retrieval signals give AUROC 0.76 to 0.78, but no auto-resolve
   threshold meets 10% wrong with 95% confidence, so step 4 adds an answer-level check as a new signal.
 - Still to do from step 3: temperature scaling and multi-seed runs for the routing classifiers (E1).
+- Step 4 in progress ([ANSWER.md](ANSWER.md)): open-model judge, cited answers and red team done on TechQA; the decision with the LLM signal, Stack Exchange and the guardrail runs are waiting for GPU time.
 
 1. Data loaders for TechQA, Stack Exchange subset, UCI log; data card.
 2. Retrieval (E2).

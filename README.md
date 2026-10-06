@@ -295,8 +295,23 @@ What it showed:
 - **The model trained on Stack Exchange transfers to IBM's documents** (AUROC 0.78), but its thresholds need
   re-calibrating, and a shift in the ticket mix breaks calibration. Both point to monitoring in production.
 
-Next: the LLM answer step, which adds an answer-level check ("do these articles actually answer the
-ticket?") as a new signal, then guardrails.
+### Step 3 in progress: an LLM reads the articles
+
+An open model ([Qwen3-4B-Instruct](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507), Apache-2.0, free on
+Colab; Claude is a drop-in option) reads the top 3 articles, judges whether they contain the answer, and
+drafts a cited reply or says `NOT_FOUND`. Full write-up: [docs/ANSWER.md](docs/ANSWER.md). First results on
+TechQA:
+
+- **The LLM's judgement is a real signal**: AUROC 0.70 on test, against 0.63 for the best-match score
+  (the combined retrieval signals reach 0.76 to 0.78).
+- **It cites the right article 88% of the time when it is there, but rarely admits ignorance**: it said
+  `NOT_FOUND` for only 17% of tickets whose articles lacked the answer.
+- **Prompt injection works**: 11 of 15 planted instructions took over the reply, including all 5 hidden in
+  knowledge-base articles. A keyword scanner caught 12 of the 15 attacks it was written for but **0 of 13
+  held-out ones**.
+
+Still to run (Colab's free GPU allowance ran out): the Stack Exchange answer run, the decision with the LLM
+signal added, and the guardrail experiments (datamarking, faithfulness).
 
 ## Dataset and licence
 
