@@ -24,9 +24,17 @@ ANSWER_INSTRUCTIONS = (
 )
 
 
+CHARS_PER_WORD = 8  # cap on characters too: logs, URLs and XML can be one "word" thousands of characters long
+
+
 def clip_words(text: str, max_words: int) -> str:
+    """At most max_words words and max_words * CHARS_PER_WORD characters, so the prompt length is bounded."""
     words = str(text).split()
-    return " ".join(words[:max_words]) + (" ..." if len(words) > max_words else "")
+    clipped = " ".join(words[:max_words])
+    max_chars = max_words * CHARS_PER_WORD
+    if len(clipped) > max_chars:
+        clipped = clipped[:max_chars]
+    return clipped + (" ..." if clipped != " ".join(words) else "")
 
 
 def format_evidence(evidence: list[dict]) -> str:

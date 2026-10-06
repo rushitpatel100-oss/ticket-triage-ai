@@ -309,3 +309,11 @@ def test_token_budget_batches(tmp_path):
     lengths = [len(x) for x in llm.tok(texts, add_special_tokens=False)["input_ids"]]
     for b in batches:
         assert len(b) <= 4 and len(b) * max(lengths[i] for i in b) <= 120 or len(b) == 1
+
+
+def test_clip_bounds_characters_not_just_words():
+    blob = "x" * 50_000  # one 'word', like a stack trace or a base64 attachment
+    clipped = clip_words(f"error {blob} end", 300)
+    assert len(clipped) <= 300 * 8 + 4 and clipped.endswith(" ...")
+    msgs = judge_messages(blob, [{"doc_id": "a", "title": "t", "text": blob}])
+    assert len(msgs[1]["content"]) < (config.QUESTION_MAX_WORDS + config.EVIDENCE_MAX_WORDS) * 8 + 500
