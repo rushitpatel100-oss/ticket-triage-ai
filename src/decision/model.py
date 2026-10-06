@@ -15,10 +15,13 @@ from sklearn.preprocessing import StandardScaler
 from src import config
 
 
-def candidate_models(seed: int = config.SEED) -> dict:
-    """A one-signal baseline, an interpretable model and a non-linear one."""
+def candidate_models(seed: int = config.SEED, with_llm: bool = False) -> dict:
+    """One-signal baselines, an interpretable model and a non-linear one."""
+    one_signal = {"score_only": make_pipeline(SimpleImputer(), StandardScaler(), LogisticRegression(max_iter=2000))}
+    if with_llm:
+        one_signal["llm_only"] = make_pipeline(SimpleImputer(), StandardScaler(), LogisticRegression(max_iter=2000))
     return {
-        "score_only": make_pipeline(SimpleImputer(), StandardScaler(), LogisticRegression(max_iter=2000)),
+        **one_signal,
         "logistic": make_pipeline(SimpleImputer(), StandardScaler(), LogisticRegression(C=0.5, max_iter=5000)),
         "boosting": HistGradientBoostingClassifier(max_iter=200, learning_rate=0.05, max_leaf_nodes=15,
                                                    l2_regularization=1.0, min_samples_leaf=20, random_state=seed),
@@ -26,7 +29,11 @@ def candidate_models(seed: int = config.SEED) -> dict:
 
 
 def columns_for(name: str, all_columns: list[str], primary: str = config.PRIMARY_RETRIEVER) -> list[str]:
-    return [f"{primary}_top1"] if name == "score_only" else all_columns
+    if name == "score_only":
+        return [f"{primary}_top1"]
+    if name == "llm_only":
+        return ["llm_logit"]
+    return all_columns
 
 
 def cross_fit(model, X: pd.DataFrame, y: np.ndarray, folds: int = config.CV_FOLDS,

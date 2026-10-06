@@ -56,8 +56,11 @@ def question_features(text: str) -> dict:
 
 
 def build_features(runs: pd.DataFrame, queries: pd.DataFrame, primary: str = config.PRIMARY_RETRIEVER,
-                   context_docs: int = config.CONTEXT_DOCS) -> pd.DataFrame:
-    """One row per question: labels plus features. `runs` is the retrieval output (one row per question x method)."""
+                   context_docs: int = config.CONTEXT_DOCS, extra: pd.DataFrame | None = None) -> pd.DataFrame:
+    """One row per question: labels plus features. `runs` is the retrieval output (one row per question x method).
+
+    `extra` adds per-question signals from later steps, e.g. the LLM judgement (query_id, llm_p_yes, ...).
+    """
     methods = list(dict.fromkeys(runs["method"]))
     if primary not in methods:
         raise ValueError(f"primary retriever {primary!r} not in runs: {methods}")
@@ -90,7 +93,14 @@ def build_features(runs: pd.DataFrame, queries: pd.DataFrame, primary: str = con
         row["agree_methods_same_top1"] = sum(d == top1 for d in firsts) / max(len(firsts), 1)
         row.update(question_features(str(q.at[qid, "text"])))
         rows.append(row)
-    return pd.DataFrame(rows)
+    feats = pd.DataFrame(rows)
+    if extra is not None:
+        cols = [c for c in extra.columns if c.startswith("llm_")]
+        feats = feats.merge(extra[["query_id", *cols]], on="query_id", how="left")
+        if "llm_p_yes" in cols:
+            p = feats["llm_p_yes"].clip(1e-4, 1 - 1e-4)
+            feats["llm_logit"] = np.log(p / (1 - p))  # log-odds: linear models use it better than the raw probability
+    return feats
 
 
 def feature_columns(features: pd.DataFrame) -> list[str]:

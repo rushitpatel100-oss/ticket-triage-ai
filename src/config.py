@@ -69,6 +69,16 @@ RISK_CONFIDENCE = 0.95        # ...with 95% confidence (Clopper-Pearson bounds, 
 ASSIST_RECALL = 0.90          # escalate without a draft only below the score that keeps 90% of resolvable tickets
 CV_FOLDS = 5
 
+# --- Answer step (v2) ----------------------------------------------------------
+# Open model (Apache-2.0, ungated, ~8 GB in fp16) so anyone can reproduce the results on a free Colab GPU.
+OPEN_LLM = "Qwen/Qwen3-4B-Instruct-2507"
+# Optional: Claude through the API (set ANTHROPIC_API_KEY yourself; never put it in the code).
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+QUESTION_MAX_WORDS = 300      # long tickets are cut so the articles still fit in the prompt
+EVIDENCE_MAX_WORDS = 200      # per article: its passage most similar to the ticket
+ANSWER_MAX_TOKENS = 256
+NOT_FOUND = "NOT_FOUND"       # what the model must reply when the articles do not contain the answer
+
 # --- Demo ------------------------------------------------------------------
 # Below this confidence the demo flags the ticket for a human to check.
 REVIEW_THRESHOLD = 0.60

@@ -3,6 +3,7 @@
 Run after `python -m src.retrieval` (it reads data/processed/retrieval/<dataset>_runs.parquet):
     python -m src.decision
     python -m src.decision --datasets techqa
+    python -m src.decision --llm-judge      # add the LLM judgement from `python -m src.answer` as a signal
 
 For each dataset:
 1. Features and labels per question (src/decision/features.py). Label: "resolvable" = the correct article
@@ -44,7 +45,8 @@ from src.sources.common import load_tables
 DATASETS = ("techqa", "stackexchange")
 DEV = ("train", "val")
 OTHER_TARGETS = (0.05, 0.20)
-LABELS = {"score_only": "Best-match score only", "logistic": "Logistic regression", "boosting": "Gradient boosting"}
+LABELS = {"score_only": "Best-match score only", "llm_only": "LLM judgement only", "logistic": "Logistic regression",
+          "boosting": "Gradient boosting"}
 
 
 def load(name: str) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -59,8 +61,14 @@ def thresholds_from(oof: np.ndarray, y: np.ndarray, target: float = config.TARGE
     return auto, escalate
 
 
-def evaluate_dataset(name: str, runs: pd.DataFrame, queries: pd.DataFrame) -> tuple[dict, pd.DataFrame, dict]:
-    feats = build_features(runs, queries)
+def load_llm_judge(name: str) -> pd.DataFrame | None:
+    path = config.DATA_DIR / "answer" / f"{name}_judge.parquet"
+    return pd.read_parquet(path) if path.exists() else None
+
+
+def evaluate_dataset(name: str, runs: pd.DataFrame, queries: pd.DataFrame,
+                     extra: pd.DataFrame | None = None) -> tuple[dict, pd.DataFrame, dict]:
+    feats = build_features(runs, queries, extra=extra)
     cols = feature_columns(feats)
     dev, test = feats[feats["split"].isin(DEV)].reset_index(drop=True), feats[feats["split"] == "test"].reset_index(drop=True)
     y_dev, y_test = dev["resolvable"].to_numpy(), test["resolvable"].to_numpy()
@@ -72,7 +80,7 @@ def evaluate_dataset(name: str, runs: pd.DataFrame, queries: pd.DataFrame) -> tu
            "models": {}}
     preds = test[["query_id", "split", "answerable", "resolvable"]].copy()
     fitted_models = {}
-    for mname, model in candidate_models().items():
+    for mname, model in candidate_models(with_llm="llm_logit" in feats.columns).items():
         c = columns_for(mname, cols)
         oof = cross_fit(model, dev[c], y_dev)
         fitted = clone(model).fit(dev[c], y_dev)
@@ -126,10 +134,11 @@ def evaluate_dataset(name: str, runs: pd.DataFrame, queries: pd.DataFrame) -> tu
     return out, preds, {"model": fitted_models[best], "dev": dev, "y_dev": y_dev}
 
 
-def transfer(source: dict, target_name: str, target_runs: pd.DataFrame, target_queries: pd.DataFrame) -> dict:
+def transfer(source: dict, target_name: str, target_runs: pd.DataFrame, target_queries: pd.DataFrame,
+             extra: pd.DataFrame | None = None) -> dict:
     """Apply a model and thresholds trained on one knowledge base, unchanged, to another one's test set."""
     fitted, c, t_auto, t_esc = source["model"]
-    feats = build_features(target_runs, target_queries)
+    feats = build_features(target_runs, target_queries, extra=extra)
     test = feats[feats["split"] == "test"]
     missing = [col for col in c if col not in test.columns]
     if missing:
@@ -153,8 +162,10 @@ def plot_risk_coverage(results: dict, path) -> None:
     for ax, name in zip(axes[0], names):
         res = results[name]
         best = res["selected_model"]
-        for (mname, label), colour in zip(((best, LABELS[best] + " (selected)"), ("score_only", LABELS["score_only"])),
-                                          SERIES):
+        series = [(best, LABELS[best] + " (selected)"), ("score_only", LABELS["score_only"])]
+        if "llm_only" in res["models"]:
+            series.append(("llm_only", LABELS["llm_only"]))
+        for (mname, label), colour in zip(series, SERIES):
             # Skip the first few points: with fewer than 20 tickets the error rate is mostly noise
             curve = [p for p in res["models"][mname]["test_curve"] if p["coverage"] * res["n_test"] >= 20]
             ax.plot([p["coverage"] for p in curve], [p["risk"] for p in curve], color=colour, linewidth=2, label=label,
@@ -196,8 +207,10 @@ def plot_risk_coverage(results: dict, path) -> None:
     plt.close(fig)
 
 
-def run_all(datasets=DATASETS) -> dict:
-    results, sources = {}, {}
+def run_all(datasets=DATASETS, llm_judge: bool = False) -> dict:
+    """llm_judge=True adds the LLM judgement (from `python -m src.answer`) as a signal; outputs get an _llm suffix."""
+    suffix = "_llm" if llm_judge else ""
+    results, sources, extras = {}, {}, {}
     out_dir = config.DATA_DIR / "decision"
     out_dir.mkdir(parents=True, exist_ok=True)
     loaded = {}
@@ -206,26 +219,31 @@ def run_all(datasets=DATASETS) -> dict:
             print(f"skipping {name}: no retrieval runs")
             continue
         loaded[name] = load(name)
-        results[name], preds, sources[name] = evaluate_dataset(name, *loaded[name])
-        preds.to_parquet(out_dir / f"{name}_predictions.parquet", index=False)
+        extras[name] = load_llm_judge(name) if llm_judge else None
+        if llm_judge and extras[name] is None:
+            raise FileNotFoundError(f"no LLM judgement for {name}; run `python -m src.answer` first")
+        results[name], preds, sources[name] = evaluate_dataset(name, *loaded[name], extra=extras[name])
+        preds.to_parquet(out_dir / f"{name}_predictions{suffix}.parquet", index=False)
         best = results[name]["selected_model"]
         m = results[name]["models"][best]
         print(f"{name}: selected {best}; test AUROC {m['test']['auroc']}, auto {m['test_lanes']['auto']['share']:.1%} "
               f"of tickets with {m['test_lanes']['wrong_automation_rate']} wrong")
     if "stackexchange" in sources and "techqa" in loaded:
-        results["transfer_stackexchange_to_techqa"] = transfer(sources["stackexchange"], "techqa", *loaded["techqa"])
+        results["transfer_stackexchange_to_techqa"] = transfer(sources["stackexchange"], "techqa", *loaded["techqa"],
+                                                               extra=extras.get("techqa"))
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    (config.RESULTS_DIR / "decision_metrics.json").write_text(json.dumps(results, indent=2, default=str))
+    (config.RESULTS_DIR / f"decision_metrics{suffix}.json").write_text(json.dumps(results, indent=2, default=str))
     if any(n in results for n in DATASETS):
-        plot_risk_coverage(results, config.RESULTS_DIR / "decision_risk_coverage.png")
+        plot_risk_coverage(results, config.RESULTS_DIR / f"decision_risk_coverage{suffix}.png")
     return results
 
 
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--datasets", nargs="+", choices=DATASETS, default=list(DATASETS))
+    parser.add_argument("--llm-judge", action="store_true", help="add the LLM judgement from `python -m src.answer`")
     args = parser.parse_args(argv)
-    results = run_all(args.datasets)
+    results = run_all(args.datasets, llm_judge=args.llm_judge)
     compact = {k: {kk: vv for kk, vv in v.items() if kk != "features"} for k, v in results.items()}
     print("DECISION_START")
     print(json.dumps(compact, default=str))
