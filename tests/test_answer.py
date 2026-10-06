@@ -297,3 +297,15 @@ def test_guardrails_run_all(tmp_path, monkeypatch):
     assert faith["answers_checked"] > 0 and 0 <= faith["claims_supported"] <= 1
     assert out["datamark_utility"]["techqa"]["questions"] == 10
     assert (tmp_path / "results" / "guardrail_metrics.json").exists()
+
+
+def test_token_budget_batches(tmp_path):
+    from src.answer.llm import OpenModel
+
+    llm = OpenModel(make_tiny_llm(tmp_path / "tiny-llm"), batch_size=4)
+    texts = ["printer " * n for n in (1, 2, 3, 50, 50, 50, 50, 2)]
+    batches = list(llm._batches(texts, max_items=4, token_budget=120))
+    assert sorted(i for b in batches for i in b) == list(range(8))           # every prompt exactly once
+    lengths = [len(x) for x in llm.tok(texts, add_special_tokens=False)["input_ids"]]
+    for b in batches:
+        assert len(b) <= 4 and len(b) * max(lengths[i] for i in b) <= 120 or len(b) == 1

@@ -53,13 +53,35 @@ class OpenModel:
     def _texts(self, messages_list) -> list[str]:
         return [self.tok.apply_chat_template(m, tokenize=False, add_generation_prompt=True) for m in messages_list]
 
-    def _batches(self, texts, batch_size: int | None = None):
-        batch_size = batch_size or self.batch_size
-        order = np.argsort([len(t) for t in texts], kind="stable")  # similar lengths together = less padding
-        for start in range(0, len(order), batch_size):
-            idx = order[start:start + batch_size]
-            enc = self.tok([texts[i] for i in idx], return_tensors="pt", padding=True).to(self.device)
-            yield idx, enc
+    def _batches(self, texts, max_items: int, token_budget: int):
+        """Index batches of similar length, each with at most max_items prompts and token_budget padded tokens."""
+        lengths = [len(ids) for ids in self.tok(texts, add_special_tokens=False)["input_ids"]]
+        batch, longest = [], 0
+        for i in np.argsort(lengths, kind="stable"):  # similar lengths together = less padding
+            longest_if_added = max(longest, lengths[i])
+            if batch and (len(batch) >= max_items or (len(batch) + 1) * longest_if_added > token_budget):
+                yield batch
+                batch, longest_if_added = [], lengths[i]
+            batch.append(int(i))
+            longest = longest_if_added
+        if batch:
+            yield batch
+
+    def _run(self, idx: list[int], texts: list[str], step) -> None:
+        """Run `step(idx, encoded)`; if the GPU runs out of memory, split the batch in half and retry."""
+        torch = self.torch
+        enc = self.tok([texts[i] for i in idx], return_tensors="pt", padding=True).to(self.device)
+        try:
+            with torch.no_grad():
+                step(idx, enc)
+        except torch.cuda.OutOfMemoryError:
+            del enc
+            torch.cuda.empty_cache()
+            if len(idx) == 1:
+                raise
+            half = len(idx) // 2
+            self._run(idx[:half], texts, step)
+            self._run(idx[half:], texts, step)
 
     def judge(self, tickets, evidence) -> tuple[np.ndarray, np.ndarray]:
         return self.yes_probability([judge_messages(t, e) for t, e in zip(tickets, evidence)])
@@ -67,35 +89,42 @@ class OpenModel:
     def answer(self, tickets, evidence, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
         return self.generate([answer_messages(t, e) for t, e in zip(tickets, evidence)], max_new_tokens)
 
-    def yes_probability(self, messages_list) -> tuple[np.ndarray, np.ndarray]:
+    def yes_probability(self, messages_list, token_budget: int = 8000) -> tuple[np.ndarray, np.ndarray]:
         """P(first word is Yes | first word is Yes or No) for each conversation, plus the Yes+No probability mass."""
         torch = self.torch
         texts = self._texts(messages_list)
         p_yes, mass = np.zeros(len(texts)), np.zeros(len(texts))
-        for idx, enc in self._batches(texts):
-            with torch.no_grad():
-                try:
-                    logits = self.model(**enc, use_cache=False, logits_to_keep=1).logits[:, -1, :]
-                except TypeError:
-                    logits = self.model(**enc, use_cache=False).logits[:, -1, :]
+
+        def step(idx, enc):
+            try:
+                logits = self.model(**enc, use_cache=False, logits_to_keep=1).logits[:, -1, :]
+            except TypeError:
+                logits = self.model(**enc, use_cache=False).logits[:, -1, :]
             probs = torch.softmax(logits.float(), dim=-1)
             yes = probs[:, self.yes_ids].sum(-1)
             no = probs[:, self.no_ids].sum(-1)
             p_yes[idx] = (yes / (yes + no + 1e-12)).cpu().numpy()
             mass[idx] = (yes + no).cpu().numpy()  # how much of the model's first word was Yes/No at all
+
+        for idx in self._batches(texts, self.batch_size, token_budget):
+            self._run(idx, texts, step)
         return p_yes, mass
 
-    def generate(self, messages_list, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
-        torch = self.torch
+    def generate(self, messages_list, max_new_tokens: int = config.ANSWER_MAX_TOKENS,
+                 token_budget: int = 6000) -> list[str]:
         texts = self._texts(messages_list)
         out = [""] * len(texts)
-        for idx, enc in self._batches(texts, max(self.batch_size // 2, 1)):  # generation keeps a cache: smaller batches
-            with torch.no_grad():
-                gen = self.model.generate(**enc, max_new_tokens=max_new_tokens, do_sample=False,
-                                          pad_token_id=self.tok.pad_token_id)
+
+        def step(idx, enc):
+            gen = self.model.generate(**enc, max_new_tokens=max_new_tokens, do_sample=False,
+                                      pad_token_id=self.tok.pad_token_id)
             new = gen[:, enc["input_ids"].shape[1]:]
             for i, text in zip(idx, self.tok.batch_decode(new, skip_special_tokens=True)):
                 out[i] = text.strip()
+
+        # generation keeps a cache that grows with every new token, so batches are smaller than for judging
+        for idx in self._batches(texts, max(self.batch_size // 2, 1), token_budget):
+            self._run(idx, texts, step)
         return out
 
 

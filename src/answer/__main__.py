@@ -17,7 +17,11 @@ data/processed/answer/<dataset>_answers.parquet and results/answer_metrics.json.
 
 import argparse
 import json
+import os
 import time
+
+# Lets PyTorch reuse fragmented GPU memory (must be set before the GPU is first used)
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import numpy as np
 import pandas as pd
