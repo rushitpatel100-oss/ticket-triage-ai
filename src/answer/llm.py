@@ -62,8 +62,15 @@ class OpenModel:
             yield idx, enc
 
     def judge(self, tickets, evidence) -> tuple[np.ndarray, np.ndarray]:
+        return self.yes_probability([judge_messages(t, e) for t, e in zip(tickets, evidence)])
+
+    def answer(self, tickets, evidence, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
+        return self.generate([answer_messages(t, e) for t, e in zip(tickets, evidence)], max_new_tokens)
+
+    def yes_probability(self, messages_list) -> tuple[np.ndarray, np.ndarray]:
+        """P(first word is Yes | first word is Yes or No) for each conversation, plus the Yes+No probability mass."""
         torch = self.torch
-        texts = self._texts([judge_messages(t, e) for t, e in zip(tickets, evidence)])
+        texts = self._texts(messages_list)
         p_yes, mass = np.zeros(len(texts)), np.zeros(len(texts))
         for idx, enc in self._batches(texts):
             with torch.no_grad():
@@ -78,9 +85,9 @@ class OpenModel:
             mass[idx] = (yes + no).cpu().numpy()  # how much of the model's first word was Yes/No at all
         return p_yes, mass
 
-    def answer(self, tickets, evidence, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
+    def generate(self, messages_list, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
         torch = self.torch
-        texts = self._texts([answer_messages(t, e) for t, e in zip(tickets, evidence)])
+        texts = self._texts(messages_list)
         out = [""] * len(texts)
         for idx, enc in self._batches(texts, max(self.batch_size // 2, 1)):  # generation keeps a cache: smaller batches
             with torch.no_grad():
@@ -106,8 +113,8 @@ class ClaudeModel:
 
         self.name, self.client = name, Anthropic()
 
-    def _ask(self, content: str, max_tokens: int) -> str:
-        reply = self.client.messages.create(model=self.name, max_tokens=max_tokens, system=SYSTEM,
+    def _ask(self, content: str, max_tokens: int, system: str = SYSTEM) -> str:
+        reply = self.client.messages.create(model=self.name, max_tokens=max_tokens, system=system,
                                             messages=[{"role": "user", "content": content}])
         return "".join(block.text for block in reply.content if getattr(block, "type", "") == "text").strip()
 
@@ -120,4 +127,17 @@ class ClaudeModel:
         return np.array(p), np.ones(len(p))
 
     def answer(self, tickets, evidence, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
-        return [self._ask(answer_messages(t, e)[1]["content"], max_new_tokens) for t, e in zip(tickets, evidence)]
+        return self.generate([answer_messages(t, e) for t, e in zip(tickets, evidence)], max_new_tokens)
+
+    def generate(self, messages_list, max_new_tokens: int = config.ANSWER_MAX_TOKENS) -> list[str]:
+        return [self._ask(m[-1]["content"], max_new_tokens, system=m[0]["content"]) for m in messages_list]
+
+    def yes_probability(self, messages_list) -> tuple[np.ndarray, np.ndarray]:
+        """A Yes/No question asked as a 0-100 likelihood (the API does not expose token probabilities)."""
+        p = []
+        for m in messages_list:
+            text = self._ask(m[-1]["content"] + "\nInstead of Yes or No, reply with only a whole number from 0 to 100 "
+                             "for how likely the answer is Yes.", max_tokens=5, system=m[0]["content"])
+            n = re.search(r"\d+", text)
+            p.append(min(int(n.group(0)), 100) / 100 if n else 0.5)
+        return np.array(p), np.ones(len(p))
