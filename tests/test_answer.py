@@ -106,6 +106,24 @@ def test_open_model_wrapper_with_tiny_model(tmp_path):
     assert len(answers) == 3 and all(isinstance(a, str) for a in answers)
 
 
+def test_confident_judgements_do_not_tie():
+    """A float32 ratio P(Yes)/(P(Yes)+P(No)) rounds every confident Yes to exactly 1.0; log space keeps the order."""
+    import torch
+
+    from src.answer.llm import yes_no_scores
+
+    logits = torch.zeros(4, 10)
+    logits[:, 1] = torch.tensor([18.0, 22.0, 26.0, 0.0])  # token 1 = Yes; token 2 = No stays at 0
+    probs = torch.softmax(logits, dim=-1)
+    naive = (probs[:, 1] / (probs[:, 1] + probs[:, 2])).numpy()
+    assert naive[0] == naive[1] == naive[2] == 1.0  # the old way: three different confidences, one tie
+
+    p, mass = yes_no_scores(logits, [1], [2])
+    assert p[0] < p[1] < p[2] < 1.0 and p[3] == pytest.approx(0.5)
+    assert np.log(p[2] / (1 - p[2])) == pytest.approx(26.0, abs=1e-3)
+    assert mass[0] == pytest.approx(1.0, abs=1e-6) and mass[3] == pytest.approx(2 / 10)
+
+
 def write_fixture(tmp_path):
     from src.sources import common
 
@@ -152,6 +170,9 @@ def test_run_all_end_to_end(tmp_path, monkeypatch):
     judge = pd.read_parquet(tmp_path / "processed" / "answer" / "techqa_judge.parquet")
     assert len(judge) == 60 and judge["llm_p_yes"].between(0, 1).all()
     assert json.loads((tmp_path / "results" / "answer_metrics.json").read_text())["backend"] == "FakeLLM"
+
+    again = run_all(["techqa"], FakeLLM(), FakeEncoder(), max_answers=0, redteam_too=False)  # judge only
+    assert again["techqa"]["judge"] == tq["judge"] and again["techqa"]["answers"] == tq["answers"]
 
 
 def test_decision_uses_llm_judgement(tmp_path, monkeypatch):

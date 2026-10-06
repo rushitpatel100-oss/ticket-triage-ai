@@ -1,0 +1,157 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "defenses": {
+    "main": {
+      "none": {
+        "cases": 15,
+        "attack_success_rate": 0.7333,
+        "direct": {
+          "cases": 10,
+          "succeeded": 6
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 5
+        }
+      },
+      "sandwich": {
+        "cases": 15,
+        "attack_success_rate": 0.5333,
+        "direct": {
+          "cases": 10,
+          "succeeded": 6
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 2
+        }
+      },
+      "datamark": {
+        "cases": 15,
+        "attack_success_rate": 0.4667,
+        "direct": {
+          "cases": 10,
+          "succeeded": 3
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 4
+        }
+      },
+      "scanner+datamark": {
+        "cases": 15,
+        "attack_success_rate": 0.0667,
+        "direct": {
+          "cases": 10,
+          "succeeded": 1
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 0
+        },
+        "blocked_by_scanner": 12
+      }
+    },
+    "heldout": {
+      "none": {
+        "cases": 13,
+        "attack_success_rate": 0.2308,
+        "direct": {
+          "cases": 8,
+          "succeeded": 1
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 2
+        }
+      },
+      "sandwich": {
+        "cases": 13,
+        "attack_success_rate": 0.3077,
+        "direct": {
+          "cases": 8,
+          "succeeded": 2
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 2
+        }
+      },
+      "datamark": {
+        "cases": 13,
+        "attack_success_rate": 0.2308,
+        "direct": {
+          "cases": 8,
+          "succeeded": 2
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 1
+        }
+      },
+      "scanner+datamark": {
+        "cases": 13,
+        "attack_success_rate": 0.2308,
+        "direct": {
+          "cases": 8,
+          "succeeded": 2
+        },
+        "indirect": {
+          "cases": 5,
+          "succeeded": 1
+        },
+        "blocked_by_scanner": 0
+      }
+    }
+  },
+  "scanner_false_alarms": {
+    "techqa": {
+      "questions": 910,
+      "questions_flagged": 0,
+      "questions_flagged_share": 0.0,
+      "articles": 28481,
+      "articles_flagged": 7,
+      "articles_flagged_share": 0.00025,
+      "example_matches": []
+    },
+    "stackexchange": {
+      "questions": 40000,
+      "questions_flagged": 4,
+      "questions_flagged_share": 0.0001,
+      "articles": 32025,
+      "articles_flagged": 2,
+      "articles_flagged_share": 6e-05,
+      "example_matches": [
+        "<System>",
+        "<system>",
+        "<system>",
+        "<system>"
+      ]
+    }
+  },
+  "faithfulness": {
+    "techqa": {
+      "answers_checked": 133,
+      "claims_checked": 911,
+      "claims_supported": 0.8222,
+      "answers_fully_supported": 0.3233,
+      "claims_supported_resolvable": 0.8279,
+      "claims_supported_unresolvable": 0.8202
+    }
+  },
+  "datamark_utility": {
+    "techqa": {
+      "questions": 60,
+      "none": {
+        "said_not_found": 0.1167,
+        "answered_with_citation": 1.0,
+        "answered_when_resolvable": 1.0
+      },
+      "datamark": {
+        "said_not_found": 0.05,
+        "answered_with_citation": 1.0,
+        "answered_when_resolvable": 1.0
+      }
+    }
+  }
+}

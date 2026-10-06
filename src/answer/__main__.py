@@ -108,7 +108,7 @@ def run_dataset(name: str, llm, encoder, max_answers: int, seed: int = config.SE
     test = table[table["split"] == "test"]
     if max_answers and len(test) > max_answers:
         test = test.sample(max_answers, random_state=seed)
-    if len(test):
+    if max_answers and len(test):  # max_answers=0: judge only
         t = time.time()
         answers = llm.answer(test["text"].tolist(), test["evidence"].tolist())
         answer_s = time.time() - t
@@ -144,7 +144,10 @@ def run_all(datasets, llm, encoder, max_answers: int, limit: int | None = None, 
     results.update({"backend": type(llm).__name__, "model": getattr(llm, "name", None), "limit": limit})
     for name in datasets:
         if (config.DATA_DIR / "retrieval" / f"{name}_runs.parquet").exists():
+            previous = results.get(name, {})
             results[name] = run_dataset(name, llm, encoder, max_answers, limit=limit)
+            if not max_answers:  # a judge-only re-run keeps the drafted answers from the earlier run
+                results[name].update({k: previous[k] for k in ("answers", "answer_examples") if k in previous})
     if redteam_too:
         results["redteam"] = run_redteam(llm)
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -157,7 +160,8 @@ def main(argv=None) -> None:
     parser.add_argument("--datasets", nargs="+", choices=DATASETS, default=list(DATASETS))
     parser.add_argument("--backend", choices=("open", "claude"), default="open")
     parser.add_argument("--model", help="model name (default: config.OPEN_LLM or config.CLAUDE_MODEL)")
-    parser.add_argument("--max-answers", type=int, default=150, help="test questions per dataset to draft answers for")
+    parser.add_argument("--max-answers", type=int, default=150,
+                        help="test questions per dataset to draft answers for (0: judge only, keep earlier answers)")
     parser.add_argument("--batch-size", type=int, default=16, help="judge batch size (answers use half)")
     parser.add_argument("--skip-redteam", action="store_true")
     parser.add_argument("--limit", type=int, help="judge only this many random questions per dataset (smoke test)")

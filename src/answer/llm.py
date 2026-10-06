@@ -17,6 +17,22 @@ from src import config
 from src.answer.prompts import SYSTEM, answer_messages, judge_messages, user_message
 
 
+def yes_no_scores(logits, yes_ids, no_ids) -> tuple[np.ndarray, np.ndarray]:
+    """P(Yes | Yes or No) and the Yes+No probability mass from next-token logits (rows = prompts).
+
+    Worked out in log space: a confident model gives "No" a probability near 1e-9, so a float32 ratio of
+    probabilities rounds to exactly 1.0 and every confident Yes ties. The log-odds keep their order.
+    """
+    import torch
+
+    logp = torch.log_softmax(logits.float(), dim=-1)
+    yes = torch.logsumexp(logp[:, yes_ids], dim=-1)
+    no = torch.logsumexp(logp[:, no_ids], dim=-1)
+    log_odds = (yes - no).double().cpu().numpy()
+    mass = torch.logsumexp(torch.stack([yes, no], dim=-1), dim=-1).exp().double().cpu().numpy()
+    return 1.0 / (1.0 + np.exp(-log_odds)), mass
+
+
 class OpenModel:
     def __init__(self, name: str = config.OPEN_LLM, batch_size: int = 8):
         import torch
@@ -91,7 +107,6 @@ class OpenModel:
 
     def yes_probability(self, messages_list, token_budget: int = 8000) -> tuple[np.ndarray, np.ndarray]:
         """P(first word is Yes | first word is Yes or No) for each conversation, plus the Yes+No probability mass."""
-        torch = self.torch
         texts = self._texts(messages_list)
         p_yes, mass = np.zeros(len(texts)), np.zeros(len(texts))
 
@@ -100,11 +115,8 @@ class OpenModel:
                 logits = self.model(**enc, use_cache=False, logits_to_keep=1).logits[:, -1, :]
             except TypeError:
                 logits = self.model(**enc, use_cache=False).logits[:, -1, :]
-            probs = torch.softmax(logits.float(), dim=-1)
-            yes = probs[:, self.yes_ids].sum(-1)
-            no = probs[:, self.no_ids].sum(-1)
-            p_yes[idx] = (yes / (yes + no + 1e-12)).cpu().numpy()
-            mass[idx] = (yes + no).cpu().numpy()  # how much of the model's first word was Yes/No at all
+            # mass: how much of the model's first word was Yes/No at all
+            p_yes[idx], mass[idx] = yes_no_scores(logits, self.yes_ids, self.no_ids)
 
         for idx in self._batches(texts, self.batch_size, token_budget):
             self._run(idx, texts, step)

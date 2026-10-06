@@ -98,8 +98,10 @@ def build_features(runs: pd.DataFrame, queries: pd.DataFrame, primary: str = con
         cols = [c for c in extra.columns if c.startswith("llm_")]
         feats = feats.merge(extra[["query_id", *cols]], on="query_id", how="left")
         if "llm_p_yes" in cols:
-            p = feats["llm_p_yes"].clip(1e-4, 1 - 1e-4)
-            feats["llm_logit"] = np.log(p / (1 - p))  # log-odds: linear models use it better than the raw probability
+            # Log-odds: linear models use it better than the raw probability. The clip only keeps it finite; a
+            # wider one (1e-4) tied every confident Yes and threw away how confident the model was.
+            p = feats["llm_p_yes"].clip(1e-15, 1 - 1e-15)
+            feats["llm_logit"] = np.log(p / (1 - p))
     return feats
 
 
