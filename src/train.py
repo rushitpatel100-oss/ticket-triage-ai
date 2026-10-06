@@ -57,7 +57,12 @@ def display_name(model_name: str) -> str:
     return "DistilBERT (fine-tuned)" if short.startswith("distilbert") else f"{short} (fine-tuned)"
 
 
-def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataFrame, args) -> dict:
+def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataFrame, args,
+               seed: int = config.SEED, save: bool = True) -> tuple[dict, dict]:
+    """Fine-tune one task. Returns the test metrics and the raw logits on validation and test (for calibration).
+
+    save=False skips writing the model, plots and results/metrics.json (used for the extra seeds).
+    """
     col = config.TASKS[task]
     labels = label_names(pd.concat([train, val, test]), task)  # every class, even rare ones
     label2id = {label: i for i, label in enumerate(labels)}
@@ -100,7 +105,7 @@ def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataF
         fp16=torch.cuda.is_available(),
         logging_steps=50,
         report_to="none",
-        seed=config.SEED,
+        seed=seed,
     )
     class_weights = None
     if args.class_weights:
@@ -121,7 +126,8 @@ def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataF
     trainer.train()
     train_seconds = round(time.time() - start)
 
-    # Final, untouched test set
+    # Final, untouched test set (validation logits are kept for calibration)
+    val_logits = trainer.predict(val_ds).predictions
     logits = trainer.predict(test_ds).predictions
     probs = torch.softmax(torch.tensor(logits), dim=-1).numpy()
     preds = [labels[i] for i in probs.argmax(axis=1)]
@@ -130,11 +136,15 @@ def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataF
     metrics = compute_metrics(test[col], preds, labels)
     metrics["params"] = {"base_model": args.model_name, "epochs": args.epochs, "batch_size": args.batch_size,
                          "lr": args.lr, "max_length": args.max_length, "train_rows": len(train),
-                         "class_weights": bool(args.class_weights)}
+                         "class_weights": bool(args.class_weights), "seed": seed}
     metrics["train_seconds"] = train_seconds
     metrics["device"] = torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu"
+    print(f"{name} (seed {seed})  acc={metrics['accuracy']:.3f}  macro-F1={metrics['macro_f1']:.3f}  ({train_seconds}s)")
+    outputs = {"labels": labels, "val_logits": np.asarray(val_logits), "test_logits": np.asarray(logits),
+               "y_val": val[col].map(label2id).to_numpy(), "y_test": test[col].map(label2id).to_numpy()}
+    if not save:
+        return metrics, outputs
     log_result(task, name, metrics)
-    print(f"{name}  acc={metrics['accuracy']:.3f}  macro-F1={metrics['macro_f1']:.3f}  ({train_seconds}s)")
 
     plot_confusion_matrix(test[col], preds, labels, f"{name}: {task}", config.RESULTS_DIR / f"confusion_{task}_transformer.png")
     save_errors(test["text"], test[col], preds, probs.max(axis=1), config.RESULTS_DIR / f"errors_{task}_transformer.csv")
@@ -149,7 +159,7 @@ def train_task(task: str, train: pd.DataFrame, val: pd.DataFrame, test: pd.DataF
         trainer.model.push_to_hub(repo_id)
         tokenizer.push_to_hub(repo_id)
         print(f"Uploaded to https://huggingface.co/{repo_id}")
-    return metrics
+    return metrics, outputs
 
 
 def main() -> None:

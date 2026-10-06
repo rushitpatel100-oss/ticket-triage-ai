@@ -131,8 +131,9 @@ def test_transformer_training_end_to_end(workspace):
     args = Namespace(model_name=model_dir, epochs=1, batch_size=8, lr=1e-3, max_length=64, push_to_hub=None,
                     class_weights=True)
 
-    metrics = train_task("queue", train, val, test, args)
+    metrics, out = train_task("queue", train, val, test, args)
     assert 0 <= metrics["macro_f1"] <= 1
+    assert out["val_logits"].shape == (len(val), len(out["labels"])) and len(out["y_test"]) == len(test)
     assert (workspace / "models" / "queue" / "config.json").exists()
     assert (workspace / "results" / "confusion_queue_transformer.png").exists()
 
